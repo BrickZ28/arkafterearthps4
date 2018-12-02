@@ -29,8 +29,8 @@ Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-/*
-Route::get('/', function (\Illuminate\Http\Request $request) {
+
+/*Route::get('/', function (\Illuminate\Http\Request $request) {
     $user = $request->user();
     dd($user->hasRole('Owner'));
 });
@@ -38,13 +38,13 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
 Route::get('/', function (\Illuminate\Http\Request $request) {
     $user = $request->user();
     dd($user->can('delete'));
-});*/
-/*Route::get('/', function (\Illuminate\Http\Request $request) {
+});
+Route::get('/', function (\Illuminate\Http\Request $request) {
     $user = $request->user();
     dd($user->can('view'));
-});*/
+});
 
-/*
+
 Route::get('/', function (\Illuminate\Http\Request $request) {
     $user = $request->user();
     $user->givePermission();
@@ -52,16 +52,15 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
 
 Route::get('/', function (\Illuminate\Http\Request $request) {
     $user = $request->user();
-    $user->removePermission('view');
+    $user->removePermission('delete');
 });
 
 Route::get('/', function (\Illuminate\Http\Request $request) {
     $user = $request->user();
-    $user->givePermission('view');
+    $user->givePermission('delete');
 });
-
 Route::get('/', function (\Illuminate\Http\Request $request) {
     $user = $request->user();
-    $user->modifyPermission('edit');
+    $user->modifyPermission('delete');
 });*/
 
