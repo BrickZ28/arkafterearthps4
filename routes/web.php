@@ -12,5 +12,56 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/ad', function () {
+    return view('layouts.admin');
+});
+
+Route::get('/userhome', function () {
+    return view('ark.userHome');
+});
+
+Route::get('/currencyConverter', 'CurrencyController@index');
+Route::post('/converted', 'CurrencyController@show')->middleware('currency');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+/*
+Route::get('/', function (\Illuminate\Http\Request $request) {
+    $user = $request->user();
+    dd($user->hasRole('Owner'));
+});
+
+Route::get('/', function (\Illuminate\Http\Request $request) {
+    $user = $request->user();
+    dd($user->can('delete'));
+});*/
+/*Route::get('/', function (\Illuminate\Http\Request $request) {
+    $user = $request->user();
+    dd($user->can('view'));
+});*/
+
+/*
+Route::get('/', function (\Illuminate\Http\Request $request) {
+    $user = $request->user();
+    $user->givePermission();
+});
+
+Route::get('/', function (\Illuminate\Http\Request $request) {
+    $user = $request->user();
+    $user->removePermission('view');
+});
+
+Route::get('/', function (\Illuminate\Http\Request $request) {
+    $user = $request->user();
+    $user->givePermission('view');
+});
+
+Route::get('/', function (\Illuminate\Http\Request $request) {
+    $user = $request->user();
+    $user->modifyPermission('edit');
+});*/
+
