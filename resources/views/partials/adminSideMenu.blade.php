@@ -14,7 +14,7 @@
                 <li class="active">
                     <a href="/userhome"> <i class="menu-icon fas fa-home"></i>Ark Home </a>
                 </li>
-                @if(auth()->user()->hasRole('Owner'))
+                {{--@if(auth()->user()->hasRole('Owner'))--}}
                 <h3 class="menu-title">Permission Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>User Management</a>
@@ -34,7 +34,7 @@
                         <li><i class="fas fa-list-ul"></i><a href="#">Items</a></li>
                     </ul>
                 </li>
-                @endif
+               {{-- @endif--}}
                 <h3 class="menu-title">Store Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>Currency</a>
