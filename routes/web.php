@@ -65,7 +65,3 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
     $user->modifyPermission('edit');
 });*/
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
