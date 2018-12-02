@@ -8,7 +8,39 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.wrapper {
+  background: url("../img/reg.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  -ms-content-zooming: none;
+  position:absolute;
+  width:100%;
+  height:100%;
+
+  font-family: 'Scout', arial, sans-serif;
+}
+.reghed{
+  background: #125540;
+  color: white;
+}
+
+.regbod{
+  background: #2d1255;
+  color: white;
+}
+
 .navbar-laravel {
-  background-color: #fff;
+  background-color: #551227;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  color: #fff;
 }
