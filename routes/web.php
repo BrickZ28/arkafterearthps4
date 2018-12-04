@@ -24,6 +24,7 @@ Route::get('/userhome', function () {
 });
 
 Route::get('/currencyConverter', 'CurrencyController@index');
+Route::get('/manageUser', 'MemberController@index');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Route::get('/roles', 'RoleController@index');
 

@@ -14,12 +14,12 @@
                 <li class="active">
                     <a href="/userhome"> <i class="menu-icon fas fa-home"></i>Ark Home </a>
                 </li>
-                {{--@if(auth()->user()->hasRole('Owner'))--}}
+                @if(auth()->user()->hasRole('Owner'))
                 <h3 class="menu-title">Permission Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>User Management</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fas fa-funnel-dollar"></i><a href="/currencyConverter">Manage User</a></li>
+                        <li><i class="fas fa-funnel-dollar"></i><a href="/manageUser">Manage User</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
@@ -34,14 +34,16 @@
                         <li><i class="fas fa-list-ul"></i><a href="#">Items</a></li>
                     </ul>
                 </li>
-               {{-- @endif--}}
+               @endif
                 <h3 class="menu-title">Store Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>Currency</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-funnel-dollar"></i><a href="/currencyConverter">Converter</a></li>
                         <li><i class="fas fa-exchange-alt"></i><a href="ui-badges.html">Exchange Rates</a></li>
+                        @if(auth()->user()->hasRole('Owner'))
                         <li><i class="far fa-edit"></i><a href="ui-social-buttons.html">Currency Editor</a></li>
+                        @endif
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
