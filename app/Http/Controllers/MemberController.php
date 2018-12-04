@@ -16,7 +16,7 @@ class MemberController extends Controller
     {
         $members = Member::all();
 
-        return view('ark.manageuser')->with('members', $members);
+        return view('ark.manageUser')->with('members', $members);
     }
 
     /**
