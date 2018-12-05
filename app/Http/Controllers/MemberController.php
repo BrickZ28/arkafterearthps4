@@ -14,9 +14,16 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
+        $members = Member::paginate(10);
 
-        return view('ark.manageUser')->with('members', $members);
+        return view('ark.manageUser', compact('members'));
+    }
+
+    public function search()
+    {
+        $query=request('search_text');
+        $members = Member::where('name', 'LIKE', '%' . $query . '%')->paginate(10);;
+        return view('ark.manageUser',compact('members'));
     }
 
     /**

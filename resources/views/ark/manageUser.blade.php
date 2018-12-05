@@ -8,6 +8,13 @@
                 <strong class="card-title">Roles</strong>
             </div>
             <div class="card-body">
+
+                <form action="/searchMembers" method="get">
+                    @csrf
+                    <input  name="search_text" value="Insert value to search" class="text-muted" type="text"/>
+                    <button type="submit" class="btn btn-primary">Search Users</button>
+                </form>
+
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -28,6 +35,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{$members->links()}}
             </div>
         </div>
     </div>
