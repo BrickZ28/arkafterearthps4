@@ -55,7 +55,9 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        $member = Member::find($id);
+
+        return view('ark.editMember', compact('member'));
     }
 
     /**

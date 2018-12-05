@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Roles</strong>
+                <strong class="card-title">Member List</strong>
             </div>
             <div class="card-body">
 
@@ -30,7 +30,11 @@
                             <td>{{$member->name}}</td>
                             <td>{{$member->tribename}}</td>
                             <td>HAVE TO ADD</td>
-                            <td><button type="button" class="btn btn-secondary btn-sm">Update Member</button></td>
+                            <td>
+                                <a href="/editMember/{{$member->id}}">
+                                    <button type="button" class="btn btn-secondary btn-sm">Update Member</button>
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
