@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tribe;
 use Illuminate\Http\Request;
 use App\Member;
 
@@ -14,8 +15,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::paginate(10);
-
+       $members = Member::with('roles')->paginate(10);
+dd($members);
         return view('ark.manageUser', compact('members'));
     }
 
@@ -23,6 +24,7 @@ class MemberController extends Controller
     {
         $query=request('search_text');
         $members = Member::where('name', 'LIKE', '%' . $query . '%')->paginate(10);;
+
         return view('ark.manageUser',compact('members'));
     }
 
@@ -56,8 +58,9 @@ class MemberController extends Controller
     public function show($id)
     {
         $member = Member::find($id);
+        $tribe = Member::find(1)->tribename;
 
-        return view('ark.editMember', compact('member'));
+        return view('ark.editMember', compact('member', 'tribe'));
     }
 
     /**

@@ -24,11 +24,11 @@ Route::get('/userhome', function () {
 });
 
 Route::get('/currencyConverter', 'CurrencyController@index');
-Route::get('/manageUser', 'MemberController@index');
+Route::get('/manageUser', 'UserController@index');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Route::get('/roles', 'RoleController@index');
-Route::get('/searchMembers','MemberController@search');
-Route::get('/editMember/{id}','MemberController@show');
+Route::get('/searchMembers','UserController@search');
+Route::get('/editMember/{id}','UserController@show');
 
 Auth::routes();
 
