@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Tribe;
 use Illuminate\Http\Request;
-use App\User;
 
-
-
-class UserController extends Controller
+class TribeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $members = User::with('roles', 'tribes')->paginate(10);
-        /*dd($members);*/
-
-        return view('ark.manageUser', compact('members'));
-    }
-
-    public function search()
-    {
-        $query=request('search_text');
-        $members = User::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
-
-        return view('ark.manageUser',compact('members'));
+        //
     }
 
     /**
@@ -60,10 +45,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $member = User::with('roles')->find($id);
-
-
-        return view('ark.editMember', compact('member'));
+        //
     }
 
     /**

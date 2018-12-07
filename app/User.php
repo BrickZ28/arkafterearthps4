@@ -30,6 +30,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function tribes()
+    {
+        return $this->belongsToMany(Tribe::class, 'tribe_users');
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class,'user_roles');

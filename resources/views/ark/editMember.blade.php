@@ -20,7 +20,7 @@
 
                         <tr>
                             <td>{{$member->name}}</td>
-                            <td>{{$member->tribeName}}</td>
+                            <td>{{$member->tribes->first()->tribeName}}</td>
                             <td>{{$member->roles->first()->name}}</td>
                         </tr>
 

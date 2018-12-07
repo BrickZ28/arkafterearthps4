@@ -27,9 +27,10 @@
                     <tbody>
                     @foreach($members as $member)
                     @foreach($member->roles as $role)
+                        @foreach($member->tribes as $tribe)
                         <tr>
                             <td>{{$member->name}}</td>
-                            <td>{{$member->tribeName}}</td>
+                            <td>{{$tribe->tribeName}}</td>
 
                                 <td>{{$role->name}}</td>
 
@@ -39,6 +40,7 @@
                                 </a>
                             </td>
                         </tr>
+                    @endforeach
                     @endforeach
                     @endforeach
                     </tbody>
