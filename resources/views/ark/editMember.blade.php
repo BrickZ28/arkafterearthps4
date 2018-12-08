@@ -38,7 +38,7 @@
                 <strong>Edit member Form</strong>
             </div>
             <div class="card-body card-block">
-                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="/updateUser/{{$member->id}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Member Name</label></div>
                         <div class="col-12 col-md-9">
@@ -46,28 +46,25 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select Tribe</label></div>
-                        <div class="col-12 col-md-9">
-                            <select name="selectLg" id="selectLg" class="form-control-lg form-control">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                            </select>
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">PVE Tribe Name</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pve" value="{{$member->tribeName_pve}}" class="form-control">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">New Tribe</label></div>
-                        <div class="col-12 col-md-9"><input type="If new tribe" id="text-input" name="text-input" placeholder="Text" class="form-control"><small class="form-text text-muted">ONLY IF TRIBE ISNT LISTED IN DROP DOWN</small></div>
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">PVP Tribe Name</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pvp" value="{{$member->tribeName_pvp}}" class="form-control">
+                        </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select Role</label></div>
                         <div class="col-12 col-md-9">
-                            <select name="selectLg" id="selectLg" class="form-control-lg form-control">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
+                            <select name="role" id="selectLg" class="form-control-lg form-control">
+                                <option value="{{$member->roles->first()->id}}">{{$member->roles->first()->name}}</option>
+                                @foreach($roles as $role)
+                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

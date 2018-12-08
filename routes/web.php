@@ -28,7 +28,7 @@ Route::get('/manageUser', 'UserController@index');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Route::get('/roles', 'RoleController@index');
 Route::get('/searchMembers','UserController@search');
-Route::get('/editMember/{id}','UserController@show');
+Route::get('/editMember/{id}','UserController@edit');
 
 Auth::routes();
 

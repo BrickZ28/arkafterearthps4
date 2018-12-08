@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\Tribe;
 use Illuminate\Http\Request;
 use App\User;
@@ -17,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $members = User::with('roles')->paginate(10);
+        $members = User::with('roles')->paginate(10)->sortByDesc('user_roles.role_id');
         /*dd($members);*/
 
         return view('ark.manageUser', compact('members'));
@@ -60,10 +61,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $member = User::with('roles')->find($id);
-
-
-        return view('ark.editMember', compact('member'));
+        //
     }
 
     /**
@@ -74,7 +72,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $member = User::with('roles')->find($id);
+        $roles = Role::all();
+
+
+        return view('ark.editMember', compact('member', 'roles'));
     }
 
     /**
