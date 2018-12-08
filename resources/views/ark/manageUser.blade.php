@@ -19,7 +19,8 @@
                     <thead>
                     <tr>
                         <th scope="col">PSN Name</th>
-                        <th scope="col">Member Tribe</th>
+                        <th scope="col">PVE Tribe</th>
+                        <th scope="col">PVP Tribe</th>
                         <th scope="col">Users Role</th>
                         <th scope="col">Update User</th>
                     </tr>
@@ -27,10 +28,11 @@
                     <tbody>
                     @foreach($members as $member)
                     @foreach($member->roles as $role)
-                        @foreach($member->tribes as $tribe)
+
                         <tr>
                             <td>{{$member->name}}</td>
-                            <td>{{$tribe->tribeName}}</td>
+                            <td>{{$member->tribeName_pve}}</td>
+                            <td>{{$member->tribeName_pvp}}</td>
 
                                 <td>{{$role->name}}</td>
 
@@ -40,12 +42,11 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+
                     @endforeach
                     @endforeach
                     </tbody>
                 </table>
-                {{$members->links()}}
             </div>
         </div>
     </div>

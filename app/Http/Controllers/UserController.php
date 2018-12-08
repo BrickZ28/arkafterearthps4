@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $members = User::with('roles', 'tribes')->paginate(10);
+        $members = User::with('roles')->paginate(10);
         /*dd($members);*/
 
         return view('ark.manageUser', compact('members'));

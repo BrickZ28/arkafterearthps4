@@ -30,7 +30,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function tribes()
+    public function pve()
+    {
+        return $this->belongsToMany(Tribe::class, 'tribe_users');
+    }
+    public function pvp()
     {
         return $this->belongsToMany(Tribe::class, 'tribe_users');
     }
