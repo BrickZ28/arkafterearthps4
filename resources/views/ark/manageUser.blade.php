@@ -11,7 +11,7 @@
 
                 <form action="/searchMembers" method="get">
                     @csrf
-                    <input  name="search_text" value="Insert value to search" class="text-muted" type="text"/>
+                    <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                     <button type="submit" class="btn btn-primary">Search Users</button>
                 </form>
 
