@@ -12,7 +12,8 @@
                     <thead>
                     <tr>
                         <th scope="col">Member Name</th>
-                        <th scope="col">Member Tribe</th>
+                        <th scope="col">PVE Tribe</th>
+                        <th scope="col">PVP Tribe</th>
                         <th scope="col">Member Role</th>
                     </tr>
                     </thead>
@@ -20,7 +21,8 @@
 
                         <tr>
                             <td>{{$member->name}}</td>
-                            <td>{{$member->tribes->first()->tribeName}}</td>
+                            <td>{{$member->tribeName_pve}}</td>
+                            <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->roles->first()->name}}</td>
                         </tr>
 

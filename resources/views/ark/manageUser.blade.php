@@ -28,21 +28,17 @@
                     <tbody>
                     @foreach($members as $member)
                     @foreach($member->roles as $role)
-
                         <tr>
                             <td>{{$member->name}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->tribeName_pvp}}</td>
-
-                                <td>{{$role->name}}</td>
-
+                            <td>{{$role->name}}</td>
                             <td>
                                 <a href="/editMember/{{$member->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm">Update Member</button>
                                 </a>
                             </td>
                         </tr>
-
                     @endforeach
                     @endforeach
                     </tbody>
