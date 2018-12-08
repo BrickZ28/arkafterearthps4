@@ -17,9 +17,9 @@
                 @if(auth()->user()->hasRole('Owner'))
                 <h3 class="menu-title">Permission Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>User Management</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-user"></i>User Management</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fas fa-funnel-dollar"></i><a href="/manageUser">Manage User</a></li>
+                        <li><i class="fas fa-user"></i><a href="/manageUser">Manage User</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
