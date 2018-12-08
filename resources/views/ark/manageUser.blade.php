@@ -34,9 +34,11 @@
                             <td>{{$member->tribeName_pvp}}</td>
                             <td>{{$role->name}}</td>
                             <td>
+                                @if(Auth::id() !== $member->id or $member->hasRole('Owner'))
                                 <a href="/editMember/{{$member->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm">Update Member</button>
                                 </a>
+                                    @endif
                             </td>
                         </tr>
                     @endforeach
