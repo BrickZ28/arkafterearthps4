@@ -29,6 +29,7 @@ Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Route::get('/roles', 'RoleController@index');
 Route::get('/searchMembers','UserController@search');
 Route::get('/editMember/{id}','UserController@edit');
+Route::patch('/editMember/{id}','UserController@update');
 
 Auth::routes();
 

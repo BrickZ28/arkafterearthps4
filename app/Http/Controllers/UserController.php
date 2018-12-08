@@ -88,7 +88,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $member = User::find($id);
+
+
+        $member->tribeName_pvp = request('pvp');
+        $member->tribeName_pve = request('pve');
+        request()->validate([
+            'pve' => 'required',
+            'pvp' => 'required'
+        ]);
+        $member->save();
+
+        $member->role = request('role');
+        $member->roles()->sync($member->role);
+
+        return redirect('/manageUser');
+
     }
 
     /**

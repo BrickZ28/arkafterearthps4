@@ -37,8 +37,21 @@
             <div class="card-header">
                 <strong>Edit member Form</strong>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error )
+                          <li>
+                              {{$error}}
+                          </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="card-body card-block">
-                <form action="/updateUser/{{$member->id}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="/editMember/{{$member->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
+                    @method('PATCH')
+                    @csrf
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Member Name</label></div>
                         <div class="col-12 col-md-9">
@@ -48,19 +61,19 @@
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">PVE Tribe Name</label>
                         </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pve" value="{{$member->tribeName_pve}}" class="form-control">
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pve" value="{{$member->tribeName_pve}}" class="form-control" required>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">PVP Tribe Name</label>
                         </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pvp" value="{{$member->tribeName_pvp}}" class="form-control">
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pvp" value="{{$member->tribeName_pvp}}" class="form-control" required>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select Role</label></div>
                         <div class="col-12 col-md-9">
-                            <select name="role" id="selectLg" class="form-control-lg form-control">
+                            <select name="role" id="selectLg" class="form-control-lg form-control" required>
                                 <option value="{{$member->roles->first()->id}}">{{$member->roles->first()->name}}</option>
                                 @foreach($roles as $role)
                                 <option value="{{$role->id}}">{{$role->name}}</option>
