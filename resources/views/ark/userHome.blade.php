@@ -2,21 +2,11 @@
 
 @section('content')
     <div class="breadcrumbs">
-        <div class="col-sm-4">
+        <div class="col-sm-12">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Dashboard</h1>
+                    <h1>Welcome, {{Auth::user()->name}} to AfterEarth user Area. Mange your tribe, or view the store </h1>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8">
-            <div class="page-header float-right">
-                <div class="page-title">
-                    <ol class="breadcrumb text-right">
-                        <li class="active">Dashboard</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

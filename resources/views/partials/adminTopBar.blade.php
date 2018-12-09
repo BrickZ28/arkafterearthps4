@@ -40,14 +40,14 @@
                     <div class="dropdown-menu" aria-labelledby="message">
                         <p class="red">PVE CLuster Servers</p>
                         <a class="dropdown-item media bg-flat-color-1" href="#">
-                            <span class="photo media-left"><img alt="t-rex" src="{{asset('img/dinos/dodo.jpg')}}"></span>
+                            <span class="photo media-left"><img alt="t-rex" src="{{asset('img/dinos/dodo.png')}}"></span>
                             <span class="message media-body">
                                     <span class="name float-left"> Extinction\ /AfterEarthCluster \ /LightBoost </span>
                                     <span class="time float-right">CLUSTER</span>
                             </span>
                         </a>
                         <a class="dropdown-item media bg-flat-color-4" href="#">
-                            <span class="photo media-left"><img alt="t-rex" src="{{asset('img/dinos/dodo.jpg')}}"></span>
+                            <span class="photo media-left"><img alt="t-rex" src="{{asset('img/dinos/dodo.png')}}"></span>
                             <span class="message media-body">
                                     <span class="name float-left">  Ragnarok\ /AfterEarthCluster\ / Lightboost </span>
                                     <span class="time float-right">CLUSTER</span>
