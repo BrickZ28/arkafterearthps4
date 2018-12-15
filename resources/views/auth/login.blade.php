@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container ">
+    @if(Auth::user())
+            {{Auth::logout()}}
+        @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

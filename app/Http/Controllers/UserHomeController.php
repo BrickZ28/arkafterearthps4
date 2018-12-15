@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class UserHomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
 
         $user = Auth::user(); //get the current user
@@ -26,5 +31,10 @@ class UserHomeController extends Controller
 
         return view('ark.userHome', compact('tribecount', 'last_pve', 'last_pvp', 'joined'));
 
+    }
+
+    public function edit ($request){
+
+        return  view('ark.myProfile');
     }
 }

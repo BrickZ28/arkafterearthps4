@@ -19,10 +19,15 @@ Route::get('/ad', function () {
     return view('layouts.admin');
 });
 
+/*Route::get('/passwords/reset', function () {
+    return view('auth.passwords.reset');
+});*/
+
 /*Route::get('/userhome', function () {
     return view('ark.userHome');
 });*/
 Route::get('/userhome', 'UserHomeController@index');
+Route::get('/myProfile/{id}', 'UserHomeController@edit');
 Route::get('/currencyConverter', 'CurrencyController@index');
 Route::get('/manageUser', 'UserController@index');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
