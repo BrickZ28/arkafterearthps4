@@ -37,4 +37,21 @@ class UserHomeController extends Controller
 
         return  view('ark.myProfile');
     }
+
+    public function updateSelf($id)
+    {
+        $member = \Auth::user();
+
+        request()->validate([
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+
+        $member->name = request()->name;
+        $member->email = request()->email;
+
+        $member->save();
+        return redirect('/myProfile/' . $id)->with('success', 'Profile Successfully Updated');
+
+    }
 }

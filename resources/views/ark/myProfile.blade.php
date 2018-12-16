@@ -33,6 +33,13 @@
     </div>
 
     <div class="col-lg-12">
+        @if (\Session::has('success'))
+            <div class="alert alert-success">
+
+                    {!! \Session::get('success') !!}
+
+            </div>
+        @endif
         <div class="card">
             <div class="card-header">
                 <strong>Update My Info</strong>

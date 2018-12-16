@@ -28,6 +28,7 @@ Route::get('/ad', function () {
 });*/
 Route::get('/userhome', 'UserHomeController@index');
 Route::get('/myProfile/{id}', 'UserHomeController@edit');
+Route::patch('/myProfile/{id}', 'UserHomeController@updateSelf');
 Route::get('/currencyConverter', 'CurrencyController@index');
 Route::get('/manageUser', 'UserController@index');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
