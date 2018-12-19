@@ -83,7 +83,8 @@ class DinoController extends Controller
         $dino->update([
             'name' => \request('name'),
             'price' => \request('price'),
-            'qty' => \request('qty')
+            'qty' => \request('qty'),
+            'level' => \request('level')
         ]);
 
         return redirect('/dinos')->with('success', $dino->name . ' updated');
