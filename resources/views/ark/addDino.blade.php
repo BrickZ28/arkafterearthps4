@@ -33,6 +33,10 @@
                         <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Quantity</label></div>
                         <div class="col col-sm-6"><input type="text" id="input-normal" name="qty" placeholder="Quantity" class="form-control"></div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Estimated Level</label></div>
+                        <div class="col col-sm-6"><input type="text" id="input-normal" name="level" placeholder="Estimated Level" class="form-control" required></div>
+                    </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit
