@@ -20,7 +20,11 @@ class UserHomeController extends Controller
         $user = Auth::user(); //get the current user
 
         $last_pvp = User::where('tribeName_pvp', '=', $user->tribeName_pvp)->orderBy('updated_at', 'desc')->first();//last person updated in users pvp tribe
-        $last_pve = User::where('tribeName_pvp', '=', $user->tribeName_pve)->orderBy('updated_at', 'desc')->first();//last person updated in users pve tribe
+        $last_pve = User::where('tribeName_pve', '=', $user->tribeName_pve)->orderBy('updated_at', 'desc')->first();//last person updated in users pve tribe
+
+        /*if(empty($last_pve)){$last_pve->name = 'N/A';}
+        if(empty($last_pvp)){$last_pvp->name = 'N/A';}*/
+
 
         $joined = Carbon::parse($user->created_at)->format('M jS Y');
 
