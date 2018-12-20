@@ -33,6 +33,7 @@ Route::get('/currencyConverter', 'CurrencyController@index');
 Route::get('/manageUser', 'UserController@index');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Route::get('/roles', 'RoleController@index');
+Route::resource('/permissions', 'PermissionController');
 Route::get('/searchMembers','UserController@search');
 Route::get('/editMember/{id}','UserController@edit');
 Route::patch('/editMember/{id}','UserController@update');

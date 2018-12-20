@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Dino List</strong>
+                <strong class="card-title">Permissions</strong>
             </div>
             <div class="card-body">
                 @if (session('success'))
@@ -17,32 +17,31 @@
                         </button>
                     </div>
                 @endif
-                    <form action="/searchMembers" method="get">
-                    @csrf
-                    <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
-                    <button type="submit" class="btn btn-primary">Search Dinos</button>
-                </form>
-
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">Dino Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">In Stock</th>
-                        <th scope="col">Estimated Level</th>
-                        <th scope="col">Update Dino</th>
+                        <th scope="col">Permission Name</th>
+                        <th scope="col">Delete Permission</th>
+                        <th scope="col">Edit Permission</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($dinos as $dino)
+                    @foreach($perms as $perm)
                         <tr>
-                            <td>{{$dino->name}}</td>
-                            <td>{{$dino->price}}</td>
-                            <td>{{$dino->qty}}</td>
-                            <td>{{$dino->level}}</td>
+                            <td>{{$perm->name}}</td>
                             <td>
-                                <a href="/dinos/{{$dino->id}}">
-                                    <button type="button" class="btn btn-secondary btn-sm">Update Dino</button>
+
+                                <form action="/permissions/{{$perm->id}}" onclick="return confirm('Are you sure you want to delete this permission?')" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <div>
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete Permission</button>
+                                    </div>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="/permissions/{{$perm->id}}">
+                                    <button type="button" class="btn btn-secondary btn-sm" >Update Permission</button>
                                 </a>
                             </td>
                         </tr>
