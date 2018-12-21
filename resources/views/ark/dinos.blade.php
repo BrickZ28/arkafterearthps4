@@ -30,6 +30,7 @@
                         <th scope="col">Price</th>
                         <th scope="col">In Stock</th>
                         <th scope="col">Estimated Level</th>
+                        <th scope="col">Dino Platform</th>
                         <th scope="col">Update Dino</th>
                     </tr>
                     </thead>
@@ -40,6 +41,7 @@
                             <td>{{$dino->price}}</td>
                             <td>{{$dino->qty}}</td>
                             <td>{{$dino->level}}</td>
+                            <td>{{$dino->platform}}</td>
                             <td>
                                 <a href="/dinos/{{$dino->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm">Update Dino</button>

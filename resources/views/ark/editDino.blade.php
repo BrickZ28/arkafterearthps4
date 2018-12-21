@@ -14,6 +14,7 @@
                         <th scope="col">Dino Name</th>
                         <th scope="col">Dino Price</th>
                         <th scope="col">Dino Quantity</th>
+                        <th scope="col">Dino Platform</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -22,6 +23,7 @@
                         <td>{{$dino->name}}</td>
                         <td>{{$dino->price}}</td>
                         <td>{{$dino->qty}}</td>
+                        <td>{{$dino->platform}}</td>
                     </tr>
 
                     </tbody>
@@ -72,6 +74,17 @@
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Dino Level</label>
                         </div>
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="level" value="{{$dino->level}}" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Dino Platform</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="platform" id="selectLg" class="form-control-lg form-control" required>
+                                <option value="{{$dino->platform}}">{{$dino->platform}}</option>
+                                <option value="PVP">PVP</option>
+                                <option value="PVE">PVE</option>
+
+                            </select>
                         </div>
                     </div>
                     <div class="card-footer">
