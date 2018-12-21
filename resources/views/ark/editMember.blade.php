@@ -15,6 +15,7 @@
                         <th scope="col">PVE Tribe</th>
                         <th scope="col">PVP Tribe</th>
                         <th scope="col">Member Role</th>
+                        <th scope="col">Member Permissions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,7 @@
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->roles->first()->name}}</td>
+                            <td>{{$member->permissions->first()->name}}</td>
                         </tr>
 
                     </tbody>
@@ -77,6 +79,17 @@
                                 <option value="{{$member->roles->first()->id}}">{{$member->roles->first()->name}}</option>
                                 @foreach($roles as $role)
                                 <option value="{{$role->id}}">{{$role->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select Permission</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="permission" id="selectLg" class="form-control-lg form-control" required>
+                                <option value="{{$member->permissions->first()->id}}">{{$member->permissions->first()->name}}</option>
+                                @foreach($permissions as $permission)
+                                    <option value="{{$permission->id}}">{{$permission->name}}</option>
                                 @endforeach
                             </select>
                         </div>
