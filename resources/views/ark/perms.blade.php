@@ -21,29 +21,12 @@
                     <thead>
                     <tr>
                         <th scope="col">Permission Name</th>
-                        <th scope="col">Delete Permission</th>
-                        <th scope="col">Edit Permission</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($perms as $perm)
                         <tr>
                             <td>{{$perm->name}}</td>
-                            <td>
-
-                                <form action="/permissions/{{$perm->id}}" onclick="return confirm('Are you sure you want to delete this permission?')" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <div>
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete Permission</button>
-                                    </div>
-                                </form>
-                            </td>
-                            <td>
-                                <a href="/permissions/{{$perm->id}}">
-                                    <button type="button" class="btn btn-secondary btn-sm" >Update Permission</button>
-                                </a>
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -31,7 +31,9 @@
                         <th scope="col">In Stock</th>
                         <th scope="col">Estimated Level</th>
                         <th scope="col">Dino Platform</th>
+                        @can('PVP Dino Seller')
                         <th scope="col">Update Dino</th>
+                            @endcan
                     </tr>
                     </thead>
                     <tbody>
@@ -42,11 +44,13 @@
                             <td>{{$dino->qty}}</td>
                             <td>{{$dino->level}}</td>
                             <td>{{$dino->platform}}</td>
+                            @can('PVP Dino Seller')
                             <td>
                                 <a href="/dinos/{{$dino->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm">Update Dino</button>
                                 </a>
                             </td>
+                                @endcan
                         </tr>
                     @endforeach
                     </tbody>
