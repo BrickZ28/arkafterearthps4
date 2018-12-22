@@ -12,15 +12,18 @@
                     <thead>
                         <tr>
                             <th scope="col">Role Name</th>
+                            <th scope="col">Roles Permissions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($roles as $role)
+                            @foreach($role->permissions as $perm)
                         <tr>
                             <td>{{$role->name}}</td>
-
+                            <td>{{$perm->name}}</td>
                         </tr>
                         @endforeach
+                            @endforeach
                     </tbody>
                 </table>
             </div>

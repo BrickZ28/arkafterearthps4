@@ -15,7 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::with('permissions')->get()->sortBy('name');
+
 
         return view('ark.roles')->with('roles', $roles);
     }
