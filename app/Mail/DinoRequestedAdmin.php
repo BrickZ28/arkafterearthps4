@@ -11,7 +11,7 @@ class DinoRequestedAdmin extends Mailable
 {
     public $total;
     public $qty;
-    public $dino;
+    public $dinoName;
     public $requestor;
 
     use Queueable, SerializesModels;
@@ -21,13 +21,12 @@ class DinoRequestedAdmin extends Mailable
      *
      * @return void
      */
-    public function __construct($qty, $total, $requestor, $dino)
+    public function __construct($qty, $total, $requestor, $dinoName)
     {
         $this->total = $total;
         $this->qty = $qty;
         $this->requestor = $requestor;
-        $this->dino = $dino;
-
+        $this->dinoName = $dinoName;
 
     }
 

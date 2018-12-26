@@ -148,7 +148,7 @@ class DinoController extends Controller
         /*$seller='test';
         \Mail::to('brickz28@comcast.net')->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));*/ //testing line of code
         foreach($sellers as $seller){
-            \Mail::to($seller->email)->later($when, new DinoRequestedAdmin($seller, $total, $requestor, $dinoName));
+            \Mail::to($seller->email)->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));
         }
 
         \Mail::to(\Auth::user()->email)->later($when, new DinoRequested($user, $total, $dinoName, $qty));
