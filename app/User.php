@@ -109,4 +109,8 @@ class User extends Authenticatable
         return $this->givePermission($permissions);
     }
 
+    public function dinoRequest(){
+        return $this->hasMany(App\DinoRequest::class);
+    }
+
 }
