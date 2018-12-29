@@ -28,6 +28,7 @@ Route::get('/ad', function () {
 /*Route::get('/userhome', function () {
     return view('ark.userHome');
 });*/
+Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');
 Route::get('/dinos/request/send/{id}', 'DinoController@requestDinoSend');
 Route::get('/userhome', 'UserHomeController@index');
@@ -42,6 +43,7 @@ Route::get('/searchMembers','UserController@search');
 Route::get('/editMember/{id}','UserController@edit');
 Route::patch('/editMember/{id}','UserController@update');
 Route::resource('dinos', 'DinoController');
+Route::resource('exchangeRates', 'ExchangeRateController');
 
 
 Auth::routes();

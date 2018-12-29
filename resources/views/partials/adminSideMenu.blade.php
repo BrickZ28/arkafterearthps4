@@ -47,9 +47,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>Currency</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-funnel-dollar"></i><a href="/currencyConverter">Converter</a></li>
-                        <li><i class="fas fa-exchange-alt"></i><a href="ui-badges.html">Exchange Rates</a></li>
+                        <li><i class="fas fa-exchange-alt"></i><a href="/exchangeRates">Exchange Rates</a></li>
                         @if(auth()->user()->hasRole('Owner'))
-                        <li><i class="far fa-edit"></i><a href="ui-social-buttons.html">Currency Editor</a></li>
+                        <li><i class="far fa-edit"></i><a href="/currencyEditor">Currency Editor</a></li>
                         @endif
                     </ul>
                 </li>
