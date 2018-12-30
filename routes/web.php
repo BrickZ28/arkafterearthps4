@@ -33,6 +33,8 @@ Route::get('/ad', function () {
 Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');
 Route::get('/dinoRequests', 'DinoController@dinoRequests');
+Route::get('/dinoRequestView/{id}', 'DinoController@dinoRequestView');
+Route::patch('/dinoRequestEdit/{id}', 'DinoController@dinoRequestEdit');
 Route::get('/dinos/request/send/{id}', 'DinoController@requestDinoSend');
 Route::get('/userhome', 'UserHomeController@index');
 Route::get('/myProfile/{id}', 'UserHomeController@edit');

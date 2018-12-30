@@ -50,7 +50,7 @@
                             <td>{{$dinoRequest->created_at->format('d M Y')}}</td>
                             <td>{{$dinoRequest->updated_at->format('d M Y')}}</td>
                             <td>
-                                <a href="/dinos/requestDino/{{$dinoRequest->id}}">
+                                <a href="/dinoRequestView/{{$dinoRequest->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm">Update Request</button>
                                 </a>
                             </td>

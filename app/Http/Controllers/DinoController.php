@@ -176,4 +176,60 @@ class DinoController extends Controller
 
         return view('ark.dinoRequests', compact('dinoRequests'));
     }
+
+    public function dinoRequestView($id){
+
+        $dinoRequest = DinoRequest::with('users', 'dinos')->find($id);
+
+        return view('ark.dinoRequestView', compact('dinoRequest'));
+
+    }
+
+    public function dinoRequestEdit($id){
+
+        $dinoRequest = DinoRequest::find($id);
+
+        request()->validate([
+            'qty'  => 'required|integer',
+            'status' => 'required'
+        ]);
+
+        $total = $this->dinoGemTotal(request()->id, request()->qty);
+
+        $status = \request('status');
+
+        $dinoRequest->qty = \request()->qty;
+
+        if($status === 'new'){
+            $dinoRequest->status = 'viewed';
+        }
+        else{
+            $dinoRequest->status = \request('status');
+        }
+
+        $dinoRequest->updated_by = \Auth::id();
+        $dinoRequest->total = $total;
+
+        $dinoRequest->save();
+
+       /* $qty = $dinoRequest->qty;
+
+        $user = Auth::user();
+        $requestor = Auth::user()->name;
+        $sellers = User::whereHas('permissions', function($q)
+        {
+            $q->where('name', 'PVP Dino Seller');
+        })->get();*/
+
+        /*$seller='test';
+        \Mail::to('brickz28@comcast.net')->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));*/ //testing line of code
+       /* foreach($sellers as $seller){
+            \Mail::to($seller->email)->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));
+        }
+
+        \Mail::to(\Auth::user()->email)->later($when, new DinoRequested($user, $total, $dinoName, $qty));*/
+
+
+        return redirect('/dinoRequests')->with('success', request()->name . ' request updated.  ' );
+    }
 }
