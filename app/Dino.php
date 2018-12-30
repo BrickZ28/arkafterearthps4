@@ -10,6 +10,6 @@ class Dino extends Model
 
     public function dinoRequests(){
 
-        return $this->hasMany(App\DinoRequest::class);
+        return $this->hasMany(App\DinoRequest::class, 'name');
     }
 }

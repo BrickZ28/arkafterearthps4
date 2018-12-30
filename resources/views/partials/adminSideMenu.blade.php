@@ -57,11 +57,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fab fa-phoenix-framework"></i>Dinos</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="/dinos">Current Inventory</a></li>
-                        @if(auth()->user()->hasRole('Owner'))
+                        @can('PVP Dino Seller')
                         <li><i class="fas fa-plus-circle"></i><a href="/dinos/create">Add</a></li>
-                        <li><i class="fas fa-edit"></i></i><a href="ui-badges.html">Edit</a></li>
+                        <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Request</a></li>
                         <li><i class="fas fa-minus"></i></i><a href="ui-social-buttons.html">Remove</a></li>
-                        @endif
+                        @endcan
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">

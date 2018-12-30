@@ -10,11 +10,11 @@ class DinoRequest extends Model
 
     protected $guarded =[];
 
-    public function dino(){
-        return $this->belongsTo(App\Dino::class);
+    public function dinos(){
+        return $this->belongsTo('App\Dino','dino_id');
     }
 
-    public function user(){
-        return $this->belongsTo(App\User::class);
+    public function users(){
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

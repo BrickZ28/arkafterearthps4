@@ -28,8 +28,11 @@ Route::get('/ad', function () {
 /*Route::get('/userhome', function () {
     return view('ark.userHome');
 });*/
+
+
 Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');
+Route::get('/dinoRequests', 'DinoController@dinoRequests');
 Route::get('/dinos/request/send/{id}', 'DinoController@requestDinoSend');
 Route::get('/userhome', 'UserHomeController@index');
 Route::get('/myProfile/{id}', 'UserHomeController@edit');

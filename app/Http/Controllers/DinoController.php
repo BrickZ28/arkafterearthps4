@@ -167,4 +167,13 @@ class DinoController extends Controller
         return ($total);
 
     }
+
+    public function dinoRequests(){
+
+        $dinoRequests = DinoRequest::with('users', 'dinos')->paginate(10);
+
+        /* dd($dinoRequests);*/
+
+        return view('ark.dinoRequests', compact('dinoRequests'));
+    }
 }
