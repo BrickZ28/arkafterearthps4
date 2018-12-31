@@ -17,7 +17,7 @@
                         </button>
                     </div>
                 @endif
-                    <form action="/searchMembers" method="get">
+                    <form action="/searchDinos" method="get">
                     @csrf
                     <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                     <button type="submit" class="btn btn-primary">Search Dinos</button>

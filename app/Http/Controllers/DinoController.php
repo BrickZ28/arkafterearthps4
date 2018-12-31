@@ -224,4 +224,13 @@ class DinoController extends Controller
 
         return redirect('/dinoRequests')->with('success', request()->name . ' request updated.  ' );
     }
+
+    public function searchDino()
+    {
+        $query=request('search_text');
+
+        $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        return view('ark.dinos',compact('dinos'));
+    }
 }
