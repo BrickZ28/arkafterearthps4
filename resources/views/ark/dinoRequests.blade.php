@@ -26,6 +26,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th scope="col">Request ID</th>
                         <th scope="col">Requestor</th>
                         <th scope="col">Dino Name</th>
                         <th scope="col">How Many</th>
@@ -41,6 +42,7 @@
                     <tbody>
                     @foreach($dinoRequests as $dinoRequest)
                         <tr>
+                            <td>{{$dinoRequest->id}}</td>
                             <td>{{$dinoRequest->users->name}}</td>
                             <td>{{$dinoRequest->dinos->name}}</td>
                             <td>{{$dinoRequest->qty}}</td>
@@ -56,8 +58,8 @@
                             </td>
                             @can('PVP Dino Seller')
                                 <td>
-                                    <a href="/dinos/{{$dinoRequest->id}}">
-                                        <button type="button" class="btn btn-secondary btn-sm">Complete Request</button>
+                                    <a href="/dinos/{{$dinoRequest->id}}/edit">
+                                        <button type="button" name="completed" class="btn btn-secondary btn-sm">Complete Request</button>
                                     </a>
                                 </td>
                             @endcan

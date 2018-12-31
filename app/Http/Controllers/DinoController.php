@@ -77,7 +77,12 @@ class DinoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dinoRequests = DinoRequest::find($id);
+
+        $dinoRequests->update([
+            'status' => 'completed'
+        ]);
+        return redirect('/dinoRequests')->with('success', 'Dino Request '. $dinoRequests->id . ' completed');
     }
 
     /**
