@@ -139,7 +139,7 @@ class DinoController extends Controller
     public function requestDinoSend(Request $request){
 
         $attributes = request()->validate([
-            'qty'  => 'required|integer',
+            'qty'  => 'required|integer|min:0',
         ]);
 
         $total = $this->dinoGemTotal(request()->id, request()->qty);
