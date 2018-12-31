@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\DinoRequested;
 use App\Mail\DinoRequestedAdmin;
+use App\Mail\DinoRequestUpdated;
 use App\User;
 use Illuminate\Http\Request;
 use App\Dino;
@@ -188,6 +189,8 @@ class DinoController extends Controller
     public function dinoRequestEdit($id){
 
         $dinoRequest = DinoRequest::find($id);
+        $dinoName = $dinoRequest->dinos->name;
+
 
         request()->validate([
             'qty'  => 'required|integer',
@@ -212,23 +215,11 @@ class DinoController extends Controller
 
         $dinoRequest->save();
 
-       /* $qty = $dinoRequest->qty;
+        $qty = $dinoRequest->qty;
 
-        $user = Auth::user();
-        $requestor = Auth::user()->name;
-        $sellers = User::whereHas('permissions', function($q)
-        {
-            $q->where('name', 'PVP Dino Seller');
-        })->get();*/
+        $requestor = $dinoRequest->users->name;
 
-        /*$seller='test';
-        \Mail::to('brickz28@comcast.net')->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));*/ //testing line of code
-       /* foreach($sellers as $seller){
-            \Mail::to($seller->email)->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));
-        }
-
-        \Mail::to(\Auth::user()->email)->later($when, new DinoRequested($user, $total, $dinoName, $qty));*/
-
+        \Mail::to($dinoRequest->users->email)->send( new DinoRequestUpdated($qty, $total, $dinoRequest->status, $requestor, $dinoName));
 
         return redirect('/dinoRequests')->with('success', request()->name . ' request updated.  ' );
     }
