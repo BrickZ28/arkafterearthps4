@@ -79,6 +79,18 @@ class DinoController extends Controller
     {
         $dinoRequests = DinoRequest::find($id);
 
+        $dino = Dino::find($dinoRequests->dino_id);
+
+        $dinoQty = $dino->qty- $dinoRequests->qty;
+
+        if($dinoQty < 1){
+            $dinoQty = 0;
+        }
+        $dino->update([
+            'qty' => $dinoQty
+        ]);
+
+
         $dinoRequests->update([
             'status' => 'completed'
         ]);
@@ -199,7 +211,7 @@ class DinoController extends Controller
 
 
         request()->validate([
-            'qty'  => 'required|integer',
+            'qty'  => 'required|integer|min:0',
             'status' => 'required'
         ]);
 

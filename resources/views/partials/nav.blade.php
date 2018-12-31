@@ -4,6 +4,7 @@
         <div class="navbar-toggleable-md collapse" id="exCollapsingNavbar2" >
             <ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item active"> <a class="nav-link" href="#myCarousel">Home <span class="sr-only">(current)</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">PVP Rules</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#">Council Store</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#">Tribes</a> </li>
 
