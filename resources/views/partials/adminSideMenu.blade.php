@@ -35,12 +35,12 @@
                             <li><i class="fas fa-plus-circle"></i><a href="/permissions/create">Add Perms</a></li>
                         </ul>
                     </li>
-                <li class="menu-item-has-children dropdown">
+               {{-- <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-sort-amount-down"></i>Item Management</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="#">Items</a></li>
                     </ul>
-                </li>
+                </li>--}}
                @endif
                 <h3 class="menu-title">Store Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
@@ -58,13 +58,12 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="/dinos">Current Inventory</a></li>
                         @can('PVP Dino Seller')
-                        <li><i class="fas fa-plus-circle"></i><a href="/dinos/create">Add</a></li>
-                        <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Request</a></li>
-                        <li><i class="fas fa-minus"></i></i><a href="ui-social-buttons.html">Remove</a></li>
+                        <li><i class="fas fa-plus-circle"></i><a href="/dinos/create">Add Dino</a></li>
+                        <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Requests</a></li>
                         @endcan
                     </ul>
                 </li>
-                <li class="menu-item-has-children dropdown">
+                {{--<li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-sort-amount-down"></i>Items</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="ui-buttons.html">Current Inventory</a></li> @if(auth()->user()->hasRole('Owner'))
@@ -83,10 +82,10 @@
                             <li><i class="fas fa-minus"></i></i><a href="ui-social-buttons.html">Remove</a></li>
                         @endif
                     </ul>
-                </li>
+                </li>--}}
 
 
-                <h3 class="menu-title">Tribe Management</h3><!-- /.menu-title -->
+                <h3 class="menu-title">Tribe Management - Coming Soon</h3><!-- /.menu-title -->
                 @if(auth()->user()->hasRole('Owner'))
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>All Tribes</a>
@@ -97,7 +96,7 @@
                         <li><i class="menu-icon fas fa-piggy-bank"></i><a href="font-fontawesome.html">Vault Management</a></li>
                     </ul>
                 </li>
-                @endif
+
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-people-carry"></i>My Tribe</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -108,7 +107,7 @@
                         @endif
                     </ul>
                 </li>
-
+                @endif
 
 
             </ul>
