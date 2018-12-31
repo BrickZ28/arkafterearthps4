@@ -44,6 +44,6 @@ class ExchangeRateController extends Controller
             'worth' => \request('worth'),
             ]);
 
-        return redirect('/exchangeRates')->with('success', $exchangeRate->material . ' updated');
+        return redirect('/exchangeRates')->with('success', $exchangeRate->material . ' updated. The Currency Converter will not function properly, please contact the Web Admin to make this correction');
     }
 }
