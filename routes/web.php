@@ -46,6 +46,7 @@ Route::get('/roles', 'RoleController@index');
 Route::resource('/permissions', 'PermissionController');
 Route::get('/searchMembers','UserController@search');
 Route::get('/searchDinos','DinoController@searchDino');
+Route::get('/searchDinoRequests','DinoController@searchRequest');
 Route::get('/editMember/{id}','UserController@edit');
 Route::patch('/editMember/{id}','UserController@update');
 Route::resource('dinos', 'DinoController');
