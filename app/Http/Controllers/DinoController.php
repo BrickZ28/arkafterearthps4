@@ -172,7 +172,7 @@ class DinoController extends Controller
 
     public function dinoRequests(){
 
-        $dinoRequests = DinoRequest::with('users', 'dinos')->paginate(10);
+        $dinoRequests = DinoRequest::with('users', 'dinos')->where('status', '!=', 'completed')->paginate(10);
 
         /* dd($dinoRequests);*/
 
@@ -198,7 +198,8 @@ class DinoController extends Controller
             'status' => 'required'
         ]);
 
-        $total = $this->dinoGemTotal(request()->id, request()->qty);
+
+        $total = $this->dinoGemTotal($dinoRequest->dinos->id, request()->qty);
 
         $status = \request('status');
 
