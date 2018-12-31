@@ -215,7 +215,6 @@ class DinoController extends Controller
             'status' => 'required'
         ]);
 
-
         $total = $this->dinoGemTotal($dinoRequest->dinos->id, request()->qty);
 
         $status = \request('status');
