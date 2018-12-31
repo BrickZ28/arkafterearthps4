@@ -94,7 +94,8 @@ class DinoController extends Controller
             'price' => \request('price'),
             'qty' => \request('qty'),
             'level' => \request('level'),
-            'platform' => \request('platform')
+            'platform' => \request('platform'),
+            'details' => \request('details')
         ]);
 
         return redirect('/dinos')->with('success', $dino->name . ' updated');

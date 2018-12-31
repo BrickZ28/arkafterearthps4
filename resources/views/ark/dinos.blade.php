@@ -31,6 +31,7 @@
                         <th scope="col">In Stock</th>
                         <th scope="col">Estimated Level</th>
                         <th scope="col">Dino Platform</th>
+                        <th scope="col">Dino Details</th>
                         <th scope="col">Request Dino</th>
                         @can('PVP Dino Seller')
                         <th scope="col">Update Dino</th>
@@ -45,6 +46,7 @@
                             <td>{{$dino->qty}}</td>
                             <td>{{$dino->level}}</td>
                             <td>{{$dino->platform}}</td>
+                            <td>{{$dino->details}}</td>
                             <td>
                                 <a href="/dinos/requestDino/{{$dino->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm">Request Dino</button>

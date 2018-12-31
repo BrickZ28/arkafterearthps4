@@ -87,6 +87,10 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Textarea</label></div>
+                        <div class="col-12 col-md-9"><textarea name="details" id="textarea-input" rows="9" placeholder="Neat stuff about the Dino" class="form-control">{{$dino->details}}</textarea></div>
+                    </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit
