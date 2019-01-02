@@ -257,21 +257,25 @@ section {
 /* PRICE SECTION
 -------------------------------------------------- */
 
+.price-sec{
+	background-color: #FCD59C;
+}
+
 .price-sec h2 {
-	color: #4c4c4c;
+	color: #000000;
 	font-weight: 600;
 	text-transform: capitalize;
 	text-align: center;
 }
 .price-sec h2 small {
-	color: #01BF86;
+	color: #242424;
 	display: block;
 	line-height: 27px;
 	margin-top: 10px;
 }
 .price-sec .plan-block {
-	border: 2px solid #01BF86;
-	color: #01BF86;
+	border: 2px solid #003900;
+	color: #003900;
 	float: left;
 	padding: 60px 0;
 	text-align: center;
@@ -294,7 +298,7 @@ section {
 .price-sec .heading .price {
 	font-size: 36px;
 	font-weight: 700;
-	background: #01bf86 none repeat scroll 0 0;
+	background: #003900 none repeat scroll 0 0;
 	color: #fff;
 }
 .price-sec .heading .price b {
