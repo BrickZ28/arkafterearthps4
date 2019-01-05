@@ -21,7 +21,7 @@ class DinoController extends Controller
      */
     public function index()
     {
-        $dinos = Dino::paginate(10)->sortByDesc('name');
+        $dinos = Dino::paginate(10);
         /*dd($members);*/
 
         return view('ark.dinos', compact('dinos'));
