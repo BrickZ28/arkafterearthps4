@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('Before proceeding, please check your email for a verification link.') }}
+                    {{ __('Yahoo or AOL emails will be rejected by those host, Recommend using a gmail or local ISP email') }}
                     {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
                 </div>
             </div>
