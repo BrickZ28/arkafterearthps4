@@ -92,13 +92,21 @@
                         <div class="col-12 col-md-9"><textarea name="details" id="textarea-input" rows="9" placeholder="Neat stuff about the Dino" class="form-control">{{$dino->details}}</textarea></div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-success btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit
                         </button>
-                        <button type="reset" class="btn btn-danger btn-sm">
+                        <button type="reset" class="btn btn-secondary btn-sm">
                             <i class="fa fa-ban"></i> Reset
                         </button>
+                        <form action="/dinos/{{$dino->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this dino?')">
+                                <i class="fa fa-dot-circle-o"></i> DELETE
+                            </button>
+                        </form>
                     </div>
+
 
                 </form>
             </div>

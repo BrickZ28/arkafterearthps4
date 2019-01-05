@@ -124,7 +124,11 @@ class DinoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dino = Dino::find($id);
+
+        $dino->delete();
+
+        return redirect('/dinos');
     }
 
     public function requestDino(Dino $dino)
