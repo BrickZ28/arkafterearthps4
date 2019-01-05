@@ -84,6 +84,23 @@
                         </div>
                     </div>
                     <div class="row form-group">
+                        <div class="col col-md-3"><label class=" form-control-label">Starter Pack</label></div>
+                        <div class="col col-md-9">
+                            <div class="form-check">
+                                <div class="checkbox">
+                                    <label for="checkbox1" class="form-check-label ">
+                                        <input type="checkbox" id="checkbox1" name="starter"
+                                               @if($member->has_starter===1)
+                                               checked
+                                               @endif
+                                               value="1"
+                                               class="form-check-input">Check for Yes
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
                         <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Remove Permission</label></div>
                         <div class="col-12 col-md-9">
                             <select name="permissionR" id="selectLg" class="form-control-lg form-control">

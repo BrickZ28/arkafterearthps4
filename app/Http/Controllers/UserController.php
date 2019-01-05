@@ -103,6 +103,10 @@ class UserController extends Controller
 
         $member->tribeName_pvp = request('pvp');
         $member->tribeName_pve = request('pve');
+        $member->has_starter = request('starter');
+        if( $member->has_starter === NULL){
+            $member->has_starter = 0;
+        }
 
         request()->validate([
             'pve' => 'required',

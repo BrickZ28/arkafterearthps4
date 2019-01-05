@@ -22,6 +22,7 @@
                         <th scope="col">PVE Tribe</th>
                         <th scope="col">PVP Tribe</th>
                         <th scope="col">Users Role</th>
+                        <th scope="col">Has Starter</th>
                         <th scope="col">Update User</th>
                     </tr>
                     </thead>
@@ -33,6 +34,11 @@
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->tribeName_pvp}}</td>
                             <td>{{$role->name}}</td>
+                            @if($member->has_starter === 1)
+                                <td>Yes</td>
+                            @else
+                                <td>No</td>
+                            @endif
                             <td>
                                 @if(Auth::id() !== $member->id or $member->hasRole('Owner'))
                                 <a href="/editMember/{{$member->id}}">
