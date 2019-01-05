@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use App\Permission;
+use App\Rules\HavePermission;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Validation\Rule;
@@ -128,7 +129,7 @@ class UserController extends Controller
 
             if($count === 1) {
                 request()->validate([
-                    'permissionR.permissionR' => 'permissionR'
+                    'permissionR' => ['required', new HavePermission]
                 ]);
             }
             \DB::table('user_permissions')
