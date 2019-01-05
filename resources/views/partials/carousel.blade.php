@@ -28,7 +28,7 @@
                 <div class="carousel-caption">
                     <h1>Register Today</h1>
                     <p>Register on this website will entitle you to a tribe manager and other in game perks.  Plus in addition to registering we will give you 500 gems</p>
-                    <a class="btn btn-capsul btn-aqua" href="#" role="button">Register Today</a> </div>
+                    <a class="btn btn-capsul btn-aqua" href="/register" role="button">Register Today</a> </div>
             </div>
         </div>
     </div>
