@@ -66,5 +66,5 @@
             </div>
         </div>
     </div>
-
+    {{ $dinos->links() }}
 @endsection
