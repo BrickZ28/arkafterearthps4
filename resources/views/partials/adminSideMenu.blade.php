@@ -26,6 +26,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fab fa-phoenix-framework"></i>Roles Management</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="/roles">Roles</a></li>
+                        <li><i class="fas fa-plus-circle"></i><a href="/roles/create">Add Role</a></li>
                     </ul>
                 </li>
                     <li class="menu-item-has-children dropdown">

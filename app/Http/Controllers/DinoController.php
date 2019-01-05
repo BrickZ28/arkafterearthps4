@@ -51,8 +51,6 @@ class DinoController extends Controller
             'level' => 'required|integer'
         ]);
 
-
-
         Dino::create($attributes);
 
         return redirect('/dinos');

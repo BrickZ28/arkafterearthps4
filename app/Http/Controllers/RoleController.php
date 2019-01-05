@@ -28,7 +28,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('ark.addRole');
     }
 
     /**
@@ -39,7 +39,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'name'  => 'required',
+            ]);
+
+        $standard = \DB::table('permissions')
+            ->where('name', '=', 'Standard')
+            ->first();
+
+        $role = Role::create($attributes);
+
+        $role->permissions()->attach($standard->id);
+
+        return redirect('/roles');
     }
 
     /**
