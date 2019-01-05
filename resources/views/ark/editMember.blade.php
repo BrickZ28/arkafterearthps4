@@ -84,12 +84,23 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select Permission</label></div>
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Remove Permission</label></div>
                         <div class="col-12 col-md-9">
-                            <select name="permission" id="selectLg" class="form-control-lg form-control" required>
-                                <option value="{{$member->permissions->first()->id}}">{{$member->permissions->first()->name}}</option>
-                                @foreach($permissions as $permission)
+                            <select name="permissionR" id="selectLg" class="form-control-lg form-control">
+                                <option value="">Select One</option>
+                                @foreach($member->permissions as $permission)
                                     <option value="{{$permission->id}}">{{$permission->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Add Permission</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="permissionA" id="selectLg" class="form-control-lg form-control" >
+                                <option value="">Select One</option>
+                                @foreach($noPerms as $noPerms)
+                                    <option value="{{$noPerms->id}}">{{$noPerms->name}}</option>
                                 @endforeach
                             </select>
                         </div>

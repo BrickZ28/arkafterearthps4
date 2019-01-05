@@ -6,7 +6,7 @@ use App\Role;
 use App\Permission;
 use Illuminate\Http\Request;
 use App\User;
-
+use Illuminate\Validation\Rule;
 
 
 class UserController extends Controller
@@ -73,11 +73,20 @@ class UserController extends Controller
     public function edit($id)
     {
         $member = User::with('roles', 'permissions')->find($id);
+
+        $noPerms = \DB::table('permissions')
+            ->whereNotExists(function ($query) use ($id){
+               $query->select(\DB::raw(1))
+               ->from('user_permissions')
+                   ->whereRaw('permissions.id = user_permissions.permission_id')
+                   ->where('user_permissions.user_id', '=',$id );
+            })
+            ->get();
+
         $roles = Role::all();
         $permissions = Permission::all();
 
-
-        return view('ark.editMember', compact('member', 'roles', 'permissions'));
+        return view('ark.editMember', compact('member', 'roles', 'permissions', 'noPerms'));
     }
 
     /**
@@ -91,19 +100,48 @@ class UserController extends Controller
     {
         $member = User::find($id);
 
-
         $member->tribeName_pvp = request('pvp');
         $member->tribeName_pve = request('pve');
+
         request()->validate([
             'pve' => 'required',
-            'pvp' => 'required'
-        ]);
+            'pvp' => 'required',
+            ]);
+
         $member->save();
 
         $member->role = request('role');
         $member->roles()->sync($member->role);
-        $member->permission = request('permission');
-        $member->permissions()->sync($member->permission);
+        $permsAdd = request('permissionA');
+        $permsRem = request('permissionR');
+        if ($permsAdd !== NULL) {
+           \DB::table('user_permissions')
+               ->insert([
+                   'user_id' => $id,
+                   'permission_id' => $permsAdd
+               ]);
+        }
+        if ($permsRem !== NULL && $permsAdd === NULL) {
+            $count = \DB::table('user_permissions')
+                ->where('user_id', '=', $id)
+                ->count();
+
+            if($count === 1) {
+                request()->validate([
+                    'permissionR.permissionR' => 'permissionR'
+                ]);
+            }
+            \DB::table('user_permissions')
+                ->where('user_id', '=', $id)
+                ->where('permission_id', '=', $permsRem)
+                ->delete();
+        }
+        elseif ($permsRem !== NULL) {
+            \DB::table('user_permissions')
+                ->where('user_id', '=', $id)
+                ->where('permission_id', '=', $permsRem)
+                ->delete();
+        }
 
         return redirect('/manageUser');
 

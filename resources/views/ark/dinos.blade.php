@@ -63,8 +63,10 @@
                     @endforeach
                     </tbody>
                 </table>
+                    {{ $dinos->links() }}
             </div>
+
         </div>
     </div>
-    {{ $dinos->links() }}
+
 @endsection

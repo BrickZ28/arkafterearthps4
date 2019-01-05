@@ -22,20 +22,17 @@
                         <th scope="col">PVE Tribe</th>
                         <th scope="col">PVP Tribe</th>
                         <th scope="col">Users Role</th>
-                        <th scope="col">Users Permission</th>
                         <th scope="col">Update User</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($members as $member)
                     @foreach($member->roles as $role)
-                    @foreach($member->permissions as $perm)
                         <tr>
                             <td>{{$member->name}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->tribeName_pvp}}</td>
                             <td>{{$role->name}}</td>
-                            <td>{{$perm->name}}</td>
                             <td>
                                 @if(Auth::id() !== $member->id or $member->hasRole('Owner'))
                                 <a href="/editMember/{{$member->id}}">
@@ -44,7 +41,6 @@
                                     @endif
                             </td>
                         </tr>
-                    @endforeach
                     @endforeach
                     @endforeach
                     </tbody>
