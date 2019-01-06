@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use App\Permission;
+use App\Rules\HasKit;
 use App\Rules\HavePermission;
 use Illuminate\Http\Request;
 use App\User;
@@ -100,10 +101,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $member = User::find($id);
+        $levelKit = $member->level_kit;
 
         $member->tribeName_pvp = request('pvp');
         $member->tribeName_pve = request('pve');
         $member->has_starter = request('starter');
+        $member->level_kit = request('levelKit');
+        if($member->level_kit < $levelKit){
+            request()->validate([
+                'levelKit' => [new HasKit($member->level_kit)]
+            ]);
+        }
         if( $member->has_starter === NULL){
             $member->has_starter = 0;
         }
