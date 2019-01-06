@@ -103,8 +103,12 @@
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select Level Kit</label></div>
                         <div class="col-12 col-md-9">
-                            <select name="levelKit" id="selectLg" class="form-control-lg form-control" required>
-                                <option value="{{$member->level_kit}}">{{$member->level_kit}}</option>
+                            <select name="levelKit" id="selectLg" class="form-control-lg form-control">
+                                @if($member->level_kit !== NULL)
+                                    <option value="{{$member->level_kit}}">{{$member->level_kit}}</option>
+                                @else
+                                    <option value="">Select One</option>
+                                @endif
                                 <option value="40">40</option>
                                 <option value="80">80</option>
                                 <option value="120">120</option>
