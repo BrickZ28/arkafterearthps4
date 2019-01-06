@@ -98,16 +98,17 @@
                         <button type="reset" class="btn btn-secondary btn-sm">
                             <i class="fa fa-ban"></i> Reset
                         </button>
-                        <form action="/dinos/{{$dino->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this dino?')">
-                                <i class="fa fa-dot-circle-o"></i> DELETE
-                            </button>
-                        </form>
+
                     </div>
 
 
+                </form>
+                <form action="/dinos/{{$dino->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this dino?')">
+                        <i class="fa fa-dot-circle-o"></i> DELETE
+                    </button>
                 </form>
             </div>
 
