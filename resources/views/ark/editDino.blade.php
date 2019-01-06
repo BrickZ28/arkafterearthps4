@@ -100,9 +100,8 @@
                         </button>
 
                     </div>
-
-
                 </form>
+                <div class="card-footer">
                 <form action="/dinos/{{$dino->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
                     @method('DELETE')
                     @csrf
@@ -110,6 +109,7 @@
                         <i class="fa fa-dot-circle-o"></i> DELETE
                     </button>
                 </form>
+            </div>
             </div>
 
 @endsection
