@@ -64,7 +64,7 @@ class CurrencyController extends Controller
                 $remainder *= 10;
             }
             //set refund status and return results
-            $refund = 'Please refund '. $remainder . ' ' . $currency;
+            $refund = $remainder . ' ' . $currency;
             return view('ark.converted', compact('currency','amount', 'gems', 'refund', 'remainder'));
         }
 
