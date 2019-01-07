@@ -13,8 +13,8 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Currency</th>
                                     <th scope="col">Amount Converted</th>
+                                    <th scope="col">Currency</th>
                                     <th scope="col">Gems Due</th>
                                     <th scope="col">Refund Amount</th>
                                 </tr>

@@ -8,6 +8,7 @@ body {
 	color: #5a5a5a;
 	font-family: 'Source Sans Pro', sans-serif;
 }
+
 h1, h2, h3, h4, h5 {
 	font-family: 'Alegreya', serif;
 }
@@ -522,4 +523,14 @@ footer {
 	top: 25%;
 	width: 96%;
 }
+}
+
+.tribebg{
+	background-color: lightgrey;
+	overflow-x: hidden;
+}
+
+.pvpbg{
+	background-color: #cc0000;
+	width: 100%;
 }
