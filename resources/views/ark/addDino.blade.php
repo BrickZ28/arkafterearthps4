@@ -37,6 +37,20 @@
                         <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Estimated Level</label></div>
                         <div class="col col-sm-6"><input type="text" id="input-normal" name="level" placeholder="Estimated Level" class="form-control" required></div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-sm-5"><label for="selectLg" class=" form-control-label">Dino Platform</label></div>
+                        <div class="col col-sm-6">
+                            <select name="platform" id="selectLg" class="form-control-lg form-control" required>
+
+
+
+                                <option value="{{ old('platform', '') }}">{{ old('platform', 'Select One') }}</option>
+                                <option value="PVP">PVP</option>
+                                <option value="PVE">PVE</option>
+
+                            </select>
+                        </div>
+                    </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit

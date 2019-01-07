@@ -28,7 +28,9 @@ Route::get('/ad', function () {
 /*Route::get('/userhome', function () {
     return view('ark.userHome');
 });*/
-
+Route::get('/tribespvp', function () {
+    return view('partials.tribespvp');
+});
 
 Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');
