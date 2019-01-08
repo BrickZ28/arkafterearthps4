@@ -31,7 +31,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Quantity</label></div>
-                        <div class="col col-sm-6"><input type="text" id="input-normal" name="qty" placeholder="Quantity" class="form-control"></div>
+                        <div class="col col-sm-6"><input type="text" id="input-normal" name="qty" placeholder="Quantity" value="0" required class="form-control"></div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Estimated Level</label></div>

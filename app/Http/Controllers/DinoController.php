@@ -45,11 +45,14 @@ class DinoController extends Controller
      */
     public function store(Request $request)
     {
+
         $attributes = request()->validate([
             'name'  => 'required',
             'price' => 'required|integer',
             'level' => 'required|integer',
-            'platform' => 'required'
+            'platform' => 'required',
+            'qty' => 'required'
+
         ]);
 
         Dino::create($attributes);
