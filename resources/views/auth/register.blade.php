@@ -26,10 +26,18 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="tribename" class="col-md-4 col-form-label text-md-right">{{ __('Tribe Name') }}</label>
+                            <label for="tribenamepvp" class="col-md-4 col-form-label text-md-right">{{ __('PVP Tribe Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tribename" type="text" class="form-control{{ $errors->has('tribename') ? ' is-invalid' : '' }}" name="tribename" value="{{ old('tribename') }}" autofocus>
+                                <input id="tribenamepvp" type="text" class="form-control{{ $errors->has('tribenamepvp') ? ' is-invalid' : '' }}" placeholder="Place None if none" name="tribenamepvp" value="{{ old('tribenamepvp') }}" autofocus required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tribenamepve" class="col-md-4 col-form-label text-md-right">{{ __('PVE Tribe Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tribenamepve" type="text" class="form-control{{ $errors->has('tribenamepve') ? ' is-invalid' : '' }}" name="tribenamepve" value="{{ old('tribenamepve') }}" autofocus required placeholder="Place None if none">
                             </div>
                         </div>
 

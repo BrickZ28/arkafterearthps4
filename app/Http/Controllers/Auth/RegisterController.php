@@ -54,6 +54,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'tribenamepve' => 'required',
+            'tribenamepvp' => 'required'
         ]);
     }
 
@@ -65,17 +67,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(empty($data['tribename'])){
-            $data['tribename'] = 'None';
-        }
+
 
          $user = User::create([
             'name' => $data['name'],
-            'tribename' => $data['tribename'],
+            'tribeName_pvp' => $data['tribenamepvp'],
+             'tribeName_pve' => $data['tribenamepve'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
+dd($user);
        $user->roles()->attach('4');
        $user->permissions()->attach('8');
 
