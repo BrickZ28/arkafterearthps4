@@ -10,6 +10,10 @@ Quantity:  {{$qty}}<br>
 Status: {{$status}}<br>
 Total:  {{$total}}<br>
 
+@if($status === 'completed')
+    Transaction Complete, transaction will be done on Ragnarok.
+@endif
+
 Thanks,<br>
 {{ config('app.name') }}
 @endcomponent

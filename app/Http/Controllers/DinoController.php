@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DinoRequestCompleted;
 use App\Mail\DinoRequested;
 use App\Mail\DinoRequestedAdmin;
 use App\Mail\DinoRequestUpdated;
@@ -79,9 +80,12 @@ class DinoController extends Controller
      */
     public function edit($id)
     {
-        $dinoRequests = DinoRequest::find($id);
+        $dinoRequests = DinoRequest::with('users', 'dinos')->find($id);
 
-        $dino = Dino::find($dinoRequests->dino_id);
+        $dino = Dino::find($dinoRequests->dinos->id);
+        $user = $dinoRequests->users->name;
+        $dinoName = $dino->name;
+        $qty = $dinoRequests->qty;
 
         $dinoQty = $dino->qty- $dinoRequests->qty;
 
@@ -92,10 +96,12 @@ class DinoController extends Controller
             'qty' => $dinoQty
         ]);
 
-
         $dinoRequests->update([
             'status' => 'completed'
         ]);
+
+        \Mail::to($dinoRequests->users->email)->send( new DinoRequestCompleted($qty, $user, $dinoName));
+
         return redirect('/dinoRequests')->with('success', 'Dino Request '. $dinoRequests->id . ' completed');
     }
 
