@@ -28,10 +28,12 @@ Route::get('/ad', function () {
 /*Route::get('/userhome', function () {
     return view('ark.userHome');
 });*/
-Route::get('/tribespvp', function () {
+/*Route::get('/tribespvp', function () {
     return view('partials.tribespvp');
-});
+});*/
 
+/*Route::get('tribespvp', 'TribeController@index');*/
+Route::delete('/users/{id}', 'UserController@destroy');
 Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');
 Route::get('/dinoRequests', 'DinoController@dinoRequests');

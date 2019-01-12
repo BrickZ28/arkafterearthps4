@@ -148,6 +148,14 @@
                     </div>
 
                 </form>
+                <div class="card-footer">
+                    <form action="/users/{{$member->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">
+                            <i class="fa fa-dot-circle-o"></i> DELETE
+                        </button>
+                    </form>
             </div>
 
 @endsection
