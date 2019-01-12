@@ -33,6 +33,7 @@
                         <th scope="col">Amount Due</th>
                         <th scope="col">Status</th>
                         <th scope="col">Last Action By</th>
+                        <th scope="col">Paid</th>
                         <th scope="col">Created Date</th>
                         <th scope="col">Updated Date</th>
                         <th scope="col">Update Request</th>
@@ -49,6 +50,11 @@
                             <td>{{$dinoRequest->total}}</td>
                             <td>{{$dinoRequest->status}}</td>
                             <td>{{$dinoRequest->users->name}}</td>
+                            @if($dinoRequest->paid === 0)
+                                <td>No</td>
+                            @else
+                                <td>Yes</td>
+                            @endif
                             <td>{{$dinoRequest->created_at->format('d M Y')}}</td>
                             <td>{{$dinoRequest->updated_at->format('d M Y')}}</td>
                             <td>

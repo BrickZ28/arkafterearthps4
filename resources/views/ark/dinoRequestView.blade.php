@@ -19,6 +19,7 @@
                         <th scope="col">Last Action By</th>
                         <th scope="col">Created Date</th>
                         <th scope="col">Updated Date</th>
+                        <th scope="col">Paid</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,6 +33,11 @@
                         <td>{{$dinoRequest->users->name}}</td>
                         <td>{{$dinoRequest->created_at->format('d M Y')}}</td>
                         <td>{{$dinoRequest->updated_at->format('d M Y')}}</td>
+                        @if($dinoRequest->paid === 0)
+                            <td>No</td>
+                        @else
+                            <td>Yes</td>
+                        @endif
                     </tr>
 
                     </tbody>
@@ -76,6 +82,23 @@
                                 <option value="in-work">Working</option>
                                 <option value="completed">Completed</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label class=" form-control-label">Paid</label></div>
+                        <div class="col col-md-9">
+                            <div class="form-check">
+                                <div class="checkbox">
+                                    <label for="checkbox1" class="form-check-label ">
+                                        <input type="checkbox" id="checkbox1" name="paid"
+                                               @if($dinoRequest->paid === 1)
+                                               checked
+                                               @endif
+                                               value="1"
+                                               class="form-check-input">Check for Paid
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer">

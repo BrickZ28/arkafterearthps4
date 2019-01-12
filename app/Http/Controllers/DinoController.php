@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Dino;
 use App\DinoRequest;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Null_;
 
 
 class DinoController extends Controller
@@ -120,7 +121,7 @@ class DinoController extends Controller
             'qty' => \request('qty'),
             'level' => \request('level'),
             'platform' => \request('platform'),
-            'details' => \request('details')
+            'details' => \request('details'),
         ]);
 
         return redirect('/dinos')->with('success', $dino->name . ' updated');
@@ -224,7 +225,7 @@ class DinoController extends Controller
 
         request()->validate([
             'qty'  => 'required|integer|min:0',
-            'status' => 'required'
+            'status' => 'required',
         ]);
 
         $total = $this->dinoGemTotal($dinoRequest->dinos->id, request()->qty);
@@ -242,6 +243,12 @@ class DinoController extends Controller
 
         $dinoRequest->updated_by = \Auth::id();
         $dinoRequest->total = $total;
+        if (\request('paid') === Null){
+            $dinoRequest->paid = 0;
+        }
+        else{
+            $dinoRequest->paid = \request('paid');
+        }
 
         $dinoRequest->save();
 
