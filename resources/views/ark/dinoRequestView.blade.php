@@ -80,7 +80,7 @@
                                 <option value="{{$dinoRequest->status}}">{{$dinoRequest->status}}</option>
                                 <option value="claimed">Claimed</option>
                                 <option value="in-work">Working</option>
-                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancel</option>
                             </select>
                         </div>
                     </div>

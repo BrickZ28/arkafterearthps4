@@ -23,6 +23,7 @@ class DinoController extends Controller
      */
     public function index()
     {
+        //finds and list all dinos
         $dinos = Dino::paginate(10);
         /*dd($members);*/
 
@@ -36,6 +37,7 @@ class DinoController extends Controller
      */
     public function create()
     {
+        //add new dino page
         return view('ark.addDino');
     }
 
@@ -47,7 +49,7 @@ class DinoController extends Controller
      */
     public function store(Request $request)
     {
-
+        //add new dino to the database first we validate
         $attributes = request()->validate([
             'name'  => 'required',
             'price' => 'required|integer',
@@ -56,7 +58,7 @@ class DinoController extends Controller
             'qty' => 'required'
 
         ]);
-
+        //create new Dino instance
         Dino::create($attributes);
 
         return redirect('/dinos');
@@ -70,6 +72,7 @@ class DinoController extends Controller
      */
     public function show(Dino $dino)
     {
+        //show dino to be edited
         return view('ark.editDino', compact('dino'));
     }
 
@@ -81,26 +84,31 @@ class DinoController extends Controller
      */
     public function edit($id)
     {
+        //complete the dinoRequest first we find the dino request and join the related user
         $dinoRequests = DinoRequest::with('users', 'dinos')->find($id);
 
+        //find the dino from the request and create model
         $dino = Dino::find($dinoRequests->dinos->id);
+        //get the users name
         $user = $dinoRequests->users->name;
         $dinoName = $dino->name;
         $qty = $dinoRequests->qty;
 
         $dinoQty = $dino->qty- $dinoRequests->qty;
 
+        //update the dino qty DB cant go negatinve so we reset to 0 if its a negative number
         if($dinoQty < 1){
             $dinoQty = 0;
         }
         $dino->update([
             'qty' => $dinoQty
         ]);
-
+        //change the status to complete
         $dinoRequests->update([
             'status' => 'completed'
         ]);
 
+        //email for completed request
         \Mail::to($dinoRequests->users->email)->send( new DinoRequestCompleted($qty, $user, $dinoName));
 
         return redirect('/dinoRequests')->with('success', 'Dino Request '. $dinoRequests->id . ' completed');
@@ -115,6 +123,7 @@ class DinoController extends Controller
      */
     public function update(Dino $dino)
     {
+        //edit a dino reuest and update with what ever is put in
         $dino->update([
             'name' => \request('name'),
             'price' => \request('price'),
@@ -144,21 +153,27 @@ class DinoController extends Controller
 
     public function requestDino(Dino $dino)
     {
+        //look up the specified dino request
         $dino = Dino::find(request('id'));
 
         return view('ark.dinoRequest', compact('dino'));
     }
 
-    public function requestDinoSend(Request $request){
-
-        $attributes = request()->validate([
+    public function requestDinoSend(Request $request)
+    {
+        //Request a Dino funtion first get the quantity and make sure there is something there
+        request()->validate([
             'qty'  => 'required|integer|min:0',
         ]);
 
+        //get the qty and go to function to get price
         $total = $this->dinoGemTotal(request()->id, request()->qty);
 
+        //new request controller for the dino
         $dino = new DinoRequest;
+        //who is requesting this
         $dino->user_id = \Auth::id();
+        //dino ID number
         $dino->dino_id = \request()->id;
         $dino->qty = \request()->qty;
         $dino->status = 'new';
@@ -168,10 +183,10 @@ class DinoController extends Controller
 
         $dino->save();
         $qty = $dino->qty;
-        $when = now()->addMinute(1);
-
         $user = Auth::user();
+        //requstoers name
         $requestor = Auth::user()->name;
+        //Gets a list of pvp dino sellers for email
         $sellers = User::whereHas('permissions', function($q)
         {
             $q->where('name', 'PVP Dino Seller');
@@ -179,6 +194,7 @@ class DinoController extends Controller
 
         /*$seller='test';
         \Mail::to('brickz28@comcast.net')->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));*/ //testing line of code
+        //email to each seller, Note this function needs disable when testing mass email use above function
         foreach($sellers as $seller){
             \Mail::to($seller->email)->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));
         }
@@ -190,10 +206,14 @@ class DinoController extends Controller
 
     }
 
-    public function dinoGemTotal($id, $qty){
+    public function dinoGemTotal($id, $qty)
+    {
+        //calculate dino cost
 
+        //create dino instance
         $cost = Dino::find($id);
 
+        //price of dino cost times the qty
         $total = $cost->price * $qty;
 
         return ($total);
@@ -202,7 +222,10 @@ class DinoController extends Controller
 
     public function dinoRequests(){
 
-        $dinoRequests = DinoRequest::with('users', 'dinos')->where('status', '!=', 'completed')->paginate(10);
+        $dinoRequests = DinoRequest::with('users', 'dinos')->
+            where('status', '!=', 'completed')->
+            where('status', '!=', 'cancelled')->
+            paginate(10);
 
         /* dd($dinoRequests);*/
 
@@ -217,23 +240,27 @@ class DinoController extends Controller
 
     }
 
-    public function dinoRequestEdit($id){
-
+    public function dinoRequestEdit($id)
+    {
+        //Edit the dino request, first get model of request
         $dinoRequest = DinoRequest::find($id);
         $dinoName = $dinoRequest->dinos->name;
 
-
+        //validate the edits
         request()->validate([
             'qty'  => 'required|integer|min:0',
             'status' => 'required',
         ]);
 
+        //update the total
         $total = $this->dinoGemTotal($dinoRequest->dinos->id, request()->qty);
 
+        //change the status
         $status = \request('status');
 
         $dinoRequest->qty = \request()->qty;
 
+        //if its new and we did something change it to view else keep it the same
         if($status === 'new'){
             $dinoRequest->status = 'viewed';
         }
@@ -243,6 +270,7 @@ class DinoController extends Controller
 
         $dinoRequest->updated_by = \Auth::id();
         $dinoRequest->total = $total;
+        //if paid box unchecked set to 0 else we set to 1 to show as paid
         if (\request('paid') === Null){
             $dinoRequest->paid = 0;
         }
@@ -250,12 +278,14 @@ class DinoController extends Controller
             $dinoRequest->paid = \request('paid');
         }
 
+        //save it
         $dinoRequest->save();
 
         $qty = $dinoRequest->qty;
 
         $requestor = $dinoRequest->users->name;
 
+        //send out emails
         \Mail::to($dinoRequest->users->email)->send( new DinoRequestUpdated($qty, $total, $dinoRequest->status, $requestor, $dinoName));
 
         return redirect('/dinoRequests')->with('success', request()->name . ' request updated.  ' );

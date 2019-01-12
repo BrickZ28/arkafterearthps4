@@ -10,8 +10,8 @@ Quantity:  {{$qty}}<br>
 Status: {{$status}}<br>
 Total:  {{$total}}<br>
 
-@if($status === 'completed')
-    Transaction Complete, transaction will be done on Ragnarok.
+@if($status === 'cancelled')
+    Transaction Cancelled.
 @endif
 
 Thanks,<br>
