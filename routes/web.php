@@ -33,6 +33,7 @@ Route::get('/ad', function () {
 });*/
 
 /*Route::get('tribespvp', 'TribeController@index');*/
+Route::get('/dinoRequests/completed', 'DinoController@dinoRequestsCompleted');
 Route::delete('/users/{id}', 'UserController@destroy');
 Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');

@@ -312,4 +312,15 @@ class DinoController extends Controller
 
         return view('ark.dinoRequests',compact('dinoRequests'));
     }
+
+    public function dinoRequestsCompleted(){
+
+        $dinoRequests = DinoRequest::with('users', 'dinos')->
+        where('status', '=', 'completed')->
+        paginate(10);
+
+        /* dd($dinoRequests);*/
+
+        return view('ark.completedDinoRequest', compact('dinoRequests'));
+    }
 }

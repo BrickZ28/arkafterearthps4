@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class TribeController extends Controller
@@ -13,7 +14,13 @@ class TribeController extends Controller
      */
     public function index()
     {
-        //
+        $users = \DB::table('users')->select('tribeName_pvp', 'name')->get()->groupBy('tribeName_pvp')->toArray();
+       //dd($tribes);
+
+
+        //$tribes = User::all()->groupBy('tribeName_pvp');
+        //dd($tribes);
+        return view('partials.tribespvp', compact('users'));
     }
 
     /**

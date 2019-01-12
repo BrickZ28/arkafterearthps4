@@ -59,8 +59,9 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="/dinos">Current Inventory</a></li>
                         @can('PVP Dino Seller')
-                        <li><i class="fas fa-plus-circle"></i><a href="/dinos/create">Add Dino</a></li>
-                        <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Requests</a></li>
+                            <li><i class="fas fa-plus-circle"></i><a href="/dinos/create">Add Dino</a></li>
+                            <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Requests</a></li>
+                            <li><i class="fas fa-minus"></i></i><a href="/dinoRequests/completed">Completed Requests</a></li>
                         @endcan
                     </ul>
                 </li>

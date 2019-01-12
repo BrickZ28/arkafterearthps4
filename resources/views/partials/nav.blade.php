@@ -6,7 +6,7 @@
                 <li class="nav-item active"> <a class="nav-link" href="#myCarousel">Home <span class="sr-only">(current)</span></a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#rules">PVP Rules</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#">Council Store</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="">PVP Tribes</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/tribespvp">PVP Tribes</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#">PVE Tribes</a> </li>
                 @if(Auth::check())
                     <li class="nav-item"> <a class="nav-link" href="/userhome">My Ark</a> </li>
