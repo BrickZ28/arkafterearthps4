@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Dino;
+use App\DinoRequest;
 use App\Role;
 use App\Permission;
 use App\Rules\HasKit;
@@ -153,9 +155,10 @@ class UserController extends Controller
     {
 
         $user =User::find($id);
+        \DB::table('dino_requests')->
+            where('user_id', '=', $id)->delete();
         $user->roles()->detach();
         $user->permissions()->detach();
-        $user->dinoRequest()->detach();
         $user->delete();
 
         return redirect('/manageUser');
