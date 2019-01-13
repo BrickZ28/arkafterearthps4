@@ -192,6 +192,8 @@ class DinoController extends Controller
             $q->where('name', 'PVP Dino Seller');
         })->get();
 
+        $when = now();
+
         /*$seller='test';
         \Mail::to('brickz28@comcast.net')->later($when, new DinoRequestedAdmin($qty, $total, $requestor, $dinoName));*/ //testing line of code
         //email to each seller, Note this function needs disable when testing mass email use above function
