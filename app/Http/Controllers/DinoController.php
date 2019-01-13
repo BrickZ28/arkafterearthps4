@@ -297,7 +297,9 @@ class DinoController extends Controller
     {
         $query=request('search_text');
 
-        $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+        $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
+            orWhere('platform', 'LIKE', '%' . $query . '%')->
+            paginate(10);
 
         return view('ark.dinos',compact('dinos'));
     }
