@@ -169,6 +169,9 @@ class DinoController extends Controller
         //get the qty and go to function to get price
         $total = $this->dinoGemTotal(request()->id, request()->qty);
 
+        //find dino platform
+        $platform = Dino::find(request()->id);
+
         //new request controller for the dino
         $dino = new DinoRequest;
         //who is requesting this
@@ -187,11 +190,18 @@ class DinoController extends Controller
         //requstoers name
         $requestor = Auth::user()->name;
         //Gets a list of pvp dino sellers for email
-        $sellers = User::whereHas('permissions', function($q)
-        {
-            $q->where('name', 'PVP Dino Seller');
-        })->get();
 
+        if ($platform->platform === 'PVP') {
+            $sellers = User::whereHas('permissions', function ($q) {
+                $q->where('name', 'PVP Dino Seller');
+            })->get();
+        }
+        //gets list of Pve dino sellers
+        else {
+            $sellers = User::whereHas('permissions', function ($q) {
+                $q->where('name', 'PVE Dino Seller');
+            })->get();
+        }
         $when = now();
 
         /*$seller='test';
