@@ -57,7 +57,9 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fab fa-phoenix-framework"></i>Dinos</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fas fa-list-ul"></i><a href="/dinos">Current Inventory</a></li>
+                        <li><i class="fas fa-list-ul"></i><a href="/dinos">All Dinos</a></li>
+                        <li><i class="fas fa-list-ul"></i><a href="/pveDinos">PVE Inventory</a></li>
+                        <li><i class="fas fa-list-ul"></i><a href="/pvpDinos">PVP Inventory</a></li>
                         @can('PVP Dino Seller')
                             <li><i class="fas fa-plus-circle"></i><a href="/dinos/create">Add Dino</a></li>
                             <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Requests</a></li>

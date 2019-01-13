@@ -327,4 +327,22 @@ class DinoController extends Controller
 
         return view('ark.completedDinoRequest', compact('dinoRequests'));
     }
+
+    public function pveDinos()
+    {
+        $dinos = \DB::table('dinos')->
+            where('platform', '=', 'pve')->
+            paginate(10);
+
+        return view('ark.pveDinos', compact('dinos'));
+    }
+
+    public function pvpDinos()
+    {
+        $dinos = \DB::table('dinos')->
+        where('platform', '=', 'pvp')->
+        paginate(10);
+
+        return view('ark.pvpDinos', compact('dinos'));
+    }
 }
