@@ -73,6 +73,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                    {{ $dinoRequests->links() }}
             </div>
         </div>
     </div>
