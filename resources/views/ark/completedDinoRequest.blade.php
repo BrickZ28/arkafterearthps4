@@ -42,6 +42,7 @@
                     </thead>
                     <tbody>
                     @foreach($dinoRequests as $dinoRequest)
+
                         <tr>
                             <td>{{$dinoRequest->id}}</td>
                             <td>{{$dinoRequest->users->name}}</td>
