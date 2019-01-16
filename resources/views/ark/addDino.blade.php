@@ -51,6 +51,10 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-md-5"><label for="textarea-input" class=" form-control-label">Textarea</label></div>
+                        <div class="col-12 col-md-6"><textarea name="details" id="textarea-input" rows="9" placeholder="Neat stuff about the Dino" class="form-control">{{old('details')}}</textarea></div>
+                    </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit

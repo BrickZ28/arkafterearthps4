@@ -55,10 +55,13 @@ class DinoController extends Controller
             'price' => 'required|integer',
             'level' => 'required|integer',
             'platform' => 'required',
-            'qty' => 'required'
+            'qty' => 'required',
+            'details' => 'nullable'
 
         ]);
         //create new Dino instance
+
+
         Dino::create($attributes);
 
         return redirect('/dinos');
