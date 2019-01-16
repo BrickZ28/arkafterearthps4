@@ -15,6 +15,8 @@
                         <th scope="col">Dino Price</th>
                         <th scope="col">Dino Quantity</th>
                         <th scope="col">Dino Platform</th>
+                        <th scope="col">Dino Level</th>
+                        <th scope="col">Dino Details</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -24,6 +26,8 @@
                         <td>{{$dino->price}}</td>
                         <td>{{$dino->qty}}</td>
                         <td>{{$dino->platform}}</td>
+                        <td>{{$dino->level}}</td>
+                        <td>{{$dino->details}}</td>
                     </tr>
 
                     </tbody>

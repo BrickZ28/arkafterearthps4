@@ -11,7 +11,11 @@ class DinoRequest extends Model
     protected $guarded =[];
 
     public function dinos(){
-        return $this->belongsTo('App\Dino','dino_id');
+        return $this->belongsTo('App\Dino','dino_id')->withDefault([
+            'level' => 'NA',
+            'details'=> 'NA',
+            'name' => 'REMOVED'
+        ]);
     }
 
     public function users(){
