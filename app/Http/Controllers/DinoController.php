@@ -359,4 +359,12 @@ class DinoController extends Controller
 
         return view('ark.pvpDinos', compact('dinos'));
     }
+
+    public function myRequests(){
+        $dinoRequests = DinoRequest::with('dinos')->
+            where('user_id', '=', Auth::id())->
+            paginate(10);
+
+        return view('ark.myRequests', compact('dinoRequests'));
+    }
 }

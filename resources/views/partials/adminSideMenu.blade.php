@@ -65,6 +65,7 @@
                             <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Requests</a></li>
                             <li><i class="fas fa-minus"></i></i><a href="/dinoRequests/completed">Completed Requests</a></li>
                         @endcan
+                        <li><i class="fas fa-minus"></i></i><a href="/myRequests/">My Requests</a></li>
                     </ul>
                 </li>
                 {{--<li class="menu-item-has-children dropdown">
