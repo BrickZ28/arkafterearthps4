@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\newUser;
 use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -67,9 +68,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $admins = User::whereHas('roles', function ($q){
+            $q->where('role_id', '=', '1');
+        })
+            ->get();
 
 
-         $user = User::create([
+        $user = User::create([
             'name' => $data['name'],
             'tribeName_pvp' => $data['tribenamepvp'],
              'tribeName_pve' => $data['tribenamepve'],
@@ -79,6 +84,9 @@ class RegisterController extends Controller
 
        $user->roles()->attach('4');
        $user->permissions()->attach('8');
+
+
+        \Mail::to($admins->email)->send( new newUser($data['name']));
 
        return $user;
 
