@@ -68,10 +68,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $admins = User::whereHas('roles', function ($q){
+        $owners = User::whereHas('roles', function ($q){
             $q->where('role_id', '=', '1');
         })
             ->get();
+
 
 
         $user = User::create([
@@ -86,7 +87,7 @@ class RegisterController extends Controller
        $user->permissions()->attach('8');
 
 
-        \Mail::to($admins->email)->send( new newUser($data['name']));
+        \Mail::to($owners->email)->send( new newUser($data['name']));
 
        return $user;
 
