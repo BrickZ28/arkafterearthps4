@@ -12,6 +12,7 @@
                     <thead>
                     <tr>
                         <th scope="col">Dino Name</th>
+                        <th scope="col">Dino Platform</th>
                         <th scope="col">Dino Price</th>
                         <th scope="col">Dino Quantity</th>
                         <th scope="col">Dino Platform</th>
@@ -23,6 +24,7 @@
 
                     <tr>
                         <td>{{$dino->name}}</td>
+                        <td>{{$dino->platform}}</td>
                         <td>{{$dino->price}}</td>
                         <td>{{$dino->qty}}</td>
                         <td>{{$dino->platform}}</td>

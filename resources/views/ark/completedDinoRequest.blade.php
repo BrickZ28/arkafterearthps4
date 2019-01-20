@@ -29,6 +29,7 @@
                         <th scope="col">Request ID</th>
                         <th scope="col">Requestor</th>
                         <th scope="col">Dino Name</th>
+                        <th scope="col">Dino Platform</th>
                         <th scope="col">How Many</th>
                         <th scope="col">Amount Due</th>
                         <th scope="col">Status</th>
@@ -47,6 +48,7 @@
                             <td>{{$dinoRequest->id}}</td>
                             <td>{{$dinoRequest->users->name}}</td>
                             <td>{{$dinoRequest->dinos->name}}</td>
+                            <td>{{$dinoRequest->dinos->platform}}</td>
                             <td>{{$dinoRequest->qty}}</td>
                             <td>{{$dinoRequest->total}}</td>
                             <td>{{$dinoRequest->status}}</td>
