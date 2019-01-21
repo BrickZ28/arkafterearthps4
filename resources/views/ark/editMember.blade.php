@@ -37,6 +37,41 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
+                <strong class="card-title">Send Pin</strong>
+            </div>
+            <div class="card-body card-block">
+                <form action="/sendpin" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pin code</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pin" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Gate</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="gate" class="form-control" required>
+                        </div>
+                    </div>
+                    <input name="email" type="hidden" value="{{$member->email}}">
+                    <input name="name" type="hidden" value="{{$member->name}}">
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
                 <strong>Edit member Form</strong>
             </div>
             @if ($errors->any())
@@ -156,6 +191,7 @@
                             <i class="fa fa-dot-circle-o"></i> DELETE
                         </button>
                     </form>
+                </div>
             </div>
 
 @endsection

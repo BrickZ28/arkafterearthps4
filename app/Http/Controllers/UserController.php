@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dino;
 use App\DinoRequest;
+use App\Mail\SendPin;
 use App\Role;
 use App\Permission;
 use App\Rules\HasKit;
@@ -164,5 +165,8 @@ class UserController extends Controller
         return redirect('/manageUser');
     }
 
-
+    public function sendpin(Request $request){
+         \Mail::to($request->email)->send( new SendPin($request->pin, $request->gate));
+         return redirect('/manageUser')->with('success', 'Pin and gate Sent to ' . $request->name . ' at ' . $request->email);
+    }
 }

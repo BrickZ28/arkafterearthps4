@@ -33,6 +33,7 @@ Route::get('/ad', function () {
 });*/
 
 /*Route::get('tribespvp', 'TribeController@index');*/
+Route::post('/sendpin', 'UserController@sendpin');
 Route::get('/myRequests', 'DinoController@myRequests');
 Route::get('/pveDinos', 'DinoController@pveDinos');
 Route::get('/pvpDinos', 'DinoController@pvpDinos');
