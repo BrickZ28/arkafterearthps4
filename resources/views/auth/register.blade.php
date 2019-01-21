@@ -10,6 +10,9 @@
                 <div class="card-body regbod">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        <div class="alert alert-danger" role="alert">
+                            EMAIL such as HOTMAIL,AOL and YAHOO do NOT accept our mailserver.  You will NOT be able to verify registration with this email.  We recommend using your ISP or GMAIL.
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('PSN Name') }}</label>
