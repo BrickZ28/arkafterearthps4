@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-
+    {{--Top Menu--}}
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
@@ -34,6 +34,8 @@
         </div>
     </div>
 
+    {{--Owner to send pin--}}
+    @if(auth()->user()->hasRole('Owner'))
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
@@ -68,7 +70,9 @@
             </div>
         </div>
     </div>
+    @endif
 
+    {{--bottom menu--}}
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
