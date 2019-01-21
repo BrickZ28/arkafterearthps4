@@ -70,10 +70,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $owners = User::whereHas('roles', function ($q){
-            $q->where('role_id', '=', '1');
-        })
-            ->get();
+
 
 
 

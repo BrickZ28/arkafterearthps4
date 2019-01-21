@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Mail\newUser;
+use App\Mail\SendWelcome;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -111,7 +113,22 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\DinoRequest', 'user_id');
     }
 
+    public function markEmailAsVerified()
+    {
+        $owners = User::whereHas('roles', function ($q){
+            $q->where('role_id', '=', '1');
+        })
+            ->get();
 
+        /*foreach($owners as $owner){
+            \Mail::to($owner->email)->send( new newUser($this->name));
+        }*/
+        \Mail::to($this->email)->send(new SendWelcome($this->name));
+
+        return $this->forceFill([
+            'email_verified_at' => $this->freshTimestamp(),
+        ])->save();
+    }
 
 
 }
