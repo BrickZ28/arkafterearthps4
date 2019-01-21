@@ -51,6 +51,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -58,6 +59,7 @@ class RegisterController extends Controller
             'tribenamepve' => 'required',
             'tribenamepvp' => 'required'
         ]);
+
     }
 
     /**
@@ -78,7 +80,7 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'tribeName_pvp' => $data['tribenamepvp'],
-             'tribeName_pve' => $data['tribenamepve'],
+            'tribeName_pve' => $data['tribenamepve'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -87,7 +89,9 @@ class RegisterController extends Controller
        $user->permissions()->attach('8');
 
 
-        \Mail::to($owners->email)->send( new newUser($data['name']));
+        foreach($owners as $owner){
+            \Mail::to($owner->email)->send( new newUser($data['name']));
+        }
 
        return $user;
 
