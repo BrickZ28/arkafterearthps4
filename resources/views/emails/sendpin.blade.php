@@ -8,6 +8,8 @@
     To claim this, you must go to the Community Center(CC) on Ragnorok by going to the Blue Obelisk or Viking Bay2
     and use the teleporter there to go to the CC.
 
+    Pve Cords 28,49:
+    ![PvE](/public/img/pvePikUp.jpg)
 
 
     Thanks,
