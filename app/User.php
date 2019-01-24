@@ -120,9 +120,8 @@ class User extends Authenticatable implements MustVerifyEmail
         })
             ->get();
 
-        foreach($owners as $owner){
-            \Mail::to($owner->email)->send( new newUser($this->name));
-        }
+
+
         \Mail::to($this->email)->send(new SendWelcome($this->name));
 
         return $this->forceFill([
