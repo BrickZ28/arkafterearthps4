@@ -9,7 +9,7 @@
     and use the teleporter there to go to the CC.
 
     Pve Cords 28,49:
-    ![PvE](/public/img/pvePikUp.jpg)
+    {{asset('/public/img/pvePikUp.jpg')}}
 
 
     Thanks,
