@@ -11,6 +11,7 @@ class SendPin extends Mailable
 {
     public $pin;
     public $gate;
+    public $style;
     use Queueable, SerializesModels;
 
     /**
@@ -18,10 +19,11 @@ class SendPin extends Mailable
      *
      * @return void
      */
-    public function __construct($pin, $gate)
+    public function __construct($pin, $gate, $style)
     {
         $this->pin = $pin;
         $this->gate = $gate;
+        $this->style = $style;
     }
 
     /**

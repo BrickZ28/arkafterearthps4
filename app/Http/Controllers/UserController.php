@@ -166,7 +166,12 @@ class UserController extends Controller
     }
 
     public function sendpin(Request $request){
-         \Mail::to($request->email)->send( new SendPin($request->pin, $request->gate));
+
+        request()->validate([
+            'style' => ['required']
+        ]);
+
+         \Mail::to($request->email)->send( new SendPin($request->pin, $request->gate, $request->style));
          return redirect('/manageUser')->with('success', 'Pin and gate Sent to ' . $request->name . ' at ' . $request->email);
     }
 }

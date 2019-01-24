@@ -56,6 +56,23 @@
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="gate" class="form-control" required>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label class=" form-control-label">Play Style</label></div>
+                        <div class="col col-md-9">
+                            <div class="form-check">
+                                <div class="radio">
+                                    <label for="radio1" class="form-check-label ">
+                                        <input type="radio" id="radio1" name="style" value="pvp" class="form-check-input" required>PVP
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="radio2" class="form-check-label ">
+                                        <input type="radio" id="radio2" name="style" value="pve" class="form-check-input" required>PVE
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <input name="email" type="hidden" value="{{$member->email}}">
                     <input name="name" type="hidden" value="{{$member->name}}">
                     <div class="card-footer">

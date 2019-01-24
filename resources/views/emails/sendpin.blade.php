@@ -5,11 +5,17 @@
     Pin:  {{$pin}}
     Gate:  {{$gate}}
 
-    To claim this, you must go to the Community Center(CC) on Ragnorok by going to the Blue Obelisk or Viking Bay2
-    and use the teleporter there to go to the CC.
+    To claim this, you can travel to the Community Center (CC) on Ragnarok by going by the Blue Obelisk
+    and use the teleporter to go to the CC.
 
-   {{-- Pve Cords 28,49:
-![image]({{asset('/img/pvePikUp.jpg')}})--}}
+    @if($style === 'pve')
+    Pve Cords 28,49:
+ ![See attached]({{asset('/img/pvePikUp.jpg')}})
+    @endif
+    @if($style === 'pvp')
+        PvP: Viking Bay 2
+ ![See attached]({{asset('/img/pvpPikUp.jpg')}})
+    @endif
 
 
     Thanks,
