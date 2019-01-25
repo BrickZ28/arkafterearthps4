@@ -5,6 +5,8 @@ Thank you for verifying your email and of course joining our server.  We hope yo
 
 We ask that you adhere to our rules and note the following.
 
+On the PVP server Do Not fly by, or try to enter the (CC) When it is "Armed"  You and your Tame will Die.  This is your "WARNING" we will not reimburse  you for your loss.
+
         DISCORD RULES
 No religious or political discussions.
 No mass spamming. This includes sending unsolicited DMs to other users.

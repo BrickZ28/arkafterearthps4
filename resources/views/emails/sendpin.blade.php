@@ -8,8 +8,7 @@
 
 
     @if($style === 'pve')
-    To claim this, you can travel to the Community Center (CC) on Ragnarok by going by the Blue Obelisk
-    and use the teleporter to go to the CC.
+        To claim this, you can travel to Viking Bay 2, by the Community Center (CC) on Ragnarok, Do Not fly by, or try to enter the (CC) When it is "Armed"  You and your Tame will Die.  This is your "WARNING" we will not reimburse  you for your loss.
 
     Pve Cords 28,49:
  ![See attached]({{asset('/img/pvePikUp.jpg')}})
