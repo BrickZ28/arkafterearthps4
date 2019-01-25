@@ -57,6 +57,19 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="email-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Retype E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email-confirm" type="email" class="form-control{{ $errors->has('email-confirm') ? ' is-invalid' : '' }}" name="email-confirm" value="{{ old('email-confirm') }}" required>
+
+                                @if ($errors->has('email-confirm'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email-confirm') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
