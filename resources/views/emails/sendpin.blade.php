@@ -14,9 +14,10 @@
  ![See attached]({{asset('/img/pvePikUp.jpg')}})
     @endif
     @if($style === 'pvp')
-     To claim this, you can travel to the Community Center (CC) on Ragnarok
+        Cords for pvp dino pick up
 
-     PvP: Viking Bay 2
+        Vikings bay 2
+        20 , 32
  ![See attached]({{asset('/img/pvpPikUp.jpg')}})
     @endif
 
