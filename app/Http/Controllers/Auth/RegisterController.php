@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Mail\newUser;
 use App\Role;
+use App\Rules\InvlidEmailAddy;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -52,14 +53,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
 
+
         return Validator::make($data, [
             'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
-            'email-confirm' => 'required|string|email|same:email|max:255',
+            'email-confirm' => ['required','string','email','same:email','max:255',new InvlidEmailAddy()],
             'password' => 'required|string|min:6|confirmed',
             'tribenamepve' => 'required',
-            'tribenamepvp' => 'required'
+            'tribenamepvp' => 'required',
         ]);
+
+
 
     }
 
