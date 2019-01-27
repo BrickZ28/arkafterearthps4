@@ -81,6 +81,7 @@ class RegisterController extends Controller
             'tribeName_pve' => $data['tribenamepve'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'gem_balance' => '500'
         ]);
 
        $user->roles()->attach('4');
