@@ -206,8 +206,7 @@ class UserController extends Controller
     public function fundsManage(){
 
         $users = User::find(Auth::user()->id)->get();
-        $banks_info = Bank::all();
-
+        $banks_info = Bank::get();
 
         foreach($banks_info as $bank) {
             $usersBal = Auth::user()->gem_balance;
