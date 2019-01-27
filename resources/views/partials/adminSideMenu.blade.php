@@ -108,11 +108,12 @@
                         <li><i class="menu-icon fas fa-piggy-bank"></i><a href="font-fontawesome.html">Vault Management</a></li>
                     </ul>
                 </li>
-
+                @endif
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-people-carry"></i>My Management</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="/manageMyFunds">My Funds</a></li>
+                    @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                         @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                         <li><i class="menu-icon fas fa-plus-circle"></i><a href="charts-chartjs.html">Add member</a></li>
                         <li><i class="menu-icon fas fa-minus"></i><a href="charts-flot.html">Delete member</a></li>
