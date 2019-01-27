@@ -36,7 +36,7 @@
                     </tr>
                     </thead>
                     <tbody>
-{{dd($banks)}}
+
                         <tr>
                             <td>{{$banks->balance}}</td>
                             <td>{{$banks->interest_rate. '%'}}</td>
