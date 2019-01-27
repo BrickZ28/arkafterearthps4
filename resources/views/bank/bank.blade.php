@@ -36,15 +36,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($banks as $bank)
+
                         <tr>
-                            <td>{{$bank->balance}}</td>
-                            <td>{{$bank->interest_rate. '%'}}</td>
+                            <td>{{$banks->balance}}</td>
+                            <td>{{$banks->interest_rate. '%'}}</td>
                             <td>{{$dailyTransactions}}</td>
                             <td>{{$monthlyTransactions}}</td>
                             <td>{{$yearlyTransactions}}</td>
                         </tr>
-                    @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -57,7 +57,7 @@
                 <strong>Add transaction</strong>
             </div>
             <div class="card-body card-block">
-                <form action="/bank/{{$banks->first()}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="/bank/{{$banks->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
                     @method('PATCH')
                     @csrf
                     <div class="row form-group">
@@ -69,7 +69,7 @@
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Change Interest Rate</label>
                         </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="rate" value="{{$bank->interest_rate}}" class="form-control" >
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="rate" value="{{$banks->interest_rate}}" class="form-control" >
                         </div>
                     </div>
                     <div class="card-footer">

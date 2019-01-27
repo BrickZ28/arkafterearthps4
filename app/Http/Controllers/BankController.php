@@ -10,7 +10,7 @@ class BankController extends Controller
 {
     public function index(){
 
-        $banks = Bank::all();
+        $banks = Bank::first();
         $dailyTransactions = Bank_transaction::whereDay('created_at', '=', date('d'))->count();
         $monthlyTransactions = Bank_transaction::whereMonth('created_at', '=', date('m'))->count();
         $yearlyTransactions = Bank_transaction::whereYear('created_at', '=', date('Y'))->count();
