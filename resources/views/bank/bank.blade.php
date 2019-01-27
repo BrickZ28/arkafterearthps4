@@ -54,10 +54,10 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong>Edit Dino Form</strong>
+                <strong>Add transaction</strong>
             </div>
             <div class="card-body card-block">
-                <form action="/bank/{{$bank->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="/bank/{{$banks->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
                     @method('PATCH')
                     @csrf
                     <div class="row form-group">
