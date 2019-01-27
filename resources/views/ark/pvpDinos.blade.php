@@ -5,7 +5,11 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Dino List</strong>
+                <strong class="card-title">Dino List
+                    <div class="alert alert-danger" role="alert">
+                        You must pay for dino's directly from your account thru " My Request", in Dinos menu.
+                    </div>
+                </strong>
             </div>
             <div class="card-body">
                 @if (session('success'))
