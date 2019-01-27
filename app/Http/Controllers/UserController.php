@@ -205,11 +205,12 @@ class UserController extends Controller
 
     public function fundsManage(){
 
-        $users = User::all();
+        $users = User::find(Auth::user()->id)->get();
         $banks_info = Bank::all();
-        $usersBal = Auth::user()->gem_balance;
+
 
         foreach($banks_info as $bank) {
+            $usersBal = Auth::user()->gem_balance;
             $interestEarned = ($usersBal * ($bank->interest_rate / 100)) ;
             return view('ark.manageMyFunds', compact('users', 'banks_info', 'interestEarned'));
         }
