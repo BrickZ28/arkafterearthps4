@@ -102,15 +102,12 @@
                     <div class="card-footer">
                         <button id="payment-button" type="submit" class="btn btn-lg btn-info">
                             <i class="fa fa-lock fa-lg"></i>&nbsp;
-                            <span id="payment-button-amount">Pay User</span>
+                            <span id="payment-button-amount">Pay Bank</span>
                         </button>
                     </div>
                 </div>
             </div>
-                <button id="payment-button" type="submit" class="btn btn-lg btn-info">
-                    <i class="fa fa-lock fa-lg"></i>&nbsp;
-                    <span id="payment-button-amount">Pay Bank</span>
-                </button>
+
             </div>
 
     </form>
