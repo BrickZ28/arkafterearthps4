@@ -32,16 +32,16 @@
 
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-envelope-o"></i> Tribe Role <span class="badge badge-primary pull-right">{{ Auth::user()->roles()->pluck('name')->toArray()[0]}}</span></a>
+                                        <a href="#"> <i class="fas fa-meh-rolling-eyes"></i> Tribe Role <span class="badge badge-primary pull-right">{{ Auth::user()->roles()->pluck('name')->toArray()[0]}}</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-tasks"></i> Number of Members <span class="badge badge-danger pull-right">{{$tribecount}}</span></a>
+                                        <a href="#"> <i class="fas fa-user"></i> Number of Members <span class="badge badge-danger pull-right">{{$tribecount}}</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-bell-o"></i> Latest PVP Member <span class="badge badge-success pull-right">{{$last_pvp->name}}</span></a>
+                                        <a href="#"> <i class="fas fa-user"></i> Latest PVP Member <span class="badge badge-success pull-right">{{$last_pvp->name}}</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-bell-o"></i> Latest PVE Member <span class="badge badge-success pull-right">{{$last_pve->name}}</span></a>
+                                        <a href="#"> <i class="fas fa-user"></i> Latest PVE Member <span class="badge badge-success pull-right">{{$last_pve->name}}</span></a>
                                     </li>
                                 </ul>
 
@@ -67,16 +67,16 @@
 
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-envelope-o"></i> Dinos <span class="badge badge-primary pull-right">0</span></a>
+                                        <a href="#"> <i class="fas fa-paw"></i> Dinos <span class="badge badge-primary pull-right">0</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-tasks"></i> Weaponry <span class="badge badge-danger pull-right">0</span></a>
+                                        <a href="#"> <i class="fas fa-utensils"></i> Weaponry <span class="badge badge-danger pull-right">0</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-bell-o"></i> Rare Items <span class="badge badge-success pull-right">0</span></a>
+                                        <a href="#"> <i class="fas fa-fingerprint"></i> Rare Items <span class="badge badge-success pull-right">0</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-comments-o"></i> Armor/Saddles <span class="badge badge-warning pull-right r-activity">0</span></a>
+                                        <a href="#"> <i class="fas fa-shield-alt"></i> Armor/Saddles <span class="badge badge-warning pull-right r-activity">0</span></a>
                                     </li>
                                 </ul>
 
@@ -105,13 +105,16 @@
                                         <a href="#"> {{Auth::user()->email}}</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-tasks"></i>{{Auth::user()->tribeName_pvp}} <span class="badge badge-danger pull-right">PVP</span></a>
+                                        <a href="#"> <i class="fas fa-campground"></i>{{Auth::user()->tribeName_pvp}} <span class="badge badge-danger pull-right">PVP</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-bell-o"></i> {{Auth::user()->tribeName_pve}}  <span class="badge badge-success pull-right">PVE</span></a>
+                                        <a href="#"> <i class="fas fa-campground"></i> {{Auth::user()->tribeName_pve}}  <span class="badge badge-success pull-right">PVE</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-comments-o"></i> Member since <span class="badge badge-warning pull-right r-activity">{{$joined}}</span></a>
+                                        <a href="#"> <i class="fas fa-dollar-sign"></i> Account balance <span class="badge badge-warning pull-right r-activity">{{Auth::user()->gem_balance}}</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fas fa-clock"></i> Member since <span class="badge badge-warning pull-right r-activity">{{$joined}}</span></a>
                                     </li>
                                 </ul>
 

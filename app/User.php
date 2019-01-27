@@ -120,7 +120,9 @@ class User extends Authenticatable implements MustVerifyEmail
         })
             ->get();
 
-
+        foreach($owners as $owner){
+            \Mail::to($owner->email)->send(new SendWelcome($this->name));
+        }
 
         \Mail::to($this->email)->send(new SendWelcome($this->name));
 
@@ -129,5 +131,11 @@ class User extends Authenticatable implements MustVerifyEmail
         ])->save();
     }
 
+    public function transactionspay(){
+        return $this->hasMany('App\Bank_transaction', 'payer_id');
+    }
+    public function transactionsget(){
+        return $this->hasMany('App\Bank_transaction', 'receiver_id');
+    }
 
 }

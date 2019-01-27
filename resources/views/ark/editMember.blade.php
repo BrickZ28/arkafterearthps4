@@ -5,6 +5,17 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error )
+                                <li>
+                                    {{$error}}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <strong class="card-title">Update member</strong>
             </div>
             <div class="card-body">
@@ -95,17 +106,7 @@
             <div class="card-header">
                 <strong>Edit member Form</strong>
             </div>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error )
-                          <li>
-                              {{$error}}
-                          </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+
             <div class="card-body card-block">
                 <form action="/editMember/{{$member->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
                     @method('PATCH')
@@ -191,6 +192,12 @@
                                     <option value="{{$noPerms->id}}">{{$noPerms->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pay Member</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="gemamount" value="{{old('gemamount')}}" class="form-control">
                         </div>
                     </div>
 

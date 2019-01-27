@@ -9,9 +9,13 @@ use App\Role;
 use App\Permission;
 use App\Rules\HasKit;
 use App\Rules\HavePermission;
+use App\Rules\InsufficientFunds;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Validation\Rule;
+use App\Bank;
+use App\Bank_transaction;
+use Auth;
 
 
 class UserController extends Controller
@@ -77,14 +81,26 @@ class UserController extends Controller
     {
         //update the user info first find and instantiate
         $member = User::find($id);
+        $bank = Bank::first();
+        $transaction = '';
         //grab the users highest level kit and set
         $levelKit = $member->level_kit;
+
+        //ensure sufficient funds
+        if($request->gemamount > 0){
+            request()->validate([
+                'gemamount' => [new InsufficientFunds($bank->balance)]
+            ]);
+            $transaction = 'transaction';
+        }
+
 
         //grabbing the keys
         $member->tribeName_pvp = request('pvp');
         $member->tribeName_pve = request('pve');
         $member->has_starter = request('starter');
         $member->level_kit = request('levelKit');
+        $member->gem_balance += $request->gemamount;
         //if the entered level kit is less than what they have return the error
         if($member->level_kit < $levelKit){
             request()->validate([
@@ -101,7 +117,19 @@ class UserController extends Controller
             'pvp' => 'required',
             ]);
 
+
         $member->save();
+        //deduct from bank
+        $bank->balance -= $request->gemamount;
+        $bank->save();
+        //insert into transactions
+        Bank_transaction::create([
+            'transaction_amount' => $request->gemamount,
+            'payer_id' => '0',
+            'receiver_id' => $member->id,
+            'reason' => 'Bank Payment',
+            'product_id' => null,
+        ]);
 
         //get and request all the perms and roles
         $member->role = request('role');
@@ -142,7 +170,7 @@ class UserController extends Controller
                 ->delete();
         }
 
-        return redirect('/manageUser');
+        return redirect('/manageUser')->with($transaction, $request->gemamount . 'gems sent to ' . $member->name)->with('success', 'Member update');
 
     }
 
@@ -173,5 +201,86 @@ class UserController extends Controller
 
          \Mail::to($request->email)->send( new SendPin($request->pin, $request->gate, $request->style));
          return redirect('/manageUser')->with('success', 'Pin and gate Sent to ' . $request->name . ' at ' . $request->email);
+    }
+
+    public function fundsManage(){
+
+        $users = User::all();
+        $banks_info = Bank::all();
+        $usersBal = Auth::user()->gem_balance;
+
+        foreach($banks_info as $bank) {
+            $interestEarned = ($usersBal * ($bank->interest_rate / 100)) ;
+            return view('ark.manageMyFunds', compact('users', 'banks_info', 'interestEarned'));
+        }
+        return 0;
+    }
+
+    public function userToUserFundsTransaction(Request $request){
+
+        $payer = User::find($request->id);
+        $receiver = User::find($request->receiver);
+
+        request()->validate([
+            'amount' => 'integer|nullable',
+            'receiver' => Rule::notIn([$payer->id])//cant send to yourself
+            ]);
+
+        //if the user doesnt have the funds return
+        if($payer->gem_balance < $request->amount){
+            request()->validate([
+                'amount' => [new InsufficientFunds($payer->balance)]
+            ]);
+        }
+        //deduct funds from user
+        $payer->gem_balance -= $request->amount;
+        $payer->save();
+        //add funds to receiver
+        $receiver->gem_balance += $request->amount;
+        $receiver->save();
+        //insert into bank transaction table
+        Bank_transaction::create([
+            'transaction_amount' => $request->amount,
+            'payer_id' => $payer->id,
+            'receiver_id' => $receiver->id,
+            'reason' => $request->reason,
+            'product_id' => null,
+        ]);
+
+        return redirect('/manageMyFunds')->with('success', 'You have successfully sent ' . $receiver->name . ' ' .  $request->amount . ' gems');
+    }
+
+    public function userToBankFundsTransaction(Request $request){
+
+        $payer = User::find($request->id);
+        $bank = Bank::first();
+
+        request()->validate([
+            'amount' => 'integer|nullable',
+            'receiver' => Rule::notIn([$payer->id])//cant send to yourself
+        ]);
+
+        //if the user doesnt have the funds return
+        if($payer->gem_balance < $request->amount){
+            request()->validate([
+                'amount' => [new InsufficientFunds($payer->balance)]
+            ]);
+        }
+        //deduct funds from user
+        $payer->gem_balance -= $request->amount;
+        $payer->save();
+        //add funds to bank
+        $bank->balance += $request->amount;
+        $bank->save();
+        //insert into bank transaction table
+        Bank_transaction::create([
+            'transaction_amount' => $request->amount,
+            'payer_id' => $payer->id,
+            'receiver_id' => 'bank',
+            'reason' => $request->reason,
+            'product_id' => null,
+        ]);
+
+        return redirect('/manageMyFunds')->with('success', 'You have successfully sent the bank' . $request->amount . ' gems');
     }
 }

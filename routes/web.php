@@ -32,7 +32,10 @@ Route::get('/ad', function () {
     return view('partials.tribespvp');
 });*/
 
-/*Route::get('tribespvp', 'TribeController@index');*/
+Route::get('/payForDino/{id}','DinoController@payForDino');
+Route::patch('/user/bank/transaction/{id}', 'UserController@userToBankFundsTransaction');
+Route::patch('/user/user/transaction/{id}', 'UserController@userToUserFundsTransaction');
+Route::get('/manageMyFunds', 'UserController@fundsManage');
 Route::post('/sendpin', 'UserController@sendpin');
 Route::get('/myRequests', 'DinoController@myRequests');
 Route::get('/pveDinos', 'DinoController@pveDinos');
@@ -54,12 +57,15 @@ Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Route::resource('/roles', 'RoleController');
 Route::resource('/permissions', 'PermissionController');
 Route::get('/searchMembers','UserController@search');
+Route::get('/searchTransactions','BankTransactionController@searchTransactions');
 Route::get('/searchDinos','DinoController@searchDino');
 Route::get('/searchDinoRequests','DinoController@searchRequest');
 Route::get('/editMember/{id}','UserController@edit');
 Route::patch('/editMember/{id}','UserController@update');
 Route::resource('dinos', 'DinoController');
 Route::resource('exchangeRates', 'ExchangeRateController');
+Route::resource('bank', 'BankController');
+Route::resource('transactions', 'BankTransactionController');
 
 
 Auth::routes(['verify' => true]);

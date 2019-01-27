@@ -42,6 +42,13 @@
                         <li><i class="fas fa-list-ul"></i><a href="#">Items</a></li>
                     </ul>
                 </li>--}}
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>Bank Management</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fas fa-dollar-sign"></i><a href="/bank">Bank Info</a></li>
+                            <li><i class="fas fa-dollar-sign"></i><a href="/transactions">Bank Transactions</a></li>
+                        </ul>
+                    </li>
                @endif
                 <h3 class="menu-title">Store Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
@@ -90,7 +97,7 @@
                 </li>--}}
 
 
-                <h3 class="menu-title">Tribe Management - Coming Soon</h3><!-- /.menu-title -->
+                <h3 class="menu-title">My Management</h3><!-- /.menu-title -->
                 @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>All Tribes</a>
@@ -103,10 +110,11 @@
                 </li>
 
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-people-carry"></i>My Tribe</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-people-carry"></i>My Management</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fas fa-list-ul"></i><a href="ui-buttons.html">Tribe members</a></li>
                         @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
+                        <li><i class="fas fa-list-ul"></i><a href="/manageMyFunds">My Funds</a></li>
+
                         <li><i class="menu-icon fas fa-plus-circle"></i><a href="charts-chartjs.html">Add member</a></li>
                         <li><i class="menu-icon fas fa-minus"></i><a href="charts-flot.html">Delete member</a></li>
                         @endif

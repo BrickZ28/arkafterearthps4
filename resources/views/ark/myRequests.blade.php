@@ -17,6 +17,15 @@
                         </button>
                     </div>
                 @endif
+                    @if (session('funds'))
+                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                            <span class="badge badge-pill badge-danger">Failed</span>
+                            {{ session('funds') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                 <form action="/searchDinoRequests" method="get">
                     @csrf
                     <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
@@ -39,6 +48,7 @@
                         <th scope="col">Paid</th>
                         <th scope="col">Created Date</th>
                         <th scope="col">Updated Date</th>
+                        <th scope="col">Pay</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -61,6 +71,12 @@
                             @endif
                             <td>{{$dinoRequest->created_at->format('d M Y')}}</td>
                             <td>{{$dinoRequest->updated_at->format('d M Y')}}</td>
+                            <td><a href="/payForDino/{{$dinoRequest->id}}">
+                                @if($dinoRequest->paid === 0)
+                                    <button type="button" class="btn btn-secondary btn-sm">Pay Bank</button>
+                                </a>
+                            </td>
+                                @endif
                         </tr>
                     @endforeach
                     </tbody>

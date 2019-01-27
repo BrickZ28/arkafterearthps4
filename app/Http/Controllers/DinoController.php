@@ -11,7 +11,10 @@ use Illuminate\Http\Request;
 use App\Dino;
 use App\DinoRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Bank_transaction;
+use App\Bank;
 use phpDocumentor\Reflection\Types\Null_;
+
 
 
 class DinoController extends Controller
@@ -366,5 +369,35 @@ class DinoController extends Controller
             paginate(10);
 
         return view('ark.myRequests', compact('dinoRequests'));
+    }
+
+    public function payForDino($id){
+
+        $dino = DinoRequest::find($id);
+        $user = User::find(Auth::user()->id);
+        $bank = Bank::first();
+
+        if($user->gem_balance < $dino->total){
+            return redirect('/myRequests')->with('funds', 'You do not have enough funds in the bank');
+        }
+
+        $user->gem_balance -= $dino->total;
+        $user->save();
+
+        $dino->paid = 1;
+        $dino->save();
+
+        $bank->balance += $dino->total;
+        $bank->save();
+
+        Bank_transaction::create([
+            'transaction_amount' => $dino->total,
+            'payer_id' => $user->id,
+            'receiver_id' => 'bank',
+            'reason' => 'Paid for Dino',
+            'product_id' => $dino->dino_id,
+        ]);
+
+        return redirect('/myRequests')->with('success', 'You have paid for your dino');
     }
 }
