@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dino;
 use App\DinoRequest;
+use App\Mail\newUser;
 use App\Mail\SendPin;
 use App\Role;
 use App\Permission;
@@ -27,6 +28,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $members = User::with('roles', 'permissions')->paginate(10);
 
         /*dd($members);*/

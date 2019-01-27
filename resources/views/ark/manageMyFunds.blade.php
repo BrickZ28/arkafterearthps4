@@ -71,12 +71,16 @@
                 <div class="card-body">
                     <label for="user-payment" class="control-label mb-1">Reason</label>
                     <input id="reason" name="reason" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{Request::old('reason')}}">
+                    <div class="card-footer">
+                        <button id="payment-button" type="submit" class="btn btn-lg btn-info">
+                            <i class="fa fa-lock fa-lg"></i>&nbsp;
+                            <span id="payment-button-amount">Pay User</span>
+                        </button>
+                    </div>
                 </div>
+
             </div>
-            <button id="payment-button" type="submit" class="btn btn-lg btn-info">
-                <i class="fa fa-lock fa-lg"></i>&nbsp;
-                <span id="payment-button-amount">Pay User</span>
-            </button>
+
         </div>
     </form>
     <form method="post" action="/user/bank/transaction/{{Auth::user()->id}}">
@@ -95,6 +99,12 @@
                 <div class="card-body">
                     <label for="user-payment" class="control-label mb-1">Reason</label>
                     <input id="reason" name="reason" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{Request::old('reason')}}">
+                    <div class="card-footer">
+                        <button id="payment-button" type="submit" class="btn btn-lg btn-info">
+                            <i class="fa fa-lock fa-lg"></i>&nbsp;
+                            <span id="payment-button-amount">Pay User</span>
+                        </button>
+                    </div>
                 </div>
             </div>
                 <button id="payment-button" type="submit" class="btn btn-lg btn-info">
