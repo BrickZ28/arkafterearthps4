@@ -102,6 +102,7 @@ class UserController extends Controller
         $member->tribeName_pve = request('pve');
         $member->has_starter = request('starter');
         $member->level_kit = request('levelKit');
+        $member->email = request('email');
         $member->gem_balance += $request->gemamount;
         //if the entered level kit is less than what they have return the error
         if($member->level_kit < $levelKit){
@@ -117,6 +118,7 @@ class UserController extends Controller
         request()->validate([
             'pve' => 'required',
             'pvp' => 'required',
+            'email' => 'email',
             ]);
 
 

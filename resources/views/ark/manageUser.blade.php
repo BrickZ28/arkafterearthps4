@@ -37,6 +37,8 @@
                     <thead>
                     <tr>
                         <th scope="col">PSN Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Gems</th>
                         <th scope="col">PVE Tribe</th>
                         <th scope="col">PVP Tribe</th>
                         <th scope="col">Users Role</th>
@@ -50,6 +52,8 @@
                     @foreach($member->roles as $role)
                         <tr>
                             <td>{{$member->name}}</td>
+                            <td>{{$member->email}}</td>
+                            <td>{{$member->gem_balance}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->tribeName_pvp}}</td>
                             <td>{{$role->name}}</td>

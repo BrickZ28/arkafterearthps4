@@ -23,6 +23,8 @@
                     <thead>
                     <tr>
                         <th scope="col">Member Name</th>
+                        <th scope="col">Member Email</th>
+                        <th scope="col">Member Gems</th>
                         <th scope="col">PVE Tribe</th>
                         <th scope="col">PVP Tribe</th>
                         <th scope="col">Member Role</th>
@@ -33,6 +35,7 @@
 
                         <tr>
                             <td>{{$member->name}}</td>
+                            <td>{{$member->email}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->roles->first()->name}}</td>
@@ -115,6 +118,12 @@
                         <div class="col col-md-3"><label class=" form-control-label">Member Name</label></div>
                         <div class="col-12 col-md-9">
                             <p class="form-control-static">{{$member->name}}</p>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Member Email</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="email" value="{{$member->email}}" class="form-control" required>
                         </div>
                     </div>
                     <div class="row form-group">
