@@ -36,6 +36,7 @@
                         <tr>
                             <td>{{$member->name}}</td>
                             <td>{{$member->email}}</td>
+                            <td>{{$member->gem_balance}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->roles->first()->name}}</td>
