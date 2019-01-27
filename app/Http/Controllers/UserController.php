@@ -170,7 +170,7 @@ class UserController extends Controller
                 ->delete();
         }
 
-        return redirect('/manageUser')->with($transaction, $request->gemamount . 'gems sent to ' . $member->name)->with('success', 'Member update');
+        return redirect('/manageUser')->with($transaction, $request->gemamount . ' gems sent to ' . $member->name)->with('success', 'Member update');
 
     }
 
