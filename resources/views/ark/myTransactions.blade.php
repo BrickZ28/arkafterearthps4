@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Transaction List</strong>
+                <strong class="card-title"> Paid Transaction List</strong>
             </div>
             <div class="card-body">
                 @if (session('success'))
@@ -29,39 +29,28 @@
                         <th scope="col">Transaction ID</th>
                         <th scope="col">Transaction Amount</th>
                         <th scope="col">Payer</th>
-                        <th scope="col">Receiver</th>
                         <th scope="col">Item</th>
                         <th scope="col">Reason</th>
                         <th scope="col">Date</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($transactions as $transaction)
-                        <tr>
-                            <td>{{$transaction->id}}</td>
-                            <td>{{$transaction->transaction_amount}}</td>
-                            @if($transaction->reason === 'Bank Payment')
-                                <td>Bank</td>
-                            @elseif($transaction->reason === 'Bank always has money')
-                                <td>Owners</td>
-                            @elseif($transaction->payer_id !== '0')
-                                <td>{{$transaction->payer['name']}}</td>
-                            @endif
-                            @if($transaction->receiver_id !== 'bank')
-                                <td>{{$transaction->receiver['name']}}</td>
-                            @else
-                                <td>Bank</td>
-                            @endif
-                            <td></td>
-                            <td>{{$transaction->reason}}</td>
-                            <td>{{$transaction->created_at->format('d M Y')}}</td>
-                        </tr>
+                    @foreach($earns as $earn){{--{{dd($earn->transactionspay)}}--}}
+                        @foreach($earn->transactionspay as $earned)
+                               <tr>
+                                    <td>{{$earn->id}}</td>
+                                    <td>{{$earned->transaction_amount}}</td>
+                                    <td>PAYER</td>
+                                    <td>ID</td>
+                                    <td>{{$earned->reason}}</td>
+                                    <td>{{$earn->created_at->format('d M Y')}}</td>
+                                </tr>
+                            @endforeach
                     @endforeach
                     </tbody>
                 </table>
-                {{ $transactions->links() }}
+                    {{$earns->links()}}
             </div>
-
         </div>
     </div>
 

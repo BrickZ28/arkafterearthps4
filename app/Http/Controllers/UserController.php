@@ -102,6 +102,8 @@ class UserController extends Controller
         $transaction = '';
         //grab the users highest level kit and set
         $levelKit = $member->level_kit;
+        $pvpLevelKit = $member->pvp_level_kit;
+        $pveLevelKit = $member->pve_level_kit;
 
         //ensure sufficient funds
         if($request->gemamount > 0){
@@ -118,12 +120,24 @@ class UserController extends Controller
         $member->has_pvp_starter = request('pvpstarter');
         $member->has_pve_starter = request('pvestarter');
         $member->level_kit = request('levelKit');
+        $member->pvp_level_kit = request('pvplevelKit');
+        $member->pve_level_kit = request('pvelevelKit');
         $member->email = request('email');
         $member->gem_balance += $request->gemamount;
         //if the entered level kit is less than what they have return the error
         if($member->level_kit < $levelKit){
             request()->validate([
                 'levelKit' => [new HasKit($member->level_kit)]
+            ]);
+        }
+        if($member->pvp_level_kit < $pvpLevelKit){
+            request()->validate([
+                'pvplevelKit' => [new HasKit($member->pvp_level_kit)]
+            ]);
+        }
+        if($member->pve_level_kit < $pveLevelKit){
+            request()->validate([
+                'pvelevelKit' => [new HasKit($member->pve_level_kit)]
             ]);
         }
         //if the no start kit buttonunchecked set it to 0
@@ -313,12 +327,12 @@ class UserController extends Controller
 
     public function myTransactions(){
 
-        $user = User::find(Auth::user()->id)->first();
+        //$user = User::find(Auth::user()->id)->first();
 
-        $transactions =
+        $earns = User::with('transactionspay')->paginate(10);
 
-        $transactions = Bank_transaction::with('payer', 'receiver')->paginate(10);
 
-        return view('ark.myTransactions', compact('user'));
+        //dd($transactions);
+        return view('ark.myTransactions', compact('earns'));
     }
 }

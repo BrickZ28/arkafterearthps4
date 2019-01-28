@@ -25,8 +25,8 @@
                         <th scope="col">Member Name</th>
                         <th scope="col">Member Email</th>
                         <th scope="col">Member Gems</th>
-                        <th scope="col">PVE Tribe</th>
                         <th scope="col">PVP Tribe</th>
+                        <th scope="col">PVE Tribe</th>
                         <th scope="col">Member Role</th>
                         <th scope="col">Member Permissions</th>
                     </tr>
@@ -37,7 +37,7 @@
                             <td>{{$member->name}}</td>
                             <td>{{$member->email}}</td>
                             <td>{{$member->gem_balance}}</td>
-                            <td>{{$member->tribeName_pve}}</td>
+                            <td>{{$member->tribeName_pvp}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->roles->first()->name}}</td>
                             <td>{{$member->permissions->first()->name}}</td>
@@ -58,17 +58,16 @@
             </div>
             <div class="card-body card-block">
                 <form action="/sendpin" method="post" enctype="multipart/form-data" class="form-horizontal">
-                    @csrf
+                    @csrf<div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Gate</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="gate" class="form-control" required>
+                        </div>
+                    </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pin code</label>
                         </div>
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="pin" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Gate</label>
-                        </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="gate" class="form-control" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -128,15 +127,15 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">PVE Tribe Name</label>
-                        </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pve" value="{{$member->tribeName_pve}}" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">PVP Tribe Name</label>
                         </div>
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="pvp" value="{{$member->tribeName_pvp}}" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">PVE Tribe Name</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pve" value="{{$member->tribeName_pve}}" class="form-control" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -190,6 +189,36 @@
                             <select name="levelKit" id="selectLg" class="form-control-lg form-control">
                                 @if($member->level_kit !== NULL)
                                     <option value="{{$member->level_kit}}">{{$member->level_kit}}</option>
+                                @else
+                                    <option value="">Select One</option>
+                                @endif
+                                <option value="40">40</option>
+                                <option value="80">80</option>
+                                <option value="120">120</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select PVP Level Kit</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="pvplevelKit" id="selectLg" class="form-control-lg form-control">
+                                @if($member->pvp_level_kit !== NULL)
+                                    <option value="{{$member->pvp_level_kit}}">{{$member->pvp_level_kit}}</option>
+                                @else
+                                    <option value="">Select One</option>
+                                @endif
+                                <option value="40">40</option>
+                                <option value="80">80</option>
+                                <option value="120">120</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select PVE Level Kit</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="pvelevelKit" id="selectLg" class="form-control-lg form-control">
+                                @if($member->pve_level_kit !== NULL)
+                                    <option value="{{$member->pve_level_kit}}">{{$member->pve_level_kit}}</option>
                                 @else
                                     <option value="">Select One</option>
                                 @endif

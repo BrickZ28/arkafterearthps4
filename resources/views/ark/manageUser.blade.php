@@ -39,12 +39,14 @@
                         <th scope="col">PSN Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Gems</th>
-                        <th scope="col">PVE Tribe</th>
                         <th scope="col">PVP Tribe</th>
+                        <th scope="col">PVE Tribe</th>
                         <th scope="col">Users Role</th>
                         <th scope="col">Has PVP Starter</th>
                         <th scope="col">Has PVE Starter</th>
                         <th scope="col">Highest Level Kit</th>
+                        <th scope="col">Highest PVP Level Kit</th>
+                        <th scope="col">Highest PVE Level Kit</th>
                         <th scope="col">Update User</th>
                     </tr>
                     </thead>
@@ -55,8 +57,8 @@
                             <td>{{$member->name}}</td>
                             <td>{{$member->email}}</td>
                             <td>{{$member->gem_balance}}</td>
-                            <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->tribeName_pvp}}</td>
+                            <td>{{$member->tribeName_pve}}</td>
                             <td>{{$role->name}}</td>
                             @if($member->has_pvp_starter === 1)
                                 <td>Yes</td>
@@ -69,6 +71,8 @@
                                 <td>No</td>
                             @endif
                             <td>{{$member->level_kit}}</td>
+                            <td>{{$member->pvp_level_kit}}</td>
+                            <td>{{$member->pve_level_kit}}</td>
                             <td>
                                 @if(Auth::id() !== $member->id or $member->hasRole('Owner'))
                                 <a href="/editMember/{{$member->id}}">

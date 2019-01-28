@@ -2,8 +2,8 @@
 
     This is to inform you that you have received a new pin for the ArkAfterEarthPS4 server
 
-    Pin:  {{$pin}}
     Gate:  {{$gate}}
+    Pin:  {{$pin}}
 
 
 
