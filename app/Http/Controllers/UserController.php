@@ -43,6 +43,21 @@ class UserController extends Controller
         return view('ark.manageUser',compact('members'));
     }
 
+    public function searchToSend()
+    {
+        $query=request('search_text');
+        $users = User::where('name', 'LIKE', '%' . $query . '%')->paginate(5);
+        $banks_info = Bank::get();
+
+        foreach($banks_info as $bank) {
+            $usersBal = Auth::user()->gem_balance;
+            $interestEarned = ($usersBal * ($bank->interest_rate / 100)) ;
+            return view('ark.manageMyFunds', compact('users', 'banks_info', 'interestEarned'));
+        }
+
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -209,7 +224,7 @@ class UserController extends Controller
 
     public function fundsManage(){
 
-        $users =optional( User::find(Auth::user()->id))->get();
+        $users =optional( User::find(Auth::user()->id))->paginate(5);
         $banks_info = Bank::get();
 
         foreach($banks_info as $bank) {
@@ -222,11 +237,12 @@ class UserController extends Controller
 
     public function userToUserFundsTransaction(Request $request){
 
-        $payer = User::find($request->id);
+        $payer = User::find(Auth::user()->id);
         $receiver = User::find($request->receiver);
 
+
         request()->validate([
-            'amount' => 'integer|nullable',
+            'amount' => 'integer',
             'receiver' => Rule::notIn([$payer->id])//cant send to yourself
             ]);
 
@@ -236,12 +252,14 @@ class UserController extends Controller
                 'amount' => [new InsufficientFunds($payer->balance)]
             ]);
         }
+
         //deduct funds from user
         $payer->gem_balance -= $request->amount;
         $payer->save();
         //add funds to receiver
         $receiver->gem_balance += $request->amount;
         $receiver->save();
+
         //insert into bank transaction table
         Bank_transaction::create([
             'transaction_amount' => $request->amount,
@@ -286,5 +304,16 @@ class UserController extends Controller
         ]);
 
         return redirect('/manageMyFunds')->with('success', 'You have successfully sent the bank' . $request->amount . ' gems');
+    }
+
+    public function myTransactions(){
+
+        $user = User::find(Auth::user()->id)->first();
+
+        $transactions =
+
+        $transactions = Bank_transaction::with('payer', 'receiver')->paginate(10);
+
+        return view('ark.myTransactions', compact('user'));
     }
 }

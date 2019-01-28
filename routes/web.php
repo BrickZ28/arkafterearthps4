@@ -32,9 +32,10 @@ Route::get('/ad', function () {
     return view('partials.tribespvp');
 });*/
 
+Route::get('/myTransactions', 'UserController@myTransactions');
 Route::get('/payForDino/{id}','DinoController@payForDino');
 Route::patch('/user/bank/transaction/{id}', 'UserController@userToBankFundsTransaction');
-Route::patch('/user/user/transaction/{id}', 'UserController@userToUserFundsTransaction');
+Route::patch('/user/user/transaction', 'UserController@userToUserFundsTransaction');
 Route::get('/manageMyFunds', 'UserController@fundsManage');
 Route::post('/sendpin', 'UserController@sendpin');
 Route::get('/myRequests', 'DinoController@myRequests');
@@ -57,6 +58,7 @@ Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Route::resource('/roles', 'RoleController');
 Route::resource('/permissions', 'PermissionController');
 Route::get('/searchMembers','UserController@search');
+Route::get('/searchToSend','UserController@searchToSend');
 Route::get('/searchTransactions','BankTransactionController@searchTransactions');
 Route::get('/searchDinos','DinoController@searchDino');
 Route::get('/searchDinoRequests','DinoController@searchRequest');

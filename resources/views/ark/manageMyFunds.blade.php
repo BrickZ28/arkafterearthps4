@@ -48,41 +48,60 @@
         </div>
     </div>
 
-    <form method="post" action="/user/user/transaction/{{Auth::user()->id}}">
-        @method('PATCH')
-        @csrf
+
         <div class="col-xs-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
+
                     <strong class="card-title">Send Money to user</strong>
+                    <form action="/searchToSend" method="get">
+                        @csrf
+                        <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
+                        <button type="submit" class="btn btn-primary">Search Users</button>
+                    </form>
                 </div>
+
                 <div class="card-body">
-                    <select data-placeholder="Select Currency" class="standardSelect" tabindex="1" name="receiver">
-                        <option value="">Select One</option>
-                        @foreach($users as $user)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Member Name</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Reason</th>
+                            <th scope="col">Pay</th>
+                        </tr>
+                        </thead>
+                        @foreach($users as $user) <form method="post" action="/user/user/transaction">
+                            @method('PATCH')
+                            @csrf
+
+                        <tbody>
+
+                        <tr>
+
+                            <td>{{$user->name}}</td>
+                            <td>
+                                <input id="reason" name="amount" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                            </td>
+                            <td><input id="amount" name="reason" type="text" class="form-control" aria-required="true" aria-invalid="false" ></td>
+                            <td> <button id="payment-button" type="submit" class="btn btn-sm btn-info">
+                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                    <span id="payment-button-amount">Pay User</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <input type="hidden" name="receiver" value="{{$user->id}}">
+                        </tbody>
+                        </form>
                         @endforeach
-                    </select>
-                </div>
-                <div class="card-body">
-                    <label for="user-payment" class="control-label mb-1">Insert Amount</label>
-                    <input id="amount" name="amount" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{Request::old('amount')}}">
-                </div>
-                <div class="card-body">
-                    <label for="user-payment" class="control-label mb-1">Reason</label>
-                    <input id="reason" name="reason" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{{Request::old('reason')}}">
-                    <div class="card-footer">
-                        <button id="payment-button" type="submit" class="btn btn-lg btn-info">
-                            <i class="fa fa-lock fa-lg"></i>&nbsp;
-                            <span id="payment-button-amount">Pay User</span>
-                        </button>
-                    </div>
+                    </table>
+                    {{$users->links()}}
                 </div>
 
             </div>
-
         </div>
-    </form>
+
+
     <form method="post" action="/user/bank/transaction/{{Auth::user()->id}}">
         @method('PATCH')
         @csrf

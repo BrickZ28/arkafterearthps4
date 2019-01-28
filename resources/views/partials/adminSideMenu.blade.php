@@ -113,6 +113,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-people-carry"></i>My Management</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="/manageMyFunds">My Funds</a></li>
+                       {{-- <li><i class="fas fa-list-ul"></i><a href="/myTransactions">My Transactions
+                            </a></li>--}}
                     @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                         @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                         <li><i class="menu-icon fas fa-plus-circle"></i><a href="charts-chartjs.html">Add member</a></li>
