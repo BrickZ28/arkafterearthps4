@@ -331,7 +331,11 @@ class UserController extends Controller
 
         //$user = User::find(Auth::user()->id)->first();
 
-        $earns = User::with('transactionspay')->paginate(10);
+        //$earns = User::with('transactionspay')->paginate(10);
+
+        $earns = \DB::table('bank_transactions')
+            ->leftJoin('users', 'payer_id', '=', 'users.user_id')
+            ->get();
 
 
         //dd($transactions);
