@@ -115,7 +115,8 @@ class UserController extends Controller
         //grabbing the keys
         $member->tribeName_pvp = request('pvp');
         $member->tribeName_pve = request('pve');
-        $member->has_starter = request('starter');
+        $member->has_pvp_starter = request('pvpstarter');
+        $member->has_pve_starter = request('pvestarter');
         $member->level_kit = request('levelKit');
         $member->email = request('email');
         $member->gem_balance += $request->gemamount;
@@ -126,8 +127,12 @@ class UserController extends Controller
             ]);
         }
         //if the no start kit buttonunchecked set it to 0
-        if( $member->has_starter === NULL){
-            $member->has_starter = 0;
+        if( $member->has_pvp_starter === NULL){
+            $member->has_pvp_starter = 0;
+        }
+        //if the no start kit buttonunchecked set it to 0
+        if( $member->has_pve_starter === NULL){
+            $member->has_pve_starter = 0;
         }
 
         request()->validate([

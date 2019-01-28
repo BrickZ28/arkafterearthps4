@@ -151,13 +151,30 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label class=" form-control-label">Starter Pack</label></div>
+                        <div class="col col-md-3"><label class=" form-control-label">PVP Starter Pack</label></div>
                         <div class="col col-md-9">
                             <div class="form-check">
                                 <div class="checkbox">
                                     <label for="checkbox1" class="form-check-label ">
-                                        <input type="checkbox" id="checkbox1" name="starter"
-                                               @if($member->has_starter===1)
+                                        <input type="checkbox" id="checkbox1" name="pvpstarter"
+                                               @if($member->has_pvp_starter===1)
+                                               checked
+                                               @endif
+                                               value="1"
+                                               class="form-check-input">Check for Yes
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label class=" form-control-label">PVE Starter Pack</label></div>
+                        <div class="col col-md-9">
+                            <div class="form-check">
+                                <div class="checkbox">
+                                    <label for="checkbox1" class="form-check-label ">
+                                        <input type="checkbox" id="checkbox1" name="pvestarter"
+                                               @if($member->has_pve_starter===1)
                                                checked
                                                @endif
                                                value="1"
