@@ -160,14 +160,16 @@ class UserController extends Controller
         //deduct from bank
         $bank->balance -= $request->gemamount;
         $bank->save();
-        //insert into transactions
-        Bank_transaction::create([
-            'transaction_amount' => $request->gemamount,
-            'payer_id' => '0',
-            'receiver_id' => $member->id,
-            'reason' => 'Bank Payment',
-            'product_id' => null,
-        ]);
+
+        if($request->gemamount > 0){ //insert into transactions
+            Bank_transaction::create([
+                'transaction_amount' => $request->gemamount,
+                'payer_id' => '0',
+                'receiver_id' => $member->id,
+                'reason' => 'Bank Payment',
+                'product_id' => null,
+            ]); }
+
 
         //get and request all the perms and roles
         $member->role = request('role');
