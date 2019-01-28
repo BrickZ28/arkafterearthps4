@@ -44,7 +44,7 @@
                         <th scope="col">Users Role</th>
                         <th scope="col">Has PVP Starter</th>
                         <th scope="col">Has PVE Starter</th>
-                        <th scope="col">Highest Level Kit</th>
+                        {{--<th scope="col">Highest Level Kit</th>--}}
                         <th scope="col">Highest PVP Level Kit</th>
                         <th scope="col">Highest PVE Level Kit</th>
                         <th scope="col">Update User</th>
@@ -70,7 +70,7 @@
                             @else
                                 <td>No</td>
                             @endif
-                            <td>{{$member->level_kit}}</td>
+                           {{-- <td>{{$member->level_kit}}</td>--}}
                             <td>{{$member->pvp_level_kit}}</td>
                             <td>{{$member->pve_level_kit}}</td>
                             <td>

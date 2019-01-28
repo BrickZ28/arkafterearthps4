@@ -209,7 +209,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    {{--<div class="row form-group">
                         <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select Level Kit</label></div>
                         <div class="col-12 col-md-9">
                             <select name="levelKit" id="selectLg" class="form-control-lg form-control">
@@ -224,7 +224,7 @@
                             </select>
                         </div>
 
-                    </div>
+                    </div>--}}
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Remove Permission</label></div>
                         <div class="col-12 col-md-9">
