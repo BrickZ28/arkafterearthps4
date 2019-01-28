@@ -10,7 +10,7 @@ class BankTransactionController extends Controller
 {
     public function index(){
 
-        $transactions = Bank_transaction::with('payer', 'receiver')->paginate(10);
+        $transactions = Bank_transaction::with('payer', 'receiver')->orderBy('id', 'desc')->paginate(10);
 
         return view('bank.transactions', compact('transactions'));
     }
