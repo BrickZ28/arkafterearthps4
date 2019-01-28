@@ -151,7 +151,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">PVP Starter Pack</label></div>
-                        <div class="col col-md-9">
+                        <div class="col col-md-3">
                             <div class="form-check">
                                 <div class="checkbox">
                                     <label for="checkbox1" class="form-check-label ">
@@ -165,10 +165,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select PVP Level Kit</label></div>
+                        <div class="col-12 col-md-3">
+                            <select name="pvplevelKit" id="selectLg" class="form-control-lg form-control">
+                                @if($member->pvp_level_kit !== NULL)
+                                    <option value="{{$member->pvp_level_kit}}">{{$member->pvp_level_kit}}</option>
+                                @else
+                                    <option value="">Select One</option>
+                                @endif
+                                <option value="40">40</option>
+                                <option value="80">80</option>
+                                <option value="120">120</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">PVE Starter Pack</label></div>
-                        <div class="col col-md-9">
+                        <div class="col col-md-3">
                             <div class="form-check">
                                 <div class="checkbox">
                                     <label for="checkbox1" class="form-check-label ">
@@ -181,6 +194,19 @@
                                     </label>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select PVE Level Kit</label></div>
+                        <div class="col-12 col-md-3">
+                            <select name="pvelevelKit" id="selectLg" class="form-control-lg form-control">
+                                @if($member->pve_level_kit !== NULL)
+                                    <option value="{{$member->pve_level_kit}}">{{$member->pve_level_kit}}</option>
+                                @else
+                                    <option value="">Select One</option>
+                                @endif
+                                <option value="40">40</option>
+                                <option value="80">80</option>
+                                <option value="120">120</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -197,36 +223,7 @@
                                 <option value="120">120</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select PVP Level Kit</label></div>
-                        <div class="col-12 col-md-9">
-                            <select name="pvplevelKit" id="selectLg" class="form-control-lg form-control">
-                                @if($member->pvp_level_kit !== NULL)
-                                    <option value="{{$member->pvp_level_kit}}">{{$member->pvp_level_kit}}</option>
-                                @else
-                                    <option value="">Select One</option>
-                                @endif
-                                <option value="40">40</option>
-                                <option value="80">80</option>
-                                <option value="120">120</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select PVE Level Kit</label></div>
-                        <div class="col-12 col-md-9">
-                            <select name="pvelevelKit" id="selectLg" class="form-control-lg form-control">
-                                @if($member->pve_level_kit !== NULL)
-                                    <option value="{{$member->pve_level_kit}}">{{$member->pve_level_kit}}</option>
-                                @else
-                                    <option value="">Select One</option>
-                                @endif
-                                <option value="40">40</option>
-                                <option value="80">80</option>
-                                <option value="120">120</option>
-                            </select>
-                        </div>
+
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Remove Permission</label></div>
