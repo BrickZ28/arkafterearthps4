@@ -33,6 +33,7 @@ class SendPin extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.sendpin');
+        return $this->markdown('emails.sendpin')
+            ->subject('Gate and Pin');
     }
 }
