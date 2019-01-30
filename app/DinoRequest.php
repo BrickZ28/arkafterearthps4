@@ -14,7 +14,8 @@ class DinoRequest extends Model
         return $this->belongsTo('App\Dino','dino_id')->withDefault([
             'level' => 'NA',
             'details'=> 'NA',
-            'name' => 'REMOVED'
+            'name' => 'REMOVED',
+            'id' => 'NA'
         ]);
     }
 
