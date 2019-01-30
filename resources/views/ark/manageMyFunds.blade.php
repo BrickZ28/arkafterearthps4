@@ -30,7 +30,7 @@
                     <tr>
                         <th scope="col">My Balance</th>
                         <th scope="col">Current Interest Rate</th>
-                        <th scope="col">Current Interest Earned <span class="badge badge-info">(paid weekly)</span></th>
+                        <th scope="col">Projected Interest Earned <span class="badge badge-info">(Fridays @ 12:00a.m. EST)</span></th>
                     </tr>
                     </thead>
                     <tbody>
