@@ -15,7 +15,7 @@
                     <li class="nav-item"> <a class="nav-link" href="/register">Register</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="/login">Login</a> </li>
                 @endif
-                <li class="nav-item"> <a href="https://www.facebook.com/ArkAfterearth/"<i class="fa fa-facebook-square" aria-hidden="true"></i>
+                <li class="nav-item"> <a href="https://www.facebook.com/ArkAfterearth/"<i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
                     </a></li>
             </ul>
         </div>
