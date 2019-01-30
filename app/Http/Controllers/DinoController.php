@@ -337,6 +337,7 @@ class DinoController extends Controller
 
         $dinoRequests = DinoRequest::with('users', 'dinos')->
         where('status', '=', 'completed')->
+            orWhereDoesntHave('dinos')->
             has('dinos')->
         paginate(10);
 

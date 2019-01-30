@@ -68,6 +68,7 @@ Route::resource('dinos', 'DinoController');
 Route::resource('exchangeRates', 'ExchangeRateController');
 Route::resource('bank', 'BankController');
 Route::resource('transactions', 'BankTransactionController');
+Route::resource('gates', 'GateController');
 
 
 Auth::routes(['verify' => true]);

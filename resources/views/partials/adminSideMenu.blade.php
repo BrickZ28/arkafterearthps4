@@ -15,7 +15,7 @@
                     <a href="/userhome"> <i class="menu-icon fas fa-home"></i>Ark Home </a>
                 </li>
                 @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
-                <h3 class="menu-title">Permission Management</h3><!-- /.menu-title -->
+                <h3 class="menu-title">Admin Menu</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-user"></i>User Management</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -47,6 +47,12 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fas fa-dollar-sign"></i><a href="/bank">Bank Info</a></li>
                             <li><i class="fas fa-dollar-sign"></i><a href="/transactions">Bank Transactions</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>Gate Management</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fas fa-dollar-sign"></i><a href="/gates">Gate Info</a></li>
                         </ul>
                     </li>
                @endif
@@ -113,8 +119,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-people-carry"></i>My Management</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fas fa-list-ul"></i><a href="/manageMyFunds">My Funds</a></li>
-                       {{-- <li><i class="fas fa-list-ul"></i><a href="/myTransactions">My Transactions
-                            </a></li>--}}
+                        <li><i class="fas fa-list-ul"></i><a href="/myTransactions">My Transactions
+                            </a></li>
                     @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                         @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                         <li><i class="menu-icon fas fa-plus-circle"></i><a href="charts-chartjs.html">Add member</a></li>

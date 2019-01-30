@@ -333,9 +333,19 @@ class UserController extends Controller
 
         //$earns = User::with('transactionspay')->paginate(10);
 
-        $earns = \DB::table('bank_transactions')
-            ->leftJoin('users', 'payer_id', '=', 'users.user_id')
-            ->get();
+       /* $earns = \DB::table('users')
+           ->join('bank_transactions', 'users.id', '=', 'bank_transactions.payer_id')
+           ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.product_id', 'bank_transactions.reason')
+            ->where('receiver_id', '=', '3')
+            ->get()
+            ;*/
+
+       /*$earns = \DB::select(\DB::raw("select `users`.`name`, `bank_transactions`.`id`, `bank_transactions`.`transaction_amount`,
+`bank_transactions`.`product_id`, `bank_transactions`.`reason` 
+from `users` 
+inner join `bank_transactions` 
+on `users`.`id` = `bank_transactions`.`payer_id` 
+where `bank_transactions`.`receiver_id` =  '3'"));*/
 
 
         //dd($transactions);

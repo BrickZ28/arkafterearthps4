@@ -36,16 +36,16 @@
                     </thead>
                     <tbody>
                     @foreach($earns as $earn){{--{{dd($earn->transactionspay)}}--}}
-                        @foreach($earn->transactionspay as $earned)
+                    {{--{{dd($earns, $earn)}}--}}
                                <tr>
                                     <td>{{$earn->id}}</td>
-                                    <td>{{$earned->transaction_amount}}</td>
+                                    <td>{{$earn->id}}</td>
                                     <td>PAYER</td>
                                     <td>ID</td>
-                                    <td>{{$earned->reason}}</td>
-                                    <td>{{$earn->created_at->format('d M Y')}}</td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
-                            @endforeach
+
                     @endforeach
                     </tbody>
                 </table>

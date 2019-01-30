@@ -15,7 +15,6 @@ class DinoRequest extends Model
             'level' => 'NA',
             'details'=> 'NA',
             'name' => 'REMOVED',
-            'id' => 'NA'
         ]);
     }
 
