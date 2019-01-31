@@ -15,8 +15,9 @@
 ![See attached]({{asset('/img/pvePikUp.jpg')}})
     @endif
     @if($style === 'PVP')
+
 To claim this, you can travel to Viking Bay 2, by the Community Center (CC) on Ragnarok, Do Not fly by, or try to enter the (CC) When it is
-**"Armed"** You and your Tame will Die. This is your **"WARNING"** we will not reimburse you for your loss.
+**"Armed"** You and your Tame will Die. This is your  **"WARNING"** we will not reimburse you for your loss.
 
         Vikings bay 2 (20 , 32)
 ![See attached]({{asset('/img/pvpPikUp.jpg')}})
