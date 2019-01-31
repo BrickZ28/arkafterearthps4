@@ -372,9 +372,16 @@ class UserController extends Controller
 
     public function myTransactions(){
 
-        //$user = User::find(Auth::user()->id)->first();
+        /*$earns = User::find(1)->transactionpay;*/
 
-        //$earns = User::with('transactionspay')->paginate(10);
+       // $earns = User::with('transactionspay')->paginate(10);
+
+        $earns = Bank_transaction::with('receiver')
+            ->where('receiver_id', '=', Auth::id())
+            ->paginate(10);
+        /*dd($earns);*/
+
+       // $earns = User::with('transactionspay')->paginate(10);
 
        /* $earns = \DB::table('users')
            ->join('bank_transactions', 'users.id', '=', 'bank_transactions.payer_id')

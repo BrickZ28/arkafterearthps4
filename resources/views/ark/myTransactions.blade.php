@@ -35,12 +35,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($earns as $earn){{--{{dd($earn->transactionspay)}}--}}
-                    {{--{{dd($earns, $earn)}}--}}
+                    @foreach($earns as $earn)
+                        {{--{{dd($earns)}}--}}
+                        {{--{{dd($earns, $earn)}}--}}
                                <tr>
                                     <td>{{$earn->id}}</td>
-                                    <td>{{$earn->id}}</td>
-                                    <td>PAYER</td>
+                                    <td>{{$earn->transaction_amount}}</td>
+                                    <td>{{$earn->payer['name']}}</td>
                                     <td>ID</td>
                                     <td></td>
                                     <td></td>
@@ -49,7 +50,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                    {{$earns->links()}}
+                {{$earns->links()}}
             </div>
         </div>
     </div>

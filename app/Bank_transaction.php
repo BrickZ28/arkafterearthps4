@@ -10,9 +10,9 @@ class Bank_transaction extends Model
     protected $guarded = [];
 
     public function payer(){
-        return $this->belongsTo('App\User', 'payer_id');
+        return $this->hasOne('App\User', 'id');
     }
     public function receiver(){
-        return $this->belongsTo('App\User', 'receiver_id');
+        return $this->hasOne('App\User', 'id');
     }
 }
