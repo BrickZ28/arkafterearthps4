@@ -49,12 +49,13 @@
                             <li><i class="fas fa-dollar-sign"></i><a href="/transactions">Bank Transactions</a></li>
                         </ul>
                     </li>
-                   {{-- <li class="menu-item-has-children dropdown">
+                    <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>Gate Management</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fas fa-dollar-sign"></i><a href="/gates">Gate Info</a></li>
+                            <li><i class="fas fa-dollar-sign"></i><a href="/gates/create">Gate Create</a></li>
                         </ul>
-                    </li>--}}
+                    </li>
                @endif
                 <h3 class="menu-title">Store Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">

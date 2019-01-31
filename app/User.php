@@ -138,4 +138,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Bank_transaction', 'receiver_id');
     }
 
+    public function gate(){
+        return $this->hasOne('App\Gate', 'player', 'id');
+    }
+    public function gateAdmin(){
+        return $this->hasOne('App\Gate', 'admin', 'id');
+    }
+
 }

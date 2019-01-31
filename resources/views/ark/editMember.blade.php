@@ -58,10 +58,30 @@
             </div>
             <div class="card-body card-block">
                 <form action="/sendpin" method="post" enctype="multipart/form-data" class="form-horizontal">
-                    @csrf<div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Gate</label>
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select PVE Gate</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="pve" id="selectLg" class="form-control-lg form-control" >
+                                <option value="">SELECT EITHER PVP or PVE</option>
+                                @foreach($pveGates as $gate)
+                                <option value="{{$gate->id}}">{{$gate->gate}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="gate" class="form-control" required>
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        OR
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Select PVP Gate</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="pvp" id="selectLg" class="form-control-lg form-control" >
+                                <option value="">SELECT EITHER PVP or PVE</option>
+                                @foreach($pvpGates as $gate)
+                                    <option value="{{$gate->id}}">{{$gate->gate}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -70,7 +90,7 @@
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="pin" class="form-control" required>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    {{--<div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Play Style</label></div>
                         <div class="col col-md-9">
                             <div class="form-check">
@@ -86,9 +106,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                     <input name="email" type="hidden" value="{{$member->email}}">
                     <input name="name" type="hidden" value="{{$member->name}}">
+                    <input name="player" type="hidden" value="{{$member->id}}">
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit

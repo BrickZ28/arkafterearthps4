@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Dino;
 use App\DinoRequest;
+use App\Gate;
 use App\Mail\newUser;
 use App\Mail\SendPin;
 use App\Role;
 use App\Permission;
+use App\Rules\DualPins;
 use App\Rules\HasKit;
 use App\Rules\HavePermission;
 use App\Rules\InsufficientFunds;
+use App\Rules\SameGateStyle;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Validation\Rule;
@@ -69,6 +72,17 @@ class UserController extends Controller
     {
         //memeber instance with relations
         $member = User::with('roles', 'permissions')->find($id);
+        $pveGates = \DB::table('gates')
+            ->where('style', '=', 'pve')
+            ->whereNull('player')
+            ->orderBy('gate')
+            ->get();
+
+        $pvpGates = \DB::table('gates')
+            ->where('style', '=', 'pvp')
+            ->whereNull('player')
+            ->orderBy('gate')
+            ->get();
 
         //gets the list of perms the user doesnt have
         $noPerms = \DB::table('permissions')
@@ -84,7 +98,7 @@ class UserController extends Controller
         $roles = Role::all();
         $permissions = Permission::all();
 
-        return view('ark.editMember', compact('member', 'roles', 'permissions', 'noPerms'));
+        return view('ark.editMember', compact('member', 'roles', 'permissions', 'noPerms', 'pvpGates', 'pveGates'));
     }
 
     /**
@@ -222,7 +236,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
         $user =User::find($id);
         \DB::table('dino_requests')->
             where('user_id', '=', $id)->delete();
@@ -236,11 +249,41 @@ class UserController extends Controller
     public function sendpin(Request $request){
 
         request()->validate([
-            'style' => ['required']
-        ]);
+            'pin' => 'nullable|integer|unique:gates,pin|max:9999|min:0000',
+            ]);
 
-         \Mail::to($request->email)->send( new SendPin($request->pin, $request->gate, $request->style));
-         return redirect('/manageUser')->with('success', 'Pin and gate Sent to ' . $request->name . ' at ' . $request->email);
+        if (\request('pve') > 0 && \request('pvp') > 0){
+            request()->validate([
+                'pvp' => [ new DualPins()]
+            ]);
+        }
+        if (\request('pve') > 0){
+            $gate = Gate::find(request('pve'));
+            $gate->pin = request('pin');
+            $gate->admin = \Auth::user()->id;
+            $gate->player = \request('player');
+            $door = $gate->gate;
+            $pin = $request->pin;
+            $style = 'PVE';
+                $gate->save();
+
+            \Mail::to($request->email)->send( new SendPin($request->pin, $door, $request->style));
+        }
+        if (\request('pvp') > 0){
+            $gate = Gate::find(request('pvp'));
+            $gate->pin = request('pin');
+            $gate->admin = \Auth::user()->id;
+            $gate->player = \request('player');
+            $door = $gate->gate;
+            $pin = $request->pin;
+            $style = 'PVP';
+            $gate->save();
+
+
+            \Mail::to($request->email)->send( new SendPin($request->pin, $door, $request->style));
+        }
+
+        return redirect('/manageUser')->with('success',  $style . ' Gate ' . $door . ' with pin ' . $pin . ' sent to ' . $request->name . ' at ' . $request->email);
     }
 
     public function fundsManage(){
