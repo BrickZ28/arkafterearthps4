@@ -34,7 +34,7 @@
                         <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Gate Number</label></div>
                         <div class="col col-sm-6"><input type="text" id="input-normal" name="gate" placeholder="Gate Number" class="form-control" value="{{old('gate')}}" required></div>
                     </div><div class="row form-group">
-                        <div class="col col-sm-5"><label for="selectLg" class=" form-control-label">Dino Style</label></div>
+                        <div class="col col-sm-5"><label for="selectLg" class=" form-control-label">Play Style</label></div>
                         <div class="col col-sm-6">
                             <select name="style" id="selectLg" class="form-control-lg form-control" required>
                                 <option value="{{ old('style', '') }}">{{ old('style', 'Select One') }}</option>
