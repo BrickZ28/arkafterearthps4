@@ -7,6 +7,7 @@ use App\Rules\SameGateStyle;
 use App\User;
 use Illuminate\Http\Request;
 use function PhpParser\filesInDir;
+use Auth;
 
 class GateController extends Controller
 {
