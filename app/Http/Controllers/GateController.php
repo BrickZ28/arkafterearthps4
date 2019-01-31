@@ -62,7 +62,7 @@ class GateController extends Controller
 
         $gate = Gate::find(request('id'));
         $gate->pin = request('pin');
-        $gate->admin = \Auth::id();
+        $gate->admin = Auth::id();
         $gate->player = null;
 
         $gate->save();
