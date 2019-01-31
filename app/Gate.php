@@ -12,6 +12,6 @@ class Gate extends Model
         return $this->hasOne('App\User', 'id', 'player');
     }
     public function givenBy(){
-        return $this->hasOne('App\Yser', 'id', 'admin');
+        return $this->hasOne('App\User', 'id', 'admin');
     }
 }
