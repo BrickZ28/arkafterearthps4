@@ -267,7 +267,7 @@ class UserController extends Controller
             $style = 'PVE';
                 $gate->save();
 
-            \Mail::to($request->email)->send( new SendPin($request->pin, $door, $request->style));
+            \Mail::to($request->email)->send( new SendPin($request->pin, $door, $style));
         }
         if (\request('pvp') > 0){
             $gate = Gate::find(request('pvp'));
@@ -280,7 +280,7 @@ class UserController extends Controller
             $gate->save();
 
 
-            \Mail::to($request->email)->send( new SendPin($request->pin, $door, $request->style));
+            \Mail::to($request->email)->send( new SendPin($request->pin, $door, $style));
         }
 
         return redirect('/manageUser')->with('success',  $style . ' Gate ' . $door . ' with pin ' . $pin . ' sent to ' . $request->name . ' at ' . $request->email);

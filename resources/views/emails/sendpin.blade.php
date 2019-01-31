@@ -7,18 +7,18 @@
 
 
 
-    @if($style === 'pve')
+    @if($style === 'PVE')
         To claim this, you can travel to Viking Bay 2, by the Community Center (CC) on Ragnarok, Do Not fly by, or try to enter the (CC) When it is "Armed"  You and your Tame will Die.  This is your "WARNING" we will not reimburse  you for your loss.
 
     Pve Cords 28,49:
- ![See attached]({{asset('/img/pvePikUp.jpg')}})
+![See attached]({{asset('/img/pvePikUp.jpg')}})
     @endif
-    @if($style === 'pvp')
+    @if($style === 'PVP')
         Cords for pvp dino pick up
 
         Vikings bay 2
         20 , 32
- ![See attached]({{asset('/img/pvpPikUp.jpg')}})
+![See attached]({{asset('/img/pvpPikUp.jpg')}})
     @endif
 
 
