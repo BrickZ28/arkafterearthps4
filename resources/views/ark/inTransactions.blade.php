@@ -16,13 +16,12 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                @endif{{--
-                <form action="/searchTransactionsByUser" method="get">
+                @endif
+                {{--<form action="/searchTransactionsByUser" method="get">
                     @csrf
                     <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                     <button type="submit" class="btn btn-primary">Search Transactions</button>
-                </form>
---}}
+                </form>--}}
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -70,11 +69,11 @@
                         </button>
                     </div>
                 @endif
-                {{--<form action="/searchTransactionsFromBank" method="get">
+                <form action="/searchTransactionsFromBank" method="get">
                     @csrf
                     <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                     <button type="submit" class="btn btn-primary">Search Transactions</button>
-                </form>--}}
+                </form>
 
                 <table class="table table-striped">
                     <thead>
