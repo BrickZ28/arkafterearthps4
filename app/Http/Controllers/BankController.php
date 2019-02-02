@@ -37,7 +37,7 @@ class BankController extends Controller
             'payer_id' => '0',
             'receiver_id' => 'bank',
             'reason' => 'Bank always has money',
-            'product_id' => null,
+            'dino_id' => null,
         ]);
 
         return redirect('/bank')->with('success', 'Transaction Complete');

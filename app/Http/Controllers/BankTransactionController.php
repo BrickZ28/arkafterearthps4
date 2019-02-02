@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Bank_transaction;
 use App\User;
+use Auth;
+
 
 class BankTransactionController extends Controller
 {
@@ -26,5 +28,115 @@ class BankTransactionController extends Controller
         })->orWhere('transaction_amount', 'LIKE', '%' . $q . '%')->paginate(10);
 
         return view('bank.transactions',compact('transactions'));
+    }
+
+    public function payFromUserstransactions(){
+        $earns = \DB::table('users')
+            ->join('bank_transactions', 'users.id', '=', 'bank_transactions.payer_id')
+            ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at')
+            ->where('receiver_id', '=', Auth::id())
+            ->paginate(5);
+
+        $earnsBank = \DB::table('bank_transactions')
+            ->where('payer_id', '=', '0')
+            ->where('receiver_id', '=', Auth::id())
+            ->paginate(5);
+
+
+
+        return view('ark.inTransactions', compact('earns', 'earnsBank'));
+    }
+
+    public function payToUserstransactions(){
+        $pays = \DB::table('users')
+            ->join('bank_transactions', 'users.id', '=', 'bank_transactions.receiver_id')
+            ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at')
+            ->where('payer_id', '=', Auth::id())
+            ->paginate(5);
+
+        $bankPays = \DB::table('bank_transactions')
+            ->where('receiver_id', '=', 0)
+            ->where('payer_id', '=', Auth::id())
+            ->paginate(5);
+
+
+
+        return view('ark.outTransactions', compact('pays', 'bankPays' ));
+    }
+
+    public function searchTransactionsToBank(){
+
+        $pays = \DB::table('users')
+            ->join('bank_transactions', 'users.id', '=', 'bank_transactions.receiver_id')
+            ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at')
+            ->where('payer_id', '=', Auth::id())
+            ->paginate(5);
+
+        $query=request('search_text');
+        $bankPays = \DB::table('bank_transactions')
+            ->where('receiver_id', '=', 0)
+            ->where('payer_id', '=', Auth::id())
+            ->where('bank_transactions.reason', 'LIKE', '%' . $query . '%' )
+            ->orWhere('bank_transactions.id', 'LIKE', '%' . $query . '%' )
+            ->paginate(5);
+
+        return view('ark.outTransactions', compact('pays', 'bankPays' ));
+
+    }
+
+    public function searchTransactionsByUser()
+    {
+        $query=request('search_text');
+        $earns = \DB::table('users')
+            ->join('bank_transactions', 'users.id', '=', 'bank_transactions.payer_id')
+            ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at')
+            ->where('receiver_id', '=', Auth::id())
+            ->where('users.name', 'LIKE', '%' . $query . '%' )
+            ->orWhere('bank_transactions.id', 'LIKE', '%' . $query . '%' )
+            ->paginate(5);
+
+        $earnsBank = \DB::table('bank_transactions')
+            ->where('payer_id', '=', '0')
+            ->where('receiver_id', '=', Auth::id())
+            ->paginate(5);
+
+        return view('ark.inTransactions',compact('earns', 'earnsBank'));
+    }
+
+    public function searchTransactionsFromBank()
+    {
+
+        $earns = \DB::table('users')
+            ->join('bank_transactions', 'users.id', '=', 'bank_transactions.payer_id')
+            ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at')
+            ->where('receiver_id', '=', Auth::id())
+            ->paginate(5);
+
+
+        $earnsBank = \DB::table('bank_transactions')
+            ->where('payer_id', '=', '0')
+            ->where('receiver_id', '=', Auth::id())
+            ->where(function ($q){
+                $query=request('search_text');
+                $q->where('bank_transactions.transaction_amount', 'LIKE', '%' . $query . '%' )
+                ->orWhere('bank_transactions.id', 'LIKE', '%' . $query . '%' );
+            })
+            ->paginate(5);
+
+        return view('ark.inTransactions',compact('earns', 'earnsBank'));
+    }
+
+    public function searchTransactionsPyUser()
+    {
+        $query=request('search_text');
+        $pays = \DB::table('users')
+            ->join('bank_transactions', 'users.id', '=', 'bank_transactions.receiver_id')
+            ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at')
+            ->where('payer_id', '=', Auth::id())
+            ->where('users.name', 'LIKE', '%' . $query . '%' )
+            ->orWhere('bank_transactions.id', 'LIKE', '%' . $query . '%' )
+            ->paginate(5);
+
+        return view('ark.outTransactions',compact('pays'));
     }
 }

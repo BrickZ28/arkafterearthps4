@@ -377,6 +377,7 @@ class DinoController extends Controller
         $dino = DinoRequest::find($id);
         $user = User::find(Auth::user()->id);
         $bank = Bank::first();
+        $dinos = Dino::find($dino->dino_id);
 
         if($user->gem_balance < $dino->total){
             return redirect('/myRequests')->with('funds', 'You do not have enough funds in the bank');
@@ -396,7 +397,7 @@ class DinoController extends Controller
             'payer_id' => $user->id,
             'receiver_id' => 'bank',
             'reason' => 'Paid for Dino',
-            'product_id' => $dino->dino_id,
+            'dino_id' => $dinos->name,
         ]);
 
         return redirect('/myRequests')->with('success', 'You have paid for your dino');

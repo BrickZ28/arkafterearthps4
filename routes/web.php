@@ -32,38 +32,46 @@ Route::get('/ad', function () {
     return view('partials.tribespvp');
 });*/
 
+Route::get('/payFromUserstransactions', 'BankTransactionController@payFromUserstransactions');
+Route::get('/payToUserstransactions', 'BankTransactionController@payToUserstransactions');
 Route::get('/myTransactions', 'UserController@myTransactions');
 Route::get('/payForDino/{id}','DinoController@payForDino');
-Route::patch('/user/bank/transaction/{id}', 'UserController@userToBankFundsTransaction');
-Route::patch('/user/user/transaction', 'UserController@userToUserFundsTransaction');
 Route::get('/manageMyFunds', 'UserController@fundsManage');
-Route::post('/sendpin', 'UserController@sendpin');
 Route::get('/myRequests', 'DinoController@myRequests');
 Route::get('/pveDinos', 'DinoController@pveDinos');
 Route::get('/pvpDinos', 'DinoController@pvpDinos');
 Route::get('/dinoRequests/completed', 'DinoController@dinoRequestsCompleted');
-Route::delete('/users/{id}', 'UserController@destroy');
 Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');
 Route::get('/dinoRequests', 'DinoController@dinoRequests');
 Route::get('/dinoRequestView/{id}', 'DinoController@dinoRequestView');
-Route::patch('/dinoRequestEdit/{id}', 'DinoController@dinoRequestEdit');
 Route::get('/dinos/request/send/{id}', 'DinoController@requestDinoSend');
 Route::get('/userhome', 'UserHomeController@index');
 Route::get('/myProfile/{id}', 'UserHomeController@edit');
-Route::patch('/myProfile/{id}', 'UserHomeController@updateSelf');
-Route::get('/currencyConverter', 'CurrencyController@index');
 Route::get('/manageUser', 'UserController@index');
-Route::post('/converted', 'CurrencyController@show')->middleware('currency');
-Route::resource('/roles', 'RoleController');
-Route::resource('/permissions', 'PermissionController');
-Route::get('/searchMembers','UserController@search');
 Route::get('/searchToSend','UserController@searchToSend');
-Route::get('/searchTransactions','BankTransactionController@searchTransactions');
+Route::get('/searchTransactionsToBank','BankTransactionController@searchTransactionsToBank');
+Route::get('/searchTransactionsPyUser','BankTransactionController@searchTransactionsPyUser');
+Route::get('/searchTransactionsFromBank','BankTransactionController@searchTransactionsFromBank');
 Route::get('/searchDinos','DinoController@searchDino');
 Route::get('/searchDinoRequests','DinoController@searchRequest');
 Route::get('/editMember/{id}','UserController@edit');
+Route::get('/searchMembers','UserController@search');
+Route::get('/currencyConverter', 'CurrencyController@index');
+
+Route::post('/sendpin', 'UserController@sendpin');
+Route::post('/converted', 'CurrencyController@show')->middleware('currency');
+
 Route::patch('/editMember/{id}','UserController@update');
+Route::patch('/user/bank/transaction/{id}', 'UserController@userToBankFundsTransaction');
+Route::patch('/user/user/transaction', 'UserController@userToUserFundsTransaction');
+Route::patch('/dinoRequestEdit/{id}', 'DinoController@dinoRequestEdit');
+Route::patch('/myProfile/{id}', 'UserHomeController@updateSelf');
+
+Route::delete('/users/{id}', 'UserController@destroy');
+
+Route::resource('/roles', 'RoleController');
+Route::resource('/permissions', 'PermissionController');
 Route::resource('dinos', 'DinoController');
 Route::resource('exchangeRates', 'ExchangeRateController');
 Route::resource('bank', 'BankController');

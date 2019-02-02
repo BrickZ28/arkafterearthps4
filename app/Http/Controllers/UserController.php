@@ -181,7 +181,7 @@ class UserController extends Controller
                 'payer_id' => '0',
                 'receiver_id' => $member->id,
                 'reason' => 'Bank Payment',
-                'product_id' => null,
+                'dino_id' => null,
             ]); }
 
 
@@ -370,35 +370,5 @@ class UserController extends Controller
         return redirect('/manageMyFunds')->with('success', 'You have successfully sent the bank' . $request->amount . ' gems');
     }
 
-    public function myTransactions(){
 
-        /*$earns = User::find(1)->transactionpay;*/
-
-       // $earns = User::with('transactionspay')->paginate(10);
-
-        $earns = Bank_transaction::with('receiver')
-            ->where('receiver_id', '=', Auth::id())
-            ->paginate(10);
-        /*dd($earns);*/
-
-       // $earns = User::with('transactionspay')->paginate(10);
-
-       /* $earns = \DB::table('users')
-           ->join('bank_transactions', 'users.id', '=', 'bank_transactions.payer_id')
-           ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.product_id', 'bank_transactions.reason')
-            ->where('receiver_id', '=', '3')
-            ->get()
-            ;*/
-
-       /*$earns = \DB::select(\DB::raw("select `users`.`name`, `bank_transactions`.`id`, `bank_transactions`.`transaction_amount`,
-`bank_transactions`.`product_id`, `bank_transactions`.`reason` 
-from `users` 
-inner join `bank_transactions` 
-on `users`.`id` = `bank_transactions`.`payer_id` 
-where `bank_transactions`.`receiver_id` =  '3'"));*/
-
-
-        //dd($transactions);
-        return view('ark.myTransactions', compact('earns'));
-    }
 }
