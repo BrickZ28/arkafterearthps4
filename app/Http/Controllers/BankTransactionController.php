@@ -147,11 +147,6 @@ class BankTransactionController extends Controller
         $bankPays = \DB::table('bank_transactions')
             ->where('receiver_id', '=', 0)
             ->where('payer_id', '=', Auth::id())
-            ->where(function ($q){
-                $query=request('search_text');
-                $q->where('bank_transactions.transaction_amount', 'LIKE', '%' . $query . '%' )
-                    ->orWhere('bank_transactions.id', 'LIKE', '%' . $query . '%' );
-            })
             ->paginate(5);
 
         return view('ark.outTransactions',compact('pays', 'bankPays'));
