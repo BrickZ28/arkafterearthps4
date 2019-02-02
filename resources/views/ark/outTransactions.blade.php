@@ -17,11 +17,11 @@
                         </button>
                     </div>
                 @endif
-                <form action="/searchTransactionsPyUser" method="get">
+               {{-- <form action="/searchTransactionsPyUser" method="get">
                     @csrf
                     <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                     <button type="submit" class="btn btn-primary">Search Transactions</button>
-                </form>
+                </form>--}}
 
                 <table class="table table-striped">
                     <thead>
