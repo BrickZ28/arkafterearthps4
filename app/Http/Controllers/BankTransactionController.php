@@ -91,8 +91,12 @@ class BankTransactionController extends Controller
             ->join('bank_transactions', 'users.id', '=', 'bank_transactions.payer_id')
             ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at')
             ->where('receiver_id', '=', Auth::id())
-            ->where('users.name', 'LIKE', '%' . $query . '%' )
-            ->orWhere('bank_transactions.id', 'LIKE', '%' . $query . '%' )
+            ->where(function ($q){
+                $query=request('search_text');
+                $q->where('users.name', 'LIKE', '%' . $query . '%' )
+                    ->orWhere('bank_transactions.id', 'LIKE', '%' . $query . '%' )
+                ;
+            })
             ->paginate(5);
 
         $earnsBank = \DB::table('bank_transactions')
