@@ -330,7 +330,7 @@ class UserController extends Controller
             'payer_id' => $payer->id,
             'receiver_id' => $receiver->id,
             'reason' => $request->reason,
-            'product_id' => null,
+            'dino_id' => null,
         ]);
 
         return redirect('/manageMyFunds')->with('success', 'You have successfully sent ' . $receiver->name . ' ' .  $request->amount . ' gems');
@@ -364,7 +364,7 @@ class UserController extends Controller
             'payer_id' => $payer->id,
             'receiver_id' => 'bank',
             'reason' => $request->reason,
-            'product_id' => null,
+            'dino_id' => null,
         ]);
 
         return redirect('/manageMyFunds')->with('success', 'You have successfully sent the bank' . $request->amount . ' gems');
