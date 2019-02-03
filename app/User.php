@@ -133,10 +133,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function transactionspay(){
-        return $this->hasMany('App\Bank_transaction', 'payer_id', 'id');
+        return $this->belongsTo('App\Bank_transaction', 'id');
     }
     public function transactionsget(){
-        return $this->hasMany('App\Bank_transaction', 'receiver_id');
+        return $this->belongsTo('App\Bank_transaction', 'receiver_id');
     }
 
     public function gate(){

@@ -45,16 +45,18 @@
                             @elseif($transaction->reason === 'Bank always has money')
                                 <td>Owners</td>
                             @elseif($transaction->payer_id !== '0')
-                                <td>{{$transaction->payer['name']}}</td>
+                                <td>{{$transaction->payer}}</td>
                             @endif
+
+
                             @if($transaction->receiver_id !== 'bank')
-                                <td>{{$transaction->receiver['name']}}</td>
+                                <td>{{$transaction->receiver}}</td>
                             @else
                                 <td>Bank</td>
                             @endif
-                            <td></td>
+                            <td>{{$transaction->dino_id}}</td>
                             <td>{{$transaction->reason}}</td>
-                            <td>{{$transaction->created_at->format('d M Y')}}</td>
+                            <td>{{Carbon\Carbon::parse($transaction->created_at)->format('d M Y')}}</td>
                         </tr>
                     @endforeach
                     </tbody>

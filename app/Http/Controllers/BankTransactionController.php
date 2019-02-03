@@ -12,7 +12,14 @@ class BankTransactionController extends Controller
 {
     public function index(){
 
-        $transactions = Bank_transaction::with('payer', 'receiver')->orderBy('id', 'desc')->paginate(10);
+        $transactions = \DB::table('bank_transactions')
+            ->leftJoin('users as up', 'up.id', '=', 'payer_id')
+            ->select('bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.payer_id', 'bank_transactions.receiver_id', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at', 'up.name as payer', 'ug.name as receiver')
+            ->leftJoin('users as ug', 'ug.id', '=', 'receiver_id')
+            ->orderBy('bank_transactions.id', 'desc')
+            ->paginate(10);
+
+
 
         return view('bank.transactions', compact('transactions'));
     }
@@ -133,8 +140,8 @@ class BankTransactionController extends Controller
     public function searchTransactionsPyUser()
     {
 
-        $pays = \DB::table('users')
-            ->join('bank_transactions', 'users.id', '=', 'bank_transactions.receiver_id')
+        $pays = \DB::table('bank_transactions')
+            ->join('users', 'bank_transactions.receiver_id', '=', 'users.id')
             ->select('users.name', 'bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at')
             ->where('payer_id', '=', Auth::id())
             ->where(function ($q){
