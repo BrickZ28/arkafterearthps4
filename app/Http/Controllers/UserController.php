@@ -32,7 +32,7 @@ class UserController extends Controller
     public function index()
     {
 
-        $members = User::with('roles', 'permissions')->paginate(10);
+        $members = User::with('roles', 'permissions')->orderBy('id', 'desc')->paginate(10);
 
         /*dd($members);*/
         return view('ark.manageUser', compact('members'));
