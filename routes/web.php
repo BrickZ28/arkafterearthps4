@@ -40,6 +40,9 @@ Route::get('/manageMyFunds', 'UserController@fundsManage');
 Route::get('/myRequests', 'DinoController@myRequests');
 Route::get('/pveDinos', 'DinoController@pveDinos');
 Route::get('/pvpDinos', 'DinoController@pvpDinos');
+Route::get('/pveDinos/admin', 'DinoController@pveDinosAdmin');
+Route::get('/pvpDinos/admin', 'DinoController@pvpDinosAdmin');
+Route::get('/dinos/admin', 'DinoController@dinosAdmin');
 Route::get('/dinoRequests/completed', 'DinoController@dinoRequestsCompleted');
 Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');
@@ -55,6 +58,8 @@ Route::get('/searchTransactionsToBank','BankTransactionController@searchTransact
 Route::get('/searchTransactionsPyUser','BankTransactionController@searchTransactionsPyUser');
 Route::get('/searchTransactionsFromBank','BankTransactionController@searchTransactionsFromBank');
 Route::get('/searchDinos','DinoController@searchDino');
+Route::get('/pveLimitedsearchDinos','DinoController@pveLimitedsearchDinos');
+Route::get('/pvpLimitedsearchDinos','DinoController@pvpLimitedsearchDinos');
 Route::get('/searchDinoRequests','DinoController@searchRequest');
 Route::get('/editMember/{id}','UserController@edit');
 Route::get('/searchMembers','UserController@search');

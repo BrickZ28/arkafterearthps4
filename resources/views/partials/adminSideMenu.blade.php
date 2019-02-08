@@ -56,6 +56,19 @@
                             <li><i class="fas fa-dollar-sign"></i><a href="/gates/create">Gate Create</a></li>
                         </ul>
                     </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-dollar-sign"></i>Dino Management</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            @can('PVP Dino Seller')
+                                <li><i class="fas fa-plus-circle"></i><a href="/dinos/create">Add Dino</a></li>
+                                <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Requests</a></li>
+                                <li><i class="fas fa-minus"></i></i><a href="/dinoRequests/completed">Completed Requests</a></li>
+                                <li><i class="fas fa-list-ul"></i><a href="/dinos/admin">All Dinos</a></li>
+                                <li><i class="fas fa-list-ul"></i><a href="/pveDinos/admin">PVE Inventory</a></li>
+                                <li><i class="fas fa-list-ul"></i><a href="/pvpDinos/admin">PVP Inventory</a></li>
+                            @endcan
+                        </ul>
+                    </li>
                @endif
                 <h3 class="menu-title">Store Management</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
@@ -74,11 +87,6 @@
                         <li><i class="fas fa-list-ul"></i><a href="/dinos">All Dinos</a></li>
                         <li><i class="fas fa-list-ul"></i><a href="/pveDinos">PVE Inventory</a></li>
                         <li><i class="fas fa-list-ul"></i><a href="/pvpDinos">PVP Inventory</a></li>
-                        @can('PVP Dino Seller')
-                            <li><i class="fas fa-plus-circle"></i><a href="/dinos/create">Add Dino</a></li>
-                            <li><i class="fas fa-edit"></i></i><a href="/dinoRequests">View Requests</a></li>
-                            <li><i class="fas fa-minus"></i></i><a href="/dinoRequests/completed">Completed Requests</a></li>
-                        @endcan
                         <li><i class="fas fa-minus"></i></i><a href="/myRequests/">My Requests</a></li>
                     </ul>
                 </li>

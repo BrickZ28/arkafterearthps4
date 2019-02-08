@@ -11,6 +11,8 @@
                     </div>
                 </strong>
             </div>
+
+
             <div class="card-body">
                 @if (session('success'))
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
@@ -21,12 +23,47 @@
                         </button>
                     </div>
                 @endif
+                @if(!auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
+                    @if($viewDinos === 'PVP')
+                    <form action="/pvpLimitedDearchDinos" method="get">
+                        @csrf
+                        <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
+                        <button type="submit" class="btn btn-primary">Search PVP Dinos</button>
+                    </form>
+
+                    @elseif($viewDinos  === 'PVE')
+                            <form action="/pveLimitedDearchDinos" method="get">
+                                @csrf
+                                <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
+                                <button type="submit" class="btn btn-primary">Search PVE Dinos</button>
+                            </form>
+                    @else <form action="/pveLimitedDearchDinos" method="get">
+                            @csrf
+                            <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
+                            <button type="submit" class="btn btn-primary">Search All Dinos</button>
+                        </form>
+                    @endif
+                @else
+                    @if($adminDinoSearch === 'pve')
+                            <form action="/pveLimitedsearchDinos" method="get">
+                                @csrf
+                                <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
+                                <button type="submit" class="btn btn-primary">Search All Dinos</button>
+                            </form>
+                    @elseif($adminDinoSearch === 'pvp')
+                        <form action="/pvpLimitedsearchDinos" method="get">
+                            @csrf
+                            <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
+                            <button type="submit" class="btn btn-primary">Search All Dinos</button>
+                        </form>
+                   @else
                     <form action="/searchDinos" method="get">
                     @csrf
                     <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
-                    <button type="submit" class="btn btn-primary">Search Dinos</button>
+                    <button type="submit" class="btn btn-primary">Search All Dinos</button>
                 </form>
-
+                    @endif
+                @endif
                 <table class="table table-striped">
                     <thead>
                     <tr>

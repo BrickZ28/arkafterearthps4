@@ -26,11 +26,20 @@ class DinoController extends Controller
      */
     public function index()
     {
-        //finds and list all dinos
-        $dinos = Dino::paginate(10);
-        /*dd($members);*/
+        $user = User::find(Auth::id());
 
-        return view('ark.dinos', compact('dinos'));
+
+        //finds and list all dinos
+        $dinos = \DB::table('dinos')
+        ->where('available', '=', '1')
+            ->where('price', '<=', $user->gem_balance)
+            ->where('qty', '>', '0')
+        ->paginate(10);
+        /*dd($members);*/
+        $viewDinos = '';
+        $adminDinoSearch = '';
+
+        return view('ark.dinos', compact('dinos', 'viewDinos', 'adminDinoSearch'));
     }
 
     /**
@@ -151,8 +160,9 @@ class DinoController extends Controller
     public function destroy($id)
     {
         $dino = Dino::find($id);
+        $dino->available = 0;
 
-        $dino->delete();
+        $dino->save();
 
         return redirect('/dinos');
     }
@@ -189,8 +199,19 @@ class DinoController extends Controller
         $dino->updated_by = \Auth::id();
         $dino->total = $total;
         $dinoName = request()->name;
-
         $dino->save();
+
+        $dinosNewQty = $platform->qty - 1;
+        if ($dinosNewQty < 1){
+            $platform->qty = $dinosNewQty;
+            $platform->available = 0;
+            $platform->save();
+        }
+        else{
+            $platform->qty = $dinosNewQty;
+            $platform->save();
+        }
+
         $qty = $dino->qty;
         $user = Auth::user();
         //requstoers name
@@ -218,6 +239,7 @@ class DinoController extends Controller
         }
 
         \Mail::to(\Auth::user()->email)->later($when, new DinoRequested($user, $total, $dinoName, $qty));
+
 
 
         return redirect('/dinos')->with('success', request()->name . ' request submitted.  ' . 'Amount DUE: ' . $total . ' Gems');
@@ -316,8 +338,31 @@ class DinoController extends Controller
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
             orWhere('platform', 'LIKE', '%' . $query . '%')->
             paginate(10);
+        $adminDinoSearch = '';
 
-        return view('ark.dinos',compact('dinos'));
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch'));
+    }
+
+    public function pveLimitedsearchDinos(){
+        $query=request('search_text');
+
+        $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
+        where('platform', '=', 'PVE')->
+        paginate(10);
+        $adminDinoSearch = '';
+
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch'));
+    }
+
+    public function pvpLimitedsearchDinos(){
+        $query=request('search_text');
+
+        $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
+        where('platform', '=', 'PVP')->
+        paginate(10);
+        $adminDinoSearch = '';
+
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch'));
     }
 
     public function searchRequest()
@@ -348,20 +393,63 @@ class DinoController extends Controller
 
     public function pveDinos()
     {
-        $dinos = \DB::table('dinos')->
-            where('platform', '=', 'pve')->
-            paginate(10);
+        $user = User::find(Auth::id());
 
-        return view('ark.pveDinos', compact('dinos'));
+        $dinos = \DB::table('dinos')->
+            where('platform', '=', 'pve')
+            ->where('price', '<=', $user->gem_balance)
+            ->where('qty', '>', '0')
+            ->paginate(10);
+
+        $viewDinos = 'PVE';
+        $adminDinoSearch = '';
+
+        return view('ark.pveDinos', compact('dinos', 'viewDinos', 'adminDinoSearch'));
+    }
+
+    public function pveDinosAdmin(){
+        $dinos = \DB::table('dinos')->
+        where('platform', '=', 'pve')
+            ->paginate(10);
+
+        $adminDinoSearch = 'pve';
+
+        return view('ark.dinos', compact('dinos', 'adminDinoSearch'));
+
+    }
+
+    public function pvpDinosAdmin(){
+        $dinos = \DB::table('dinos')->
+        where('platform', '=', 'pvp')
+            ->paginate(10);
+
+        $adminDinoSearch = 'pvp';
+
+        return view('ark.dinos', compact('dinos', 'adminDinoSearch'));
+
+    }
+
+    public function dinosAdmin(){
+        $dinos = Dino::paginate(10);
+        $adminDinoSearch = '';
+
+        return view('ark.dinos', compact('dinos', 'adminDinoSearch'));
+
     }
 
     public function pvpDinos()
     {
-        $dinos = \DB::table('dinos')->
-        where('platform', '=', 'pvp')->
-        paginate(10);
+        $user = User::find(Auth::id());
 
-        return view('ark.pvpDinos', compact('dinos'));
+        $dinos = \DB::table('dinos')->
+        where('platform', '=', 'pvp')
+            ->where('price', '<=', $user->gem_balance)
+            ->where('qty', '>', '0')
+        ->paginate(10);
+
+        $viewDinos = 'PVP';
+
+        return view('ark.pvpDinos', compact('dinos', 'viewDinos'));
     }
 
     public function myRequests(){
@@ -399,6 +487,17 @@ class DinoController extends Controller
             'reason' => 'Paid for Dino',
             'dino_id' => $dinos->name,
         ]);
+
+        $dinosNewQty = $dinos->qty - 1;
+
+        if ($dinosNewQty < 1){
+            $dinos->available = 0;
+            $dinos->save();
+        }
+        else{
+            $dinos->qty = $dinosNewQty;
+            $dinos->save();
+        }
 
         return redirect('/myRequests')->with('success', 'You have paid for your dino');
     }
