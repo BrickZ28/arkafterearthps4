@@ -381,7 +381,9 @@ class DinoController extends Controller
             $query->where('name', 'like', '%'.$q.'%');
         })->orWhereHas('dinos', function($query) use($q) {
             $query->where('name', 'like', '%'.$q.'%');
-        })->orWhere('status', 'LIKE', '%' . $q . '%')->paginate(10);
+        })->orWhere('status', 'LIKE', '%' . $q . '%')->
+             where('qty', '>', 0)->
+             where('available', '=', 1)->->paginate(10);
 
         return view('ark.dinoRequests',compact('dinoRequests'));
     }
