@@ -70,9 +70,15 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Dino Quantity</label>
-                        </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="qty" value="{{$dino->qty}}" class="form-control" required>
+                        <div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="qty" id="select" class="form-control">
+                                <option value="">Please select</option>
+                                    @while($count <= $dino->qty)
+                                    <option value="{{$count}}">{{$count}}</option>
+                                        {{$count++}}
+                                @endwhile
+                            </select>
                         </div>
                     </div>
                     <div class="row form-group">

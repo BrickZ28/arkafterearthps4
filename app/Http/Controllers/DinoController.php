@@ -172,7 +172,9 @@ class DinoController extends Controller
         //look up the specified dino request
         $dino = Dino::find(request('id'));
 
-        return view('ark.dinoRequest', compact('dino'));
+        $count = 1;
+
+        return view('ark.dinoRequest', compact('dino', 'count'));
     }
 
     public function requestDinoSend(Request $request)
