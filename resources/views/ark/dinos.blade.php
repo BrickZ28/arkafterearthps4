@@ -32,12 +32,12 @@
                     </form>
 
                     @elseif($viewDinos  === 'PVE')
-                            <form action="/pveLimitedDearchDinos" method="get">
+                            <form action="/pveLimitedsearchDinos" method="get">
                                 @csrf
                                 <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                                 <button type="submit" class="btn btn-primary">Search PVE Dinos</button>
                             </form>
-                    @else <form action="/pveLimitedDearchDinos" method="get">
+                    @else <form action="/pveLimitedsearchDinos" method="get">
                             @csrf
                             <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                             <button type="submit" class="btn btn-primary">Search All Dinos</button>
@@ -45,19 +45,19 @@
                     @endif
                 @else
                     @if($adminDinoSearch === 'pve')
-                            <form action="/pveLimitedsearchDinos" method="get">
+                            <form action="/pveLimitedsearchDinosAdmin" method="get">
                                 @csrf
                                 <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                                 <button type="submit" class="btn btn-primary">Search All Dinos</button>
                             </form>
                     @elseif($adminDinoSearch === 'pvp')
-                        <form action="/pvpLimitedsearchDinos" method="get">
+                        <form action="/pvpLimitedsearchDinosAdmin" method="get">
                             @csrf
                             <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                             <button type="submit" class="btn btn-primary">Search All Dinos</button>
                         </form>
                    @else
-                    <form action="/searchDinos" method="get">
+                    <form action="/searchDinosAdmin" method="get">
                     @csrf
                     <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                     <button type="submit" class="btn btn-primary">Search All Dinos</button>

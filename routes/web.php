@@ -58,8 +58,11 @@ Route::get('/searchTransactionsToBank','BankTransactionController@searchTransact
 Route::get('/searchTransactionsPyUser','BankTransactionController@searchTransactionsPyUser');
 Route::get('/searchTransactionsFromBank','BankTransactionController@searchTransactionsFromBank');
 Route::get('/searchDinos','DinoController@searchDino');
+Route::get('/searchDinosAdmin','DinoController@searchDinoAdmin');
 Route::get('/pveLimitedsearchDinos','DinoController@pveLimitedsearchDinos');
+Route::get('/pveLimitedsearchDinosAdmin','DinoController@pveLimitedsearchDinosAdmin');
 Route::get('/pvpLimitedsearchDinos','DinoController@pvpLimitedsearchDinos');
+Route::get('/pvpLimitedsearchDinosAdmin','DinoController@pvpLimitedsearchDinosAdmin');
 Route::get('/searchDinoRequests','DinoController@searchRequest');
 Route::get('/editMember/{id}','UserController@edit');
 Route::get('/searchMembers','UserController@search');

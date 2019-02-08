@@ -335,32 +335,82 @@ class DinoController extends Controller
 
     public function searchDino()
     {
+        $user = User::find(Auth::id());
+
         $query=request('search_text');
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
-            orWhere('platform', 'LIKE', '%' . $query . '%')->
+            where('price', '<='. $user->gem_balance)->
             where('qty', '>', 0)->
             where('available', '=', 1)->
             paginate(10);
         $adminDinoSearch = '';
+        $viewDinos = '';
 
-        return view('ark.dinos',compact('dinos', 'adminDinoSearch'));
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
     }
 
-    public function pveLimitedsearchDinos(){
+    public function searchDinoAdmin()
+    {
+
         $query=request('search_text');
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
+        orWhere('platform', 'LIKE', '%' . $query . '%')->
+        paginate(10);
+        $adminDinoSearch = '';
+        $viewDinos = '';
+
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
+    }
+
+    public function pveLimitedsearchDinos(){
+
+        $user = User::find(Auth::id());
+        $query=request('search_text');
+
+        $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
+        where('price', '<='. $user->gem_balance)->
         where('platform', '=', 'PVE')->
         where('qty', '>', 0)->
         where('available', '=', 1)->
         paginate(10);
         $adminDinoSearch = '';
+        $viewDinos = 'PVE';
 
-        return view('ark.dinos',compact('dinos', 'adminDinoSearch'));
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
+    }
+
+    public function pveLimitedsearchDinosAdmin(){
+
+
+        $query=request('search_text');
+
+        $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
+
+        where('platform', '=', 'PVE')->
+
+        paginate(10);
+        $adminDinoSearch = '';
+        $viewDinos = 'PVE';
+
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
     }
 
     public function pvpLimitedsearchDinos(){
+        $query=request('search_text');
+
+        $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
+        where('platform', '=', 'PVP')->
+
+        paginate(10);
+        $adminDinoSearch = '';
+        $viewDinos = 'PVP';
+
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
+    }
+
+    public function pvpLimitedsearchDinosAdmin(){
         $query=request('search_text');
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
@@ -369,8 +419,9 @@ class DinoController extends Controller
         where('available', '=', 1)->
         paginate(10);
         $adminDinoSearch = '';
+        $viewDinos = 'PVP';
 
-        return view('ark.dinos',compact('dinos', 'adminDinoSearch'));
+        return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
     }
 
     public function searchRequest()
@@ -382,8 +433,7 @@ class DinoController extends Controller
         })->orWhereHas('dinos', function($query) use($q) {
             $query->where('name', 'like', '%'.$q.'%');
         })->orWhere('status', 'LIKE', '%' . $q . '%')->
-             where('qty', '>', 0)->
-             where('available', '=', 1)->->paginate(10);
+            paginate(10);
 
         return view('ark.dinoRequests',compact('dinoRequests'));
     }
