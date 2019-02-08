@@ -339,6 +339,8 @@ class DinoController extends Controller
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
             orWhere('platform', 'LIKE', '%' . $query . '%')->
+            where('qty', '>', 0)->
+            where('available', '=', 1)->
             paginate(10);
         $adminDinoSearch = '';
 
@@ -350,6 +352,8 @@ class DinoController extends Controller
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
         where('platform', '=', 'PVE')->
+        where('qty', '>', 0)->
+        where('available', '=', 1)->
         paginate(10);
         $adminDinoSearch = '';
 
@@ -361,6 +365,8 @@ class DinoController extends Controller
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
         where('platform', '=', 'PVP')->
+        where('qty', '>', 0)->
+        where('available', '=', 1)->
         paginate(10);
         $adminDinoSearch = '';
 
