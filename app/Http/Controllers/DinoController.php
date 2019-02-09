@@ -599,4 +599,22 @@ class DinoController extends Controller
 
         return redirect('/myRequests')->with('success', 'You have paid for your dino');
     }
+
+    public function userCancellRequest($id){
+
+        $dinoRequest = DinoRequest::find($id);
+        $user = User::find($dinoRequest->user_id);
+        $dino = Dino::find($dinoRequest->dino_id);
+
+        $user->gem_balance += $dinoRequest->total;
+        $user->save();
+
+        $dino->qty += $dinoRequest->qty;
+        $dino->available = 1;
+        $dino->save();
+
+        $dinoRequest->delete();
+
+        return redirect('/dinos')->with('success', "Dino request cancelled");
+    }
 }
