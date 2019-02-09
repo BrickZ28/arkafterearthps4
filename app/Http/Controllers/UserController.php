@@ -182,6 +182,7 @@ class UserController extends Controller
                 'receiver_id' => $member->id,
                 'reason' => 'Bank Payment',
                 'dino_id' => null,
+                'admin_payer' => Auth::id(),
             ]); }
 
 
@@ -331,6 +332,7 @@ class UserController extends Controller
             'receiver_id' => $receiver->id,
             'reason' => $request->reason,
             'dino_id' => null,
+
         ]);
 
         return redirect('/manageMyFunds')->with('success', 'You have successfully sent ' . $receiver->name . ' ' .  $request->amount . ' gems');
@@ -365,6 +367,7 @@ class UserController extends Controller
             'receiver_id' => 'bank',
             'reason' => $request->reason,
             'dino_id' => null,
+
         ]);
 
         return redirect('/manageMyFunds')->with('success', 'You have successfully sent the bank' . $request->amount . ' gems');

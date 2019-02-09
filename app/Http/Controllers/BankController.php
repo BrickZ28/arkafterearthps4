@@ -38,6 +38,7 @@ class BankController extends Controller
             'receiver_id' => 'bank',
             'reason' => 'Bank always has money',
             'dino_id' => null,
+            'admin_payer' => Auth::id(),
         ]);
 
         return redirect('/bank')->with('success', 'Transaction Complete');
