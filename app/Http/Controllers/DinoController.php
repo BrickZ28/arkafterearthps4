@@ -472,9 +472,10 @@ class DinoController extends Controller
         where('platform', '=', 'pve')
             ->paginate(10);
 
+        $viewDinos = 'PVE';
         $adminDinoSearch = 'pve';
 
-        return view('ark.dinos', compact('dinos', 'adminDinoSearch'));
+        return view('ark.dinos', compact('dinos', 'adminDinoSearch', 'viewDinos'));
 
     }
 
@@ -484,8 +485,9 @@ class DinoController extends Controller
             ->paginate(10);
 
         $adminDinoSearch = 'pvp';
+        $viewDinos = 'PVP';
 
-        return view('ark.dinos', compact('dinos', 'adminDinoSearch'));
+        return view('ark.dinos', compact('dinos', 'adminDinoSearch', 'viewDinos'));
 
     }
 
