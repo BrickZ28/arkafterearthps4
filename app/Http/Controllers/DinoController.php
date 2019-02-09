@@ -494,8 +494,9 @@ class DinoController extends Controller
     public function dinosAdmin(){
         $dinos = Dino::paginate(10);
         $adminDinoSearch = '';
+        $viewDinos = '';
 
-        return view('ark.dinos', compact('dinos', 'adminDinoSearch'));
+        return view('ark.dinos', compact('dinos', 'adminDinoSearch', 'viewDinos'));
 
     }
 
