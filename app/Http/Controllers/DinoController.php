@@ -310,7 +310,7 @@ class DinoController extends Controller
                 'transaction_amount' => $dinoRequest->total,
                 'payer_id' => 0,
                 'receiver_id' => $user->id,
-                'reason' => 'Refund for Dino ' . $dinoName,
+                'reason' => 'Refund for Dino ' . $dinoName . ' for Dino Request ' . $dinoRequest->id,
                 'dino_id' => $dinoName,
                 'admin_payer' => Auth::id(),
             ]);
