@@ -306,6 +306,15 @@ class DinoController extends Controller
             $dinoRequest->updated_by = \Auth::id();
             $dinoRequest->save();
 
+            Bank_transaction::create([
+                'transaction_amount' => $dinoRequest->total,
+                'payer_id' => 0,
+                'receiver_id' => $user->id,
+                'reason' => 'Refund for Dino ' . $dinoName,
+                'dino_id' => $dinoName,
+                'admin_payer' => Auth::id(),
+            ]);
+
             return redirect('/dinoRequests')->with('success', request()->name . ' request cancelled.  ' );
         }
 
@@ -567,6 +576,7 @@ class DinoController extends Controller
             'receiver_id' => 'bank',
             'reason' => 'Paid for Dino',
             'dino_id' => $dinos->name,
+
         ]);
 
         $dinosNewQty = $dinos->qty - 1;
