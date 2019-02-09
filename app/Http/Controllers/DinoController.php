@@ -200,6 +200,7 @@ class DinoController extends Controller
         $dino->status = 'new';
         $dino->updated_by = \Auth::id();
         $dino->total = $total;
+        $dino->paid = 1;
         $dinoName = request()->name;
         $dino->save();
 
@@ -219,6 +220,12 @@ class DinoController extends Controller
         //requstoers name
         $requestor = Auth::user()->name;
         //Gets a list of pvp dino sellers for email
+
+        $player = User::find(Auth::id());
+
+        $player->gem_balance -= $total;
+        $player->save();
+
 
         if ($platform->platform === 'PVP') {
             $sellers = User::whereHas('permissions', function ($q) {

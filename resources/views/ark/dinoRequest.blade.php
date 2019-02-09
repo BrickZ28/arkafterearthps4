@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure you want to request and pay for the selected amount of {{$dino->name}}(s)?')">
                             <i class="fa fa-dot-circle-o"></i> Submit
                         </button>
                         <button type="reset" class="btn btn-danger btn-sm">
