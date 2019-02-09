@@ -109,7 +109,7 @@ class DinoController extends Controller
         $dinoName = $dino->name;
         $qty = $dinoRequests->qty;
 
-        $dinoQty = $dino->qty- $dinoRequests->qty;
+        $dinoQty = $dino->qty - $dinoRequests->qty;
 
         //update the dino qty DB cant go negatinve so we reset to 0 if its a negative number
         if($dinoQty < 1){
@@ -284,9 +284,30 @@ class DinoController extends Controller
 
     public function dinoRequestEdit($id)
     {
-        //Edit the dino request, first get model of request
+         //Edit the dino request, first get model of request
         $dinoRequest = DinoRequest::find($id);
         $dinoName = $dinoRequest->dinos->name;
+        $user = User::find($dinoRequest->user_id);
+
+        //change the status
+        $status = \request('status');
+
+        if ($status === 'cancelled'){
+            if ($dinoRequest->paid === 1){
+                $user->gem_balance += $dinoRequest->total;
+
+                $user->save();
+            }
+            $dinoRequest->dinos->qty += $dinoRequest->qty;
+            $dinoRequest->dinos->available = 1;
+
+            $dinoRequest->dinos->save();
+            $dinoRequest->status = 'cancelled';
+            $dinoRequest->updated_by = \Auth::id();
+            $dinoRequest->save();
+
+            return redirect('/dinoRequests')->with('success', request()->name . ' request cancelled.  ' );
+        }
 
         //validate the edits
         request()->validate([
@@ -296,9 +317,6 @@ class DinoController extends Controller
 
         //update the total
         $total = $this->dinoGemTotal($dinoRequest->dinos->id, request()->qty);
-
-        //change the status
-        $status = \request('status');
 
         $dinoRequest->qty = \request()->qty;
 
