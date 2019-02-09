@@ -33,6 +33,7 @@
                         <th scope="col">Item</th>
                         <th scope="col">Reason</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Admin Payer</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,6 +58,7 @@
                             <td>{{$transaction->dino_id}}</td>
                             <td>{{$transaction->reason}}</td>
                             <td>{{Carbon\Carbon::parse($transaction->created_at)->format('d M Y')}}</td>
+                            <td>{{$transaction->admin}}</td>
                         </tr>
                     @endforeach
                     </tbody>

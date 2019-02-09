@@ -14,8 +14,9 @@ class BankTransactionController extends Controller
 
         $transactions = \DB::table('bank_transactions')
             ->leftJoin('users as up', 'up.id', '=', 'payer_id')
-            ->select('bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.payer_id', 'bank_transactions.receiver_id', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at', 'up.name as payer', 'ug.name as receiver')
+            ->select('bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.payer_id', 'bank_transactions.receiver_id', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at', 'up.name as payer', 'ug.name as receiver', 'admin.name as admin')
             ->leftJoin('users as ug', 'ug.id', '=', 'receiver_id')
+            ->leftJoin('users as admin', 'admin.id', '=', 'admin_payer')
             ->orderBy('bank_transactions.id', 'desc')
             ->paginate(10);
 
