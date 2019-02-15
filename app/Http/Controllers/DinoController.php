@@ -71,6 +71,9 @@ class DinoController extends Controller
             'details' => 'nullable'
 
         ]);
+
+        $adminDinoSearch = '';
+        $viewDinos = '';
         //create new Dino instance
 
 
