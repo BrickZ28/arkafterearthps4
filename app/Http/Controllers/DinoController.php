@@ -79,7 +79,7 @@ class DinoController extends Controller
 
         Dino::create($attributes);
 
-        return redirect('/dinos');
+        return redirect('/dinos', compact('adminDinoSearch', 'viewDinos'));
     }
 
     /**
