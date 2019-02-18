@@ -373,5 +373,14 @@ class UserController extends Controller
         return redirect('/manageMyFunds')->with('success', 'You have successfully sent the bank' . $request->amount . ' gems');
     }
 
+    public function banUser($id){
+
+        $user   = User::find($id);
+
+       $user->banned_at = now();
+
+       $user->save();
+
+    }
 
 }

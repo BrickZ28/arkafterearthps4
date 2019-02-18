@@ -36,8 +36,8 @@ class DinoController extends Controller
             ->where('qty', '>', '0')
         ->paginate(10);
         /*dd($members);*/
-        $viewDinos = '';
-        $adminDinoSearch = '';
+        $viewDinos = 'all';
+        $adminDinoSearch = 'all';
 
         return view('ark.dinos', compact('dinos', 'viewDinos', 'adminDinoSearch'));
     }
@@ -72,8 +72,7 @@ class DinoController extends Controller
 
         ]);
 
-        $adminDinoSearch = '';
-        $viewDinos = '';
+
         //create new Dino instance
 
 
@@ -395,7 +394,7 @@ class DinoController extends Controller
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
         orWhere('platform', 'LIKE', '%' . $query . '%')->
         paginate(10);
-        $adminDinoSearch = '';
+        $adminDinoSearch = 'all';
         $viewDinos = '';
 
         return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
@@ -530,7 +529,7 @@ class DinoController extends Controller
 
     public function dinosAdmin(){
         $dinos = Dino::paginate(10);
-        $adminDinoSearch = '';
+        $adminDinoSearch = 'all';
         $viewDinos = '';
 
         return view('ark.dinos', compact('dinos', 'adminDinoSearch', 'viewDinos'));

@@ -7,12 +7,15 @@ use App\Mail\SendWelcome;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use App\Role;
 use App\Permission;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+
 
 
     /**
@@ -35,6 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Tribe::class, 'tribe_users');
     }
+
     public function pvp()
     {
         return $this->belongsToMany(Tribe::class, 'tribe_users');
@@ -42,22 +46,20 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class,'user_roles');
+        return $this->belongsToMany(Role::class, 'user_roles');
     }
 
     public function permissions()
     {
-        return $this->belongsToMany(Permission::class,'user_permissions');
+        return $this->belongsToMany(Permission::class, 'user_permissions');
     }
 
     public function hasRole(...$roles)
     {
         // dd($roles);
 
-        foreach($roles as $role)
-        {
-            if($this->roles->contains('name',$role))
-            {
+        foreach ($roles as $role) {
+            if ($this->roles->contains('name', $role)) {
                 return true;
             }
         }
@@ -66,15 +68,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasPermission($permission)
     {
-        return $this->hasPermissionThroughRole($permission) || (bool) $this->permissions->where('name',$permission->name)->count();
+        return $this->hasPermissionThroughRole($permission) || (bool)$this->permissions->where('name', $permission->name)->count();
     }
 
     public function hasPermissionThroughRole($permission)
     {
-        foreach($permission->roles as $role)
-        {
-            if($this->roles->contains($role))
-            {
+        foreach ($permission->roles as $role) {
+            if ($this->roles->contains($role)) {
                 return true;
             }
         }
@@ -84,8 +84,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function givePermission(...$permission)
     {
         $permissions = $this->getPermissions(array_flatten($permission));
-        if($permissions === null)
-        {
+        if ($permissions === null) {
             return $this;
         }
         $this->permissions()->saveMany($permissions);
@@ -94,7 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getPermissions(array $permissions)
     {
-        return Permission::whereIn('name',$permissions)->get();
+        return Permission::whereIn('name', $permissions)->get();
     }
 
     public function removePermission(...$permission)
@@ -110,18 +109,19 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->givePermission($permissions);
     }
 
-    public function dinoRequest(){
+    public function dinoRequest()
+    {
         return $this->hasMany('App\DinoRequest', 'user_id');
     }
 
     public function markEmailAsVerified()
     {
-        $owners = User::whereHas('roles', function ($q){
+        $owners = User::whereHas('roles', function ($q) {
             $q->where('role_id', '=', '1');
         })
             ->get();
 
-        foreach($owners as $owner){
+        foreach ($owners as $owner) {
             \Mail::to($owner->email)->send(new newUser($this->name));
         }
 
@@ -132,17 +132,23 @@ class User extends Authenticatable implements MustVerifyEmail
         ])->save();
     }
 
-    public function transactionspay(){
+    public function transactionspay()
+    {
         return $this->belongsTo('App\Bank_transaction', 'id');
     }
-    public function transactionsget(){
+
+    public function transactionsget()
+    {
         return $this->belongsTo('App\Bank_transaction', 'receiver_id');
     }
 
-    public function gate(){
+    public function gate()
+    {
         return $this->hasOne('App\Gate', 'player', 'id');
     }
-    public function gateAdmin(){
+
+    public function gateAdmin()
+    {
         return $this->hasOne('App\Gate', 'admin', 'id');
     }
 

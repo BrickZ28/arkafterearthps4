@@ -72,6 +72,7 @@ Route::get('/cancelDinoRequest/{id}', 'DinoController@userCancellRequest');
 Route::post('/sendpin', 'UserController@sendpin');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 
+Route::patch('/ban/{id}','UserController@banUser');
 Route::patch('/editMember/{id}','UserController@update');
 Route::patch('/user/bank/transaction/{id}', 'UserController@userToBankFundsTransaction');
 Route::patch('/user/user/transaction', 'UserController@userToUserFundsTransaction');
