@@ -55,7 +55,7 @@ return [
             'strict' => true,
             'engine' => null,
             //local testing only below
-            /*'dump' => [ 'setDumpBinaryPath' => 'S:\wamp64\bin\mysql\mysql5.7.21\bin' ],*/
+            'dump' => [ 'setDumpBinaryPath' => 'S:\wamp64\bin\mysql\mysql5.7.21\bin' ],
         ],
 
         'pgsql' => [
