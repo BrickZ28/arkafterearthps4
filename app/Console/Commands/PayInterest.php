@@ -42,14 +42,18 @@ class PayInterest extends Command
     {
         $users = User::whereNotNull('gem_balance')->get();
         $banks_info = Bank::first();
-        $usersBal = $users[0]->gem_balance;
+       /* $usersBal = $users[0]->gem_balance;*//*
 
+        $interestEarned = ($usersBal * ($banks_info->interest_rate / 100)) ;
+        $usersBal += round($interestEarned);*/
 
         foreach($users as $user) {
+            $usersBal = $user->gem_balance;
             $interestEarned = ($usersBal * ($banks_info->interest_rate / 100)) ;
             $usersBal += round($interestEarned);
             $user->gem_balance = $usersBal;
             $user->save();
+
         }
     }
 }
