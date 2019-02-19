@@ -57,8 +57,8 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AKIAJUSBIGYOBPSMG25Q'),
-            'secret' => env('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'),
+            'key' => env('AKIAI36JKNJKGO7BE5NA'),
+            'secret' => env('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'),
             'region' => env('US East (Ohio)'),
             'bucket' => env('afterearth'),
             'url' => env(' http://afterearth.s3.amazonaws.com'),
