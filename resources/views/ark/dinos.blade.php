@@ -104,7 +104,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                    {{ $dinos->links() }}
+                    {{ $dinos->appends(request()->query())->links() }}
             </div>
 
         </div>

@@ -380,6 +380,7 @@ class DinoController extends Controller
             where('qty', '>', 0)->
             where('available', '=', 1)->
         paginate(10);
+
         $adminDinoSearch = '';
         $viewDinos = 'all';
 
@@ -394,6 +395,7 @@ class DinoController extends Controller
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
         orWhere('platform', 'LIKE', '%' . $query . '%')->
         paginate(10);
+
         $adminDinoSearch = 'all';
         $viewDinos = '';
 
