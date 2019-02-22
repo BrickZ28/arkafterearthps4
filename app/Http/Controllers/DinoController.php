@@ -376,12 +376,12 @@ class DinoController extends Controller
         $query=request('search_text');
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
-            where('price', '<='. $user->gem_balance)->
+            where('price', '<=', $user->gem_balance)->
             where('qty', '>', 0)->
             where('available', '=', 1)->
             paginate(10);
         $adminDinoSearch = '';
-        $viewDinos = '';
+        $viewDinos = 'all';
 
         return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
     }
@@ -400,13 +400,15 @@ class DinoController extends Controller
         return view('ark.dinos',compact('dinos', 'adminDinoSearch', 'viewDinos'));
     }
 
+
+
     public function pveLimitedsearchDinos(){
 
         $user = User::find(Auth::id());
         $query=request('search_text');
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
-        where('price', '<='. $user->gem_balance)->
+        where('price', '<=', $user->gem_balance)->
         where('platform', '=', 'PVE')->
         where('qty', '>', 0)->
         where('available', '=', 1)->
@@ -434,11 +436,14 @@ class DinoController extends Controller
     }
 
     public function pvpLimitedsearchDinos(){
+        $user = User::find(Auth::id());
         $query=request('search_text');
 
         $dinos = Dino::where('name', 'LIKE', '%' . $query . '%')->
+        where('price', '<=', $user->gem_balance)->
         where('platform', '=', 'PVP')->
-
+        where('qty', '>', 0)->
+        where('available', '=', 1)->
         paginate(10);
         $adminDinoSearch = '';
         $viewDinos = 'PVP';
@@ -500,7 +505,7 @@ class DinoController extends Controller
         $viewDinos = 'PVE';
         $adminDinoSearch = '';
 
-        return view('ark.pveDinos', compact('dinos', 'viewDinos', 'adminDinoSearch'));
+        return view('ark.dinos', compact('dinos', 'viewDinos', 'adminDinoSearch'));
     }
 
     public function pveDinosAdmin(){
@@ -508,7 +513,7 @@ class DinoController extends Controller
         where('platform', '=', 'pve')
             ->paginate(10);
 
-        $viewDinos = 'PVE';
+        $viewDinos = '';
         $adminDinoSearch = 'pve';
 
         return view('ark.dinos', compact('dinos', 'adminDinoSearch', 'viewDinos'));
@@ -521,7 +526,7 @@ class DinoController extends Controller
             ->paginate(10);
 
         $adminDinoSearch = 'pvp';
-        $viewDinos = 'PVP';
+        $viewDinos = '';
 
         return view('ark.dinos', compact('dinos', 'adminDinoSearch', 'viewDinos'));
 
@@ -548,7 +553,7 @@ class DinoController extends Controller
 
         $viewDinos = 'PVP';
 
-        return view('ark.pvpDinos', compact('dinos', 'viewDinos'));
+        return view('ark.dinos', compact('dinos', 'viewDinos'));
     }
 
     public function myRequests(){

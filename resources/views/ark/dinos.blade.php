@@ -24,7 +24,7 @@
 
                 @if(!auth()->user()->hasRole('Owner') || !auth()->user()->hasRole('Admin'))
                     @if($viewDinos === 'PVP')
-                    <form action="/pvpLimitedDearchDinos" method="get">
+                    <form action="/pvpLimitedsearchDinos" method="get">
                         @csrf
                         <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                         <button type="submit" class="btn btn-primary">Search PVP Dinos</button>
@@ -36,14 +36,14 @@
                                 <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                                 <button type="submit" class="btn btn-primary">Search PVE Dinos</button>
                             </form>
-                    @elseif($viewDinos  === 'PVP') <form action="/pveLimitedsearchDinos" method="get">
+                    @elseif($viewDinos  === 'all') <form action="/searchDinos" method="get">
                             @csrf
                             <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
                             <button type="submit" class="btn btn-primary">Search All Dinos</button>
                         </form>
                     @endif
-                @else
-
+                @endif
+                @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                     @if($adminDinoSearch === 'pve')
                             <form action="/pveLimitedsearchDinosAdmin" method="get">
                                 @csrf

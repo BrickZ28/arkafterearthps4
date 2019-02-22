@@ -81,6 +81,7 @@
                         @endif
                     </ul>
                 </li>
+                @if(auth()->user()->hasRole('Tribe member') || auth()->user()->hasRole('Tribe Leader'))
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fab fa-phoenix-framework"></i>Dinos</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -90,6 +91,7 @@
                         <li><i class="fas fa-minus"></i></i><a href="/myRequests/">My Requests</a></li>
                     </ul>
                 </li>
+                @endif
                 {{--<li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-sort-amount-down"></i>Items</a>
                     <ul class="sub-menu children dropdown-menu">
