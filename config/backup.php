@@ -8,7 +8,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => env('afterearth', 'afterearth-backup'),
+        'name' => env('afterearth', 'spaces'),
 
         'source' => [
 
@@ -85,7 +85,7 @@ return [
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local',
+                'spaces',
 
             ],
         ],
@@ -146,8 +146,8 @@ return [
      */
     'monitor_backups' => [
         [
-            'name' => env('APP_NAME', 'afterearth-backup'),
-            'disks' => ['local'],
+            'name' => env('APP_NAME', 'spaces'),
+            'disks' => ['spaces'],
             'health_checks' => [
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumStorageInMegabytes::class => 5000,

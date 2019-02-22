@@ -57,11 +57,19 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'AKIAI36JKNJKGO7BE5NA',
-            'secret' => '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',
-            'region' => 'us-east-2',
-            'bucket' => 'afterearth',
-            'url' => 'http://afterearth.s3.amazonaws.com',
+            'key'    => env('S3_KEY'),
+            'secret' => env('S3_SECRET'),
+            'region' => env('S3_REGION'),
+            'bucket' => env('S3_BUCKET'),
+            'url'    => env('S3_ENDPOINT'),
+        ],
+        'spaces' => [
+            'driver' => 's3',
+            'key'    => env('DO_KEY'),
+            'secret' => env('DO_SECRET'),
+            'region' => env('DO_REGION'),
+            'bucket' => env('DO_BUCKET'),
+            'url'    => env('DO_ENDPOINT'),
         ],
 
     ],
