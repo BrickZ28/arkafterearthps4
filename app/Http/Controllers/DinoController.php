@@ -379,7 +379,8 @@ class DinoController extends Controller
             where('price', '<=', $user->gem_balance)->
             where('qty', '>', 0)->
             where('available', '=', 1)->
-            paginate(10);
+        simplePaginate(10);
+        $dinos->appends(Request::get('search_text'));
         $adminDinoSearch = '';
         $viewDinos = 'all';
 

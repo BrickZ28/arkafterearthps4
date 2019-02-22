@@ -81,7 +81,7 @@
                         @endif
                     </ul>
                 </li>
-                @if(auth()->user()->hasRole('Tribe member') || auth()->user()->hasRole('Tribe Leader'))
+                @if(auth()->user()->hasRole('Tribe Member') || auth()->user()->hasRole('Tribe Leader'))
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fab fa-phoenix-framework"></i>Dinos</a>
                     <ul class="sub-menu children dropdown-menu">
