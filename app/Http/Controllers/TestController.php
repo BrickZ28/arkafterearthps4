@@ -8,7 +8,7 @@ use App\Dino;
 class TestController extends Controller
 {
     public function dinoImage(){
-        $dinos = Dino::paginate(10);
+        $dinos = Dino::orderBy('name')->paginate(10);
         $adminDinoSearch = 'all';
         $viewDinos = '';
 
