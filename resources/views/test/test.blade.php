@@ -11,7 +11,7 @@
                     </div>
                 </strong>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="position:static; height: 80%; width: 80%;>
                 @if (session('success'))
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-success">Success</span>
