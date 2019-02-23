@@ -11,7 +11,7 @@
                     </div>
                 </strong>
             </div>
-            <div class="card-body" style="position:static; height: 80%; width: 80%;>
+            <div class="card-body">
                 @if (session('success'))
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-success">Success</span>
@@ -64,7 +64,7 @@
                         </form>
                     @endif
                 @endif
-                <table class="table table-striped">
+                <table class="table table-striped"  >
                     <thead>
                     <tr>
                         <th scope="col">Dino Name</th>
@@ -82,7 +82,7 @@
                     <tbody>
                     @foreach($dinos as $dino)
                         <tr>
-                            <td>{{$dino->name}} <span><img style="width: 50%"  style="height: 20%" src="{{$dino->img}}"></span></td>
+                            <td>{{$dino->name}} <span><img style="width: 80%; max-width: 300px;" src="{{$dino->img}}"></span></td>
                             <td>{{$dino->price}}</td>
                             <td>{{$dino->qty}}</td>
                             <td>{{$dino->level}}</td>
