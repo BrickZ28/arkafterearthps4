@@ -68,6 +68,7 @@
                     <thead>
                     <tr>
                         <th scope="col">Dino Name</th>
+                        <th scope="col"></th>
                         <th scope="col">Price</th>
                         <th scope="col">In Stock</th>
                         <th scope="col">Estimated Level</th>
@@ -82,7 +83,8 @@
                     <tbody>
                     @foreach($dinos as $dino)
                         <tr>
-                            <td>{{$dino->name}} <span><img style="width: 90%; max-width: 300px;" src="{{$dino->img}}"></span></td>
+                            <td>{{$dino->name}}</td>
+                            <td><span><img src="{{$dino->img}}"></span></td>
                             <td>{{$dino->price}}</td>
                             <td>{{$dino->qty}}</td>
                             <td>{{$dino->level}}</td>
