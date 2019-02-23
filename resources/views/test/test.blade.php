@@ -82,7 +82,7 @@
                     <tbody>
                     @foreach($dinos as $dino)
                         <tr>
-                            <td>{{$dino->name}} <span><img style="width: 80%; max-width: 300px;" src="{{$dino->img}}"></span></td>
+                            <td>{{$dino->name}} <span><img style="width: 90%; max-width: 300px;" src="{{$dino->img}}"></span></td>
                             <td>{{$dino->price}}</td>
                             <td>{{$dino->qty}}</td>
                             <td>{{$dino->level}}</td>
