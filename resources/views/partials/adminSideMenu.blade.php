@@ -14,6 +14,15 @@
                 <li class="active">
                     <a href="/userhome"> <i class="menu-icon fas fa-home"></i>Ark Home </a>
                 </li>
+                @if(auth()->user()->hasRole('Owner'))
+                    <h3 class="menu-title">Test Menu</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-user"></i>Testing Shit</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fas fa-user"></i><a href="/dinoImage">Dino Images</a></li>
+                        </ul>
+                    </li>
+                @endif
                 @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                 <h3 class="menu-title">Admin Menu</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">

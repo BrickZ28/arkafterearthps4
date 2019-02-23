@@ -68,6 +68,7 @@ Route::get('/editMember/{id}','UserController@edit');
 Route::get('/searchMembers','UserController@search');
 Route::get('/currencyConverter', 'CurrencyController@index');
 Route::get('/cancelDinoRequest/{id}', 'DinoController@userCancellRequest');
+Route::get('/dinoImage', 'TestController@dinoImage');
 
 Route::post('/sendpin', 'UserController@sendpin');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
