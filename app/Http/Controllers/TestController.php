@@ -12,6 +12,6 @@ class TestController extends Controller
         $adminDinoSearch = 'all';
         $viewDinos = '';
 
-        return view('ark.dinos', compact('dinos', 'adminDinoSearch', 'viewDinos'));
+        return view('test.test', compact('dinos', 'adminDinoSearch', 'viewDinos'));
     }
 }
