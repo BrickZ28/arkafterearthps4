@@ -7,7 +7,7 @@
             <div class="card-header">
                 <strong class="card-title">Dino List
                     <div class="alert alert-danger" role="alert">
-                       You must pay for dino's directly from your account thru " My Request", in Dinos menu.
+                       Only Dinos that you can afford are shown.
                     </div>
                 </strong>
             </div>
@@ -90,7 +90,7 @@
                             <td>{{$dino->details}}</td>
                             <td>
                                 <a href="/dinos/requestDino/{{$dino->id}}">
-                                    <button type="button" class="btn btn-secondary btn-sm">Request Dino</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" >Request Dino</button>
                                 </a>
                             </td>
                             @can('PVP Dino Seller')
