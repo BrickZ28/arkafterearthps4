@@ -1,10 +1,10 @@
 @component('mail::message')
 # Thank You {{$user->name}}
 
-Your request for {{$qty}} {{$dinoName}}(s) has been received.  After payment has been made we will get to work on your dino.
+Your request for {{$qty}} {{$dinoName}}(s) has been received.
 <br>
 <br>
-As a reminder the payment amount is {{$total}}
+Thank you for your payment of {{$total}} gems.  Most orders are completed within 24 hours.  You will receive and email with pickup instructions when completed.
 
 Thanks,<br>
 {{ config('app.name') }}
