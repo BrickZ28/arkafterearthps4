@@ -4,6 +4,11 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+.dinoImg{
+	max-width: 100%;
+	height: auto;
+}
+
 body {
 	color: #5a5a5a;
 	font-family: 'Source Sans Pro', sans-serif;
