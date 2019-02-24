@@ -69,9 +69,12 @@ Route::get('/searchMembers','UserController@search');
 Route::get('/currencyConverter', 'CurrencyController@index');
 Route::get('/cancelDinoRequest/{id}', 'DinoController@userCancellRequest');
 Route::get('/dinoImage', 'TestController@dinoImage');
+Route::get('/addImagetest', 'TestController@addImagetest');
+Route::get('/addImage', 'TestController@addImage');
 
 Route::post('/sendpin', 'UserController@sendpin');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
+Route::post('/addImage', 'TestController@addImage');
 
 Route::patch('/ban/{id}','UserController@banUser');
 Route::patch('/editMember/{id}','UserController@update');
