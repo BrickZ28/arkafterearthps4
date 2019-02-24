@@ -68,7 +68,7 @@
                         <thead>
                         <tr>
                             <th scope="col">Dino Name</th>
-                            <th scope="col"></th>
+                            <th scope="col">Image</th>
                             <th scope="col">Price</th>
                             <th scope="col">In Stock</th>
                             <th scope="col">Estimated Level</th>
