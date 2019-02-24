@@ -22,7 +22,7 @@
                     </div>
                 @endif
 
-                @if(!auth()->user()->hasRole('Owner') || !auth()->user()->hasRole('Admin'))
+                @if(!auth()->user()->hasRole('Owner') && !auth()->user()->hasRole('Admin'))
                     @if($viewDinos === 'PVP')
                     <form action="/pvpLimitedsearchDinos" method="get">
                         @csrf

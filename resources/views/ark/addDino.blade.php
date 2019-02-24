@@ -19,7 +19,7 @@
                 </div>
             @endif
             <div class="card-body card-block">
-                <form action="/dinos" method="post" class="form-horizontal">
+                <form action="/dinos" method="post" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     <div class="row form-group">
                         <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Dino Name</label></div>
@@ -33,6 +33,12 @@
                         <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Quantity</label></div>
                         <div class="col col-sm-6"><input type="text" id="input-normal" name="qty" placeholder="Quantity" value="0" required class="form-control"></div>
                     </div>
+                    @if(auth()->user()->hasRole('Owner'))
+                        <div class="row form-group">
+                            <div class="col col-md-5"><label for="file-input" class=" form-control-label">File input</label></div>
+                            <div class="col-12 col-md-6"><input type="file" id="file-input" name="dinoImg" class="form-control-file"></div>
+                        </div>
+                    @endif
                     <div class="row form-group">
                         <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Estimated Level</label></div>
                         <div class="col col-sm-6"><input type="text" id="input-normal" name="level" placeholder="Estimated Level" class="form-control" required></div>
@@ -41,13 +47,9 @@
                         <div class="col col-sm-5"><label for="selectLg" class=" form-control-label">Dino Platform</label></div>
                         <div class="col col-sm-6">
                             <select name="platform" id="selectLg" class="form-control-lg form-control" required>
-
-
-
                                 <option value="{{ old('platform', '') }}">{{ old('platform', 'Select One') }}</option>
                                 <option value="PVP">PVP</option>
                                 <option value="PVE">PVE</option>
-
                             </select>
                         </div>
                     </div>

@@ -15,6 +15,7 @@
                         <th scope="col">Dino Price</th>
                         <th scope="col">Dino Quantity</th>
                         <th scope="col">Dino Platform</th>
+                        <th scope="col">Dino Image</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,7 @@
                         <td>{{$dino->price}}</td>
                         <td>{{$dino->qty}}</td>
                         <td>{{$dino->platform}}</td>
+                        <td><span><img src="{{$dino->img}}"></span></td>
                     </tr>
 
                     </tbody>
@@ -70,6 +72,16 @@
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="qty" value="{{$dino->qty}}" class="form-control" required>
                         </div>
                     </div>
+                    @if(auth()->user()->hasRole('Owner'))
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Change Dino Image</label>
+                        </div>
+                        <div class="row form-group">
+
+                            <div class="col-12 col-md-9"><input type="file" id="file-input" name="dinoImg" class="form-control-file"></div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Dino Level</label>
                         </div>

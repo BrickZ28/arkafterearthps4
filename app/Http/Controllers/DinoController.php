@@ -61,22 +61,41 @@ class DinoController extends Controller
      */
     public function store(Request $request)
     {
+
+       /* $path = $request->file('dinoImg')->store(
+            'file',
+            'spaces'
+        );*/
+
+       $oeFile = $request->file('dinoImg')->getClientOriginalName();
+        $path = $request->file('dinoImg')->storeAs(
+            'dino-images',
+            $oeFile,
+            'spaces'
+        );
+
         //add new dino to the database first we validate
-        $attributes = request()->validate([
+         request()->validate([
             'name'  => 'required',
             'price' => 'required|integer',
             'level' => 'required|integer',
             'platform' => 'required',
             'qty' => 'required',
-            'details' => 'nullable'
+            'details' => 'nullable',
 
         ]);
 
 
-        //create new Dino instance
 
-
-        Dino::create($attributes);
+        Dino::create([
+            'name'  => request('name'),
+            'price' => request('price'),
+            'level' => request('level'),
+            'platform' => request('platform'),
+            'qty' => request('qty'),
+            'details' => request('details'),
+            'img' => 'https://ark-afterearth.sfo2.digitaloceanspaces.com/dino-images/' . $oeFile
+        ]);
 
         return redirect()->action('DinoController@index');
     }
@@ -140,6 +159,12 @@ class DinoController extends Controller
      */
     public function update(Dino $dino)
     {
+        $oeFile = \request('dinoImg')->getClientOriginalName();
+        $path = \request('dinoImg')->storeAs(
+            'dino-images',
+            $oeFile,
+            'spaces'
+        );
         //edit a dino reuest and update with what ever is put in
         $dino->update([
             'name' => \request('name'),
@@ -148,6 +173,7 @@ class DinoController extends Controller
             'level' => \request('level'),
             'platform' => \request('platform'),
             'details' => \request('details'),
+            'img' => 'https://ark-afterearth.sfo2.digitaloceanspaces.com/dino-images/' . $oeFile
         ]);
 
         return redirect()->action('DinoController@dinosAdmin');
