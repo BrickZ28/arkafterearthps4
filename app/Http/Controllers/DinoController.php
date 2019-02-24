@@ -150,7 +150,7 @@ class DinoController extends Controller
             'details' => \request('details'),
         ]);
 
-        return redirect('/dinos')->with('success', $dino->name . ' updated');
+        return redirect()->action('DinoController@index');
     }
 
     /**
