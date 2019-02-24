@@ -35,7 +35,7 @@
                     </div>
                     @if(auth()->user()->hasRole('Owner'))
                         <div class="row form-group">
-                            <div class="col col-md-5"><label for="file-input" class=" form-control-label">File input</label></div>
+                            <div class="col col-md-5"><label for="file-input" class=" form-control-label">Add Dino Image</label></div>
                             <div class="col-12 col-md-6"><input type="file" id="file-input" name="dinoImg" class="form-control-file"></div>
                         </div>
                     @endif
