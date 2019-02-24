@@ -150,7 +150,7 @@ class DinoController extends Controller
             'details' => \request('details'),
         ]);
 
-        return redirect()->action('DinoController@index');
+        return redirect()->action('DinoController@dinosAdmin');
     }
 
     /**
