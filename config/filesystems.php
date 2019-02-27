@@ -62,6 +62,7 @@ return [
             'region' => env('S3_REGION'),
             'bucket' => env('S3_BUCKET'),
             'url'    => env('S3_ENDPOINT'),
+            'visibility' => 'public',
         ],
         'spaces' => [
             'driver' => 's3',
