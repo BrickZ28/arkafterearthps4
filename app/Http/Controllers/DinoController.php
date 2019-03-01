@@ -157,24 +157,42 @@ class DinoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Dino $dino)
+    public function update(Dino $dino, Request $request)
     {
-        $oeFile = \request('dinoImg')->getClientOriginalName();
-        $path = \request('dinoImg')->storeAs(
-            'dino-images',
-            $oeFile,
-            'spaces'
-        );
-        //edit a dino reuest and update with what ever is put in
-        $dino->update([
-            'name' => \request('name'),
-            'price' => \request('price'),
-            'qty' => \request('qty'),
-            'level' => \request('level'),
-            'platform' => \request('platform'),
-            'details' => \request('details'),
-            'img' => 'https://ark-afterearth.sfo2.digitaloceanspaces.com/dino-images/' . $oeFile
-        ]);
+        //if not updating img
+        if (!empty($request->file('dinoImg'))) {
+            $oeFile = $request->file('dinoImg')->getClientOriginalName();
+            $path = $request->file('dinoImg')->storeAs(
+                'dino-images',
+                $oeFile,
+                'spaces'
+            );
+
+            //edit a dino reuest and update with what ever is put in
+            $dino->update([
+                'name' => \request('name'),
+                'price' => \request('price'),
+                'qty' => \request('qty'),
+                'level' => \request('level'),
+                'platform' => \request('platform'),
+                'details' => \request('details'),
+                'img' => 'https://ark-afterearth.sfo2.digitaloceanspaces.com/dino-images/' . $oeFile
+            ]);
+        }
+        //if updating img
+        else{
+            //edit a dino reuest and update with what ever is put in
+            $dino->update([
+                'name' => \request('name'),
+                'price' => \request('price'),
+                'qty' => \request('qty'),
+                'level' => \request('level'),
+                'platform' => \request('platform'),
+                'details' => \request('details'),
+            ]);
+        }
+
+
 
         return redirect()->action('DinoController@dinosAdmin');
     }
