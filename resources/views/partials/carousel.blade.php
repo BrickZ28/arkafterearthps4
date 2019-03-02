@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Starter Kits</h1>
-                    <p>Starter kit includes a griffin and metal equipment.  Also check back into the Community Center for your level gems at levels 40, 80, and 120, you even get a free vault</p>
+                    <p>Starter kit includes a griffin and metal equipment.  Also check back into the Community Center for your level web currency at levels 40, 80, and 120, you even get a free vault</p>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Register Today</h1>
-                    <p>Register on this website will entitle you to a tribe manager and other in game perks.  Plus in addition to registering we will give you 500 gems</p>
+                    <p>Register on this website will entitle you to a tribe manager and other in game perks.  Plus in addition to registering we will give you 500 web currency</p>
                     <a class="btn btn-capsul btn-aqua" href="/register" role="button">Register Today</a> </div>
             </div>
         </div>

@@ -38,7 +38,7 @@
                     <tr>
                         <th scope="col">PSN Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Gems</th>
+                        <th scope="col">Web Currency</th>
                         <th scope="col">PVP Tribe</th>
                         <th scope="col">PVE Tribe</th>
                         <th scope="col">Users Role</th>

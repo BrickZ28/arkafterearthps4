@@ -53,7 +53,7 @@
             <div class="card">
                 <div class="card-header">
 
-                    <strong class="card-title">Send Money to user</strong>
+                    <strong class="card-title">Send Web Currency to user</strong>
                     <form action="/searchToSend" method="get">
                         @csrf
                         <input  name="search_text" placeholder="Insert value to search" class="text-muted" type="text"/>
