@@ -61,7 +61,7 @@
                             @else
                                 <td>Yes</td>
                             @endif
-                            <td>{{$dinoRequest->created_at->format('d M Y')}}</td>
+                            <td>{{$dinoRequest->created_at->format('d M Y @ Hi')}}</td>
                             <td>{{$dinoRequest->updated_at->format('d M Y')}}</td>
                             <td>
                                 <a href="/dinoRequestView/{{$dinoRequest->id}}">
