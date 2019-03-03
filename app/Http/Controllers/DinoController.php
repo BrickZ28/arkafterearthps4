@@ -66,36 +66,59 @@ class DinoController extends Controller
             'file',
             'spaces'
         );*/
+        if (!empty($request->file('dinoImg'))) {
+            $oeFile = $request->file('dinoImg')->getClientOriginalName();
+            $path = $request->file('dinoImg')->storeAs(
+                'dino-images',
+                $oeFile,
+                'spaces'
+            );
 
-       $oeFile = $request->file('dinoImg')->getClientOriginalName();
-        $path = $request->file('dinoImg')->storeAs(
-            'dino-images',
-            $oeFile,
-            'spaces'
-        );
+            //add new dino to the database first we validate
+            request()->validate([
+                'name' => 'required',
+                'price' => 'required|integer',
+                'level' => 'required|integer',
+                'platform' => 'required',
+                'qty' => 'required',
+                'details' => 'nullable',
 
-        //add new dino to the database first we validate
-         request()->validate([
-            'name'  => 'required',
-            'price' => 'required|integer',
-            'level' => 'required|integer',
-            'platform' => 'required',
-            'qty' => 'required',
-            'details' => 'nullable',
-
-        ]);
+            ]);
 
 
+            Dino::create([
+                'name' => request('name'),
+                'price' => request('price'),
+                'level' => request('level'),
+                'platform' => request('platform'),
+                'qty' => request('qty'),
+                'details' => request('details'),
+                'img' => 'https://ark-afterearth.sfo2.digitaloceanspaces.com/dino-images/' . $oeFile
+            ]);
+        }
+        else  {
+            //add new dino to the database first we validate
+            request()->validate([
+                'name' => 'required',
+                'price' => 'required|integer',
+                'level' => 'required|integer',
+                'platform' => 'required',
+                'qty' => 'required',
+                'details' => 'nullable',
 
-        Dino::create([
-            'name'  => request('name'),
-            'price' => request('price'),
-            'level' => request('level'),
-            'platform' => request('platform'),
-            'qty' => request('qty'),
-            'details' => request('details'),
-            'img' => 'https://ark-afterearth.sfo2.digitaloceanspaces.com/dino-images/' . $oeFile
-        ]);
+            ]);
+
+
+            Dino::create([
+                'name' => request('name'),
+                'price' => request('price'),
+                'level' => request('level'),
+                'platform' => request('platform'),
+                'qty' => request('qty'),
+                'details' => request('details'),
+
+            ]);
+        }
 
         return redirect()->action('DinoController@index');
     }
