@@ -348,10 +348,6 @@ class UserController extends Controller
         $payer = User::find($request->id);
         $bank = Bank::first();
 
-        if ($request->amount < 0){
-            return redirect('/manageMyFunds')->with('success', 'You cant steal from another player');
-        }
-
         request()->validate([
             'amount' => 'integer|nullable|min:0',
             'receiver' => Rule::notIn([$payer->id])//cant send to yourself
