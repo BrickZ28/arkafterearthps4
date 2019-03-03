@@ -311,7 +311,6 @@ class UserController extends Controller
         $payer = User::find(Auth::user()->id);
         $receiver = User::find($request->receiver);
 
-
         request()->validate([
             'amount' => 'integer|min:0',
             'receiver' => Rule::notIn([$payer->id])//cant send to yourself
@@ -350,7 +349,7 @@ class UserController extends Controller
         $bank = Bank::first();
 
         request()->validate([
-            'amount' => 'integer|nullable',
+            'amount' => 'integer|nullable|min:0',
             'receiver' => Rule::notIn([$payer->id])//cant send to yourself
         ]);
 
