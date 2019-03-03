@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Auth;
 class GateController extends Controller
 {
     public function index(){
-        $pveGates = Gate::with('usergate', 'givenBy')->where('style', '=', 'pve')->orderByRaw('CHAR_LENGTH(gate)')->paginate('5');
+        $pveGates = Gate::with('usergate', 'givenBy')->where('style', '=', 'pve')->orderBy('gate')->paginate('5');
 
-        $pvpGates = Gate::with('usergate', 'givenBy')->where('style', '=', 'pvp')->orderByRaw('CHAR_LENGTH(gate)')->paginate('5');
+        $pvpGates = Gate::with('usergate', 'givenBy')->where('style', '=', 'pvp')->orderBy('gate')->paginate('5');
 
         return view('gates.gates', compact('pveGates', 'pvpGates'));
     }
