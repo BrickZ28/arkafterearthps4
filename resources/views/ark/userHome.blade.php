@@ -59,7 +59,7 @@
                                         </a>
                                         <div class="media-body">
                                             <h2 class="text-light display-6">Store Updates</h2>
-                                            <p>Added this week</p>
+
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
 
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fas fa-paw"></i> Dinos <span class="badge badge-primary pull-right">{{$newDinos}}</span></a>
+                                        <a href="#"> <i class="fas fa-paw"></i> Dinos added this week <span class="badge badge-primary pull-right">{{$newDinos}}</span></a>
                                     </li>{{--
                                     <li class="list-group-item">
                                         <a href="#"> <i class="fas fa-utensils"></i> Weaponry <span class="badge badge-danger pull-right">0</span></a>
