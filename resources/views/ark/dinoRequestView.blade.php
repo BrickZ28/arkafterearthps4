@@ -31,8 +31,8 @@
                         <td>{{$dinoRequest->total}}</td>
                         <td>{{$dinoRequest->status}}</td>
                         <td>{{$dinoRequest->users->name}}</td>
-                        <td>{{$dinoRequest->created_at->format('d M Y')}}</td>
-                        <td>{{$dinoRequest->updated_at->format('d M Y')}}</td>
+                        <td>{{$dinoRequest->created_at->format('d M Y @ Hi')}}</td>
+                        <td>{{$dinoRequest->updated_at->format('d M Y @ Hi')}}</td>
                         @if($dinoRequest->paid === 0)
                             <td>No</td>
                         @else
