@@ -83,7 +83,11 @@
                         <tbody>
                         @foreach($dinos as $dino)
                             <tr>
-                                <td>{{$dino->name}}</td>
+                                <td>{{$dino->name}}
+                                    @if(strtotime($dino->created_at) > strtotime('-7 day'))
+                                        <span class="badge badge-success pull-right">New</span>
+                                    @endif
+                                </td>
                                 <td><span><img src="{{$dino->img}}"></span></td>
                                 <td>{{$dino->price}}</td>
                                 <td>{{$dino->qty}}</td>

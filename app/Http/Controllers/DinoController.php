@@ -7,6 +7,7 @@ use App\Mail\DinoRequested;
 use App\Mail\DinoRequestedAdmin;
 use App\Mail\DinoRequestUpdated;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Dino;
 use App\DinoRequest;
