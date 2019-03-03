@@ -41,7 +41,7 @@
                         <tr>
                             <td>{{$gate->gate}}</td>
                             <td>{{$gate->style}}</td>
-                            <td>{{$gate->pin}}</td>
+                            <td>{{sprintf('%04d', $gate->pin)}}</td>
                             <td>{{$gate->usergate['name']}}</td>
                             <td>{{$gate->givenBy['name']}}</td>
                             <td>{{$gate->updated_at->format('d M Y')}}</td>
@@ -94,7 +94,7 @@
                         <tr>
                             <td>{{$gate->gate}}</td>
                             <td>{{$gate->style}}</td>
-                            <td>{{$gate->pin}}</td>
+                            <td>{{sprintf('%04d', $gate->pin)}}</td>
                             <td>{{$gate->usergate['name']}}</td>
                             <td>{{$gate->givenBy['name']}}</td>
                             <td>{{$gate->updated_at->format('d M Y')}}</td>
