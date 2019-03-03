@@ -313,7 +313,7 @@ class UserController extends Controller
 
 
         request()->validate([
-            'amount' => 'integer',
+            'amount' => 'integer|min:0',
             'receiver' => Rule::notIn([$payer->id])//cant send to yourself
             ]);
 

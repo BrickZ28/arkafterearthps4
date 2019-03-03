@@ -26,7 +26,7 @@ class GateController extends Controller
         //add new gate to the database first we validate
         $attributes = request()->validate([
             'gate'  => 'required|max:9',
-            'pin' => 'nullable|integer|unique:gates,pin|max:9999|min:0000',
+            'pin' => 'nullable|unique:gates,pin|max:9999|min:0000',
             'style' => 'required',
             'admin' => 'required'
         ]);
@@ -57,7 +57,7 @@ class GateController extends Controller
     public function update(Request $request){
 
         request()->validate([
-            'pin' => 'nullable|integer|unique:gates,pin|max:9999',
+            'pin' => 'nullable|unique:gates,pin|max:9999',
         ]);
 
         $gate = Gate::find(request('id'));
