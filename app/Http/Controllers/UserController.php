@@ -348,6 +348,10 @@ class UserController extends Controller
         $payer = User::find($request->id);
         $bank = Bank::first();
 
+        if ($request->amount < 0){
+            return redirect('/manageMyFunds')->with('success', 'You cant steal from another player' . $request->amount . ' gems');
+        }
+
         request()->validate([
             'amount' => 'integer|nullable|min:0',
             'receiver' => Rule::notIn([$payer->id])//cant send to yourself
@@ -356,7 +360,7 @@ class UserController extends Controller
         //if the user doesnt have the funds return
         if($payer->gem_balance < $request->amount){
             request()->validate([
-                'amount' => [new InsufficientFunds($payer->balance)]
+                'amount' => [new InsufficientFunds($payer->balance),min(0)]
             ]);
         }
         //deduct funds from user
