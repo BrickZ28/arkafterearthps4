@@ -38,7 +38,6 @@
                         <th scope="col">Created Date</th>
                         <th scope="col">Updated Date</th>
                         <th scope="col">Update Request</th>
-                        <th scope="col">Process Request</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -65,13 +64,6 @@
                                     <button type="button" class="btn btn-secondary btn-sm">Update Request</button>
                                 </a>
                             </td>
-                            @can('PVP Dino Seller')
-                                <td>
-                                    <a href="/dinos/{{$dinoRequest->id}}/edit">
-                                        <button type="button" name="completed" class="btn btn-secondary btn-sm">Complete Request</button>
-                                    </a>
-                                </td>
-                            @endcan
                         </tr>
                     @endforeach
                     </tbody>
