@@ -349,7 +349,7 @@ class UserController extends Controller
         $bank = Bank::first();
 
         if ($request->amount < 0){
-            return redirect('/manageMyFunds')->with('success', 'You cant steal from another player' . $request->amount . ' gems');
+            return redirect('/manageMyFunds')->with('success', 'You cant steal from another player');
         }
 
         request()->validate([
