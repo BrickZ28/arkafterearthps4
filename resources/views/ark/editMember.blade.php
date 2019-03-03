@@ -50,7 +50,7 @@
     </div>
 
     {{--Owner to send pin--}}
-    @if(auth()->user()->hasRole('Owner'))
+    @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
