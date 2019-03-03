@@ -23,7 +23,7 @@ class GateController extends Controller
         return view('gates.create');
     }
     public function store(){
-        //add new dino to the database first we validate
+        //add new gate to the database first we validate
         $attributes = request()->validate([
             'gate'  => 'required|max:9',
             'pin' => 'nullable|integer|unique:gates,pin|max:9999|min:0000',

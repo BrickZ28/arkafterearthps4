@@ -27,7 +27,7 @@ class InvlidEmailAddy implements Rule
     {
 
 
-        return !strpos($value, 'yahoo.com') || strpos($value, 'aol.com') || strpos($value, 'hotmail.com')||strpos($value, 'yahoo.ie');
+        return !strpos($value, 'yahoo.com') || !strpos($value, 'aol.com') || !strpos($value, 'hotmail.com')|| !strpos($value, 'yahoo.ie');
     }
 
     /**

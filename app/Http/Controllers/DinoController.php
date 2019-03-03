@@ -531,6 +531,7 @@ class DinoController extends Controller
         where('status', '=', 'completed')->
             orWhereDoesntHave('dinos')->
             has('dinos')->
+        orderBy('id', 'desc')->
         paginate(10);
 
         /* dd($dinoRequests);*/
