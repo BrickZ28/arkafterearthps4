@@ -84,12 +84,12 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row form-group">
+                   {{-- <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pin code</label>
                         </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pin" class="form-control" required>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="pin" class="form-control">
                         </div>
-                    </div>
+                    </div>--}}
                     {{--<div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Play Style</label></div>
                         <div class="col col-md-9">

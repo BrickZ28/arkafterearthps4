@@ -260,28 +260,34 @@ class UserController extends Controller
         }
         if (\request('pve') > 0){
             $gate = Gate::find(request('pve'));
-            $gate->pin = request('pin');
+
+                $pin = $gate->pin;
+
             $gate->admin = \Auth::user()->id;
             $gate->player = \request('player');
             $door = $gate->gate;
-            $pin = $request->pin;
+
             $style = 'PVE';
                 $gate->save();
 
-            \Mail::to($request->email)->send( new SendPin($request->pin, $door, $style));
+            \Mail::to($request->email)->send( new SendPin($pin, $door, $style));
         }
         if (\request('pvp') > 0){
             $gate = Gate::find(request('pvp'));
-            $gate->pin = request('pin');
+            //dd(request('pin'));
+
+                $pin = $gate->pin;
+
             $gate->admin = \Auth::user()->id;
             $gate->player = \request('player');
             $door = $gate->gate;
-            $pin = $request->pin;
+
             $style = 'PVP';
             $gate->save();
 
 
-            \Mail::to($request->email)->send( new SendPin($request->pin, $door, $style));
+
+            \Mail::to($request->email)->send( new SendPin($pin, $door, $style));
         }
 
         return redirect('/manageUser')->with('success',  $style . ' Gate ' . $door . ' with pin ' . $pin . ' sent to ' . $request->name . ' at ' . $request->email);
