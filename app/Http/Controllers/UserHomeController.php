@@ -33,7 +33,12 @@ class UserHomeController extends Controller
 
         $tribecount =  $pvpCount + $pveCount;//all tribe member total
 
-        return view('ark.userHome', compact('tribecount', 'last_pve', 'last_pvp', 'joined'));
+        $newDinos = \DB::table('dinos')
+            ->select('created_at')
+            ->whereDate('created_at', '>', Carbon::now()->subDays(7))
+            ->count();
+
+        return view('ark.userHome', compact('tribecount', 'newDinos', 'last_pve', 'last_pvp', 'joined'));
 
     }
 

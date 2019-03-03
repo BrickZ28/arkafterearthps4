@@ -58,8 +58,8 @@
                                             <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{asset('img/store/store.jpg')}}">
                                         </a>
                                         <div class="media-body">
-                                            <h2 class="text-light display-6">Store Deals</h2>
-                                            <p>Latest Flash Sales</p>
+                                            <h2 class="text-light display-6">Store Updates</h2>
+                                            <p>Added this week</p>
                                         </div>
                                     </div>
                                 </div>
@@ -67,8 +67,8 @@
 
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fas fa-paw"></i> Dinos <span class="badge badge-primary pull-right">0</span></a>
-                                    </li>
+                                        <a href="#"> <i class="fas fa-paw"></i> Dinos <span class="badge badge-primary pull-right">{{$newDinos}}</span></a>
+                                    </li>{{--
                                     <li class="list-group-item">
                                         <a href="#"> <i class="fas fa-utensils"></i> Weaponry <span class="badge badge-danger pull-right">0</span></a>
                                     </li>
@@ -77,7 +77,7 @@
                                     </li>
                                     <li class="list-group-item">
                                         <a href="#"> <i class="fas fa-shield-alt"></i> Armor/Saddles <span class="badge badge-warning pull-right r-activity">0</span></a>
-                                    </li>
+                                    </li>--}}
                                 </ul>
 
                             </section>
