@@ -68,10 +68,11 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         <a href="#"> <i class="fas fa-paw"></i> Dinos added this week <span class="badge badge-primary pull-right">{{$newDinos}}</span></a>
-                                    </li>{{--
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fas fa-utensils"></i> Weaponry <span class="badge badge-danger pull-right">0</span></a>
                                     </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fas fa-money"></i> Dino request this week <span class="badge badge-danger pull-right">{{$numRequest}}</span></a>
+                                    </li>
+                                    {{--
                                     <li class="list-group-item">
                                         <a href="#"> <i class="fas fa-fingerprint"></i> Rare Items <span class="badge badge-success pull-right">0</span></a>
                                     </li>

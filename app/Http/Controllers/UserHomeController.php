@@ -38,7 +38,12 @@ class UserHomeController extends Controller
             ->whereDate('created_at', '>', Carbon::now()->subDays(7))
             ->count();
 
-        return view('ark.userHome', compact('tribecount', 'newDinos', 'last_pve', 'last_pvp', 'joined'));
+        $numRequest = \DB::table('dino_requests')
+            ->where('status', '=', 'completed')
+            ->whereDate('updated_at', '>', Carbon::now()->subDays(7))
+            ->count();
+
+        return view('ark.userHome', compact('tribecount', 'newDinos', 'numRequest', 'last_pve', 'last_pvp', 'joined'));
 
     }
 
