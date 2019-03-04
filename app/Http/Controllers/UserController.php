@@ -372,7 +372,6 @@ class UserController extends Controller
             'receiver_id' => 'bank',
             'reason' => $request->reason,
             'dino_id' => null,
-
         ]);
 
         return redirect('/manageMyFunds')->with('success', 'You have successfully sent the bank' . $request->amount . ' gems');
