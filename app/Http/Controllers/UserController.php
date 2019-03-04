@@ -290,7 +290,7 @@ class UserController extends Controller
             \Mail::to($request->email)->send( new SendPin($pin, $door, $style));
         }
 
-        return redirect('/manageUser')->with('success',  $style . ' Gate ' . $door . ' with pin ' . $pin . ' sent to ' . $request->name . ' at ' . $request->email);
+        return redirect('/manageUser')->with('success',  $style . ' Gate ' . $door . ' with pin ' . sprintf('%04d', $pin) . ' sent to ' . $request->name . ' at ' . $request->email);
     }
 
     public function fundsManage(){
