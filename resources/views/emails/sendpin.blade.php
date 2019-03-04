@@ -8,7 +8,7 @@
 
 
     @if($style === 'PVE')
-        To claim this, you can travel to the Community Center (CC) on Ragnarok by going by the Blue Obelisk or Viking Bay2
+        To claim this, you can travel to the Community Center (CC) on Ragnarok (PVE) by going by the Blue Obelisk or Viking Bay2
         and use the teleporter to go to the CC.
 
         Pve Cords 28,49:
@@ -16,7 +16,7 @@
     @endif
     @if($style === 'PVP')
 
-To claim this, you can travel to Viking Bay 2, by the Community Center (CC) on Ragnarok.
+To claim this, you can travel to Viking Bay 2, by the Community Center (CC) on Ragnarok (PVP).
 
         Vikings bay 2 (20 , 32)
 ![See attached]({{asset('/img/pvpPikUp.jpg')}})
