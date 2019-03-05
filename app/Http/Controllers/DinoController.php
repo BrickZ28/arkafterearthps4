@@ -257,6 +257,13 @@ class DinoController extends Controller
         //get the qty and go to function to get price
         $total = $this->dinoGemTotal(request()->id, request()->qty);
 
+        $fullAmt = $total *  \request()->qty;
+        $player = User::find(Auth::id());
+
+        if ($player->gem_balance < $fullAmt){
+            return redirect('/dinos')->with('nofunds', request()->name . ' Sorry you dont have enough funds for this transactions.');
+        }
+
         //find dino platform
         $platform = Dino::find(request()->id);
 
@@ -291,9 +298,8 @@ class DinoController extends Controller
         $requestor = Auth::user()->name;
         //Gets a list of pvp dino sellers for email
 
-        $player = User::find(Auth::id());
-
         $player->gem_balance -= $total;
+
         $player->save();
 
 

@@ -21,6 +21,15 @@
                         </button>
                     </div>
                 @endif
+                    @if (session('nofunds'))
+                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                            <span class="badge badge-pill badge-alert">Failed</span>
+                            {{ session('nofunds') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
 
                 @if(!auth()->user()->hasRole('Owner') && !auth()->user()->hasRole('Admin'))
                     @if($viewDinos === 'PVP')
