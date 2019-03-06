@@ -78,10 +78,14 @@
                                 </a>
                             </td>
                                 @endif
-                            <td><a href="/cancelDinoRequest/{{$dinoRequest->id}}">
-                                    <button type="button" class="btn btn-secondary btn-sm">Cancel</button>
-                                </a>
-                            </td>
+
+                                <td><a href="/cancelDinoRequest/{{$dinoRequest->id}}">
+                                        @if($dinoRequest-> status !== 'completed')
+                                        <button type="button" class="btn btn-secondary btn-sm">Cancel</button>
+                                        @endif
+                                    </a>
+                                </td>
+
                         </tr>
                     @endforeach
                     </tbody>
