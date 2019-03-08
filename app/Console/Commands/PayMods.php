@@ -11,7 +11,7 @@ class PayMods extends Command
      *
      * @var string
      */
-    protected $signature = 'pay:paymods';
+    protected $signature = 'PayMods:paymods';
 
     /**
      * The console command description.
