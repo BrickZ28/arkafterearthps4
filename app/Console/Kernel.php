@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\PayInterest',
+        'App\Console\Commands\PayMods',
     ];
 
     /**
@@ -29,6 +30,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('payinterest')
             ->weeklyOn(5, '00:00');
+        $schedule->command('paymods')
+            ->weeklyOn(5, '00:01');
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('02:00');
     }
