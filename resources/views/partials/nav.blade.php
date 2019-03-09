@@ -1,5 +1,5 @@
 <nav class="navbar top-bar navbar-static-top sps sps--abv">
-    <div class="container relative-box "> <a class="navbar-brand" href="#">Afterearth</a>
+    <div class="container relative-box "> <a class="navbar-brand" href="#">Afterearth</a><img src="{{asset('/img/AE-75.png')}}" alt="" height="50" width="50">
         <button class="navbar-toggler hidden-lg-up collapsed" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"> ☰ </button>
         <div class="navbar-toggleable-md collapse" id="exCollapsingNavbar2" >
 
