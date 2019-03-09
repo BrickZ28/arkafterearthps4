@@ -29,11 +29,15 @@ class BankTransactionController extends Controller
     {
         $q=request('search_text');
 
-        $transactions = Bank_transaction::whereHas('payer', function($query) use($q) {
-            $query->where('name', 'like', '%'.$q.'%');
-        })->orWhereHas('receiver', function($query) use($q) {
-            $query->where('reason', 'like', '%'.$q.'%');
-        })->orWhere('transaction_amount', 'LIKE', '%' . $q . '%')->paginate(10);
+        $transactions =\DB::table('bank_transactions')
+            ->leftJoin('users as up', 'up.id', '=', 'payer_id')
+            ->select('bank_transactions.id', 'bank_transactions.transaction_amount', 'bank_transactions.payer_id', 'bank_transactions.receiver_id', 'bank_transactions.dino_id', 'bank_transactions.reason', 'bank_transactions.created_at', 'up.name as payer', 'ug.name as receiver', 'admin.name as admin')
+            ->leftJoin('users as ug', 'ug.id', '=', 'receiver_id')
+            ->leftJoin('users as admin', 'admin.id', '=', 'admin_payer')
+            ->where('bank_transactions.id', 'LIKE', '%' . $q . '%')
+            ->orWhere('transaction_amount', 'LIKE', '%' . $q . '%')
+            ->orWhere('up.name', 'LIKE', '%' . $q . '%')
+            ->paginate(5);
 
         return view('bank.transactions',compact('transactions'));
     }
