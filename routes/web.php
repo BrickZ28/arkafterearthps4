@@ -53,6 +53,7 @@ Route::get('/userhome', 'UserHomeController@index');
 Route::get('/myProfile/{id}', 'UserHomeController@edit');
 Route::get('/manageUser', 'UserController@index');
 Route::get('/searchToSend','UserController@searchToSend');
+Route::get('/searchTransactions','BankTransactionController@searchTransactions');
 Route::get('/searchTransactionsByUser','BankTransactionController@searchTransactionsByUser');
 Route::get('/searchTransactionsToBank','BankTransactionController@searchTransactionsToBank');
 Route::get('/searchTransactionsPyUser','BankTransactionController@searchTransactionsPyUser');
