@@ -19,7 +19,7 @@
                 <div class="carousel-caption">
                     <h1>Town Store</h1>
                     <p>Stop by and shop at the Community Center. The Council offers dinos, eggs, armor and weapons, which include mastercraft items.  </p>
-                    <
+
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Register Today</h1>
-                    <p>Register on this website will entitle you to a tribe manager and other in game perks.  Plus in addition to registering we will give you 500 web currency</p>
+                    <p>Register on this website will entitle you to a tribe manager(coming soon) and other in game perks.  Plus in addition to registering we will give you 500 web currency</p>
                     <a class="btn btn-capsul btn-aqua" href="/register" role="button">Register Today</a> </div>
             </div>
         </div>
