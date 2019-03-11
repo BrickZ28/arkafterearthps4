@@ -21,6 +21,10 @@ Route::get('/ad', function () {
     return view('layouts.admin');
 });
 
+Route::get('/settings', function (){
+    return view('ark.settings');
+});
+
 /*Route::get('/passwords/reset', function () {
     return view('auth.passwords.reset');
 });*/
@@ -72,6 +76,7 @@ Route::get('/cancelDinoRequest/{id}', 'DinoController@userCancellRequest');
 Route::get('/dinoImage', 'TestController@dinoImage');
 Route::get('/addImagetest', 'TestController@addImagetest');
 Route::get('/addImage', 'TestController@addImage');
+
 
 Route::post('/sendpin', 'UserController@sendpin');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');

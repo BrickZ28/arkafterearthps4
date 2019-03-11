@@ -1,0 +1,1 @@
+<img src="{{asset('/img/afterearth_ad_1.png')}}" alt="">

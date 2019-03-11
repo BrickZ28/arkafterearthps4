@@ -6,7 +6,7 @@
             <ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item active"> <a class="nav-link" href="#myCarousel">Home <span class="sr-only">(current)</span></a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#rules">PVP Rules</a> </li>
-
+                <li class="nav-item"> <a class="nav-link" href="/settings">Settings</a> </li>
                 {{--<li class="nav-item"> <a class="nav-link" href="/tribespvp">PVP Tribes</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="#">PVE Tribes</a> </li>--}}
                 @if(Auth::check())
