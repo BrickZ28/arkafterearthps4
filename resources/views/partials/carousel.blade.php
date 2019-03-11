@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Starter Kits</h1>
-                    <p>Starter kit includes a griffin and metal equipment.  Also check back into the Community Center for your level web currency at levels 40, 80, and 120, you even get a free vault</p>
+                    <p>Starter kit includes a griffin and metal equipment.  Also check back into the Community Center for your level web currency at levels 40, 80, and 120.</p>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Town Store</h1>
-                    <p>Stop by and shop at the Community Center. The Council offers dinos, eggs, armor and weapons, which include mastercraft items.  </p>
+                    <p>Stop by and shop at the Community Center. The Council offers dinos, eggs at this time with more to come.  </p>
 
                 </div>
             </div>
