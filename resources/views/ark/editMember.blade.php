@@ -16,35 +16,97 @@
                         </ul>
                     </div>
                 @endif
+                    @if (session('failed'))
+                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                            <span class="badge badge-pill badge-danger">Failed</span>
+                            {{ session('failed') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                 <strong class="card-title">Update member</strong>
+                @endif
             </div>
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">Member Name</th>
+                        @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                         <th scope="col">Member Email</th>
                         <th scope="col">Member Gems</th>
                         <th scope="col">PVP Tribe</th>
                         <th scope="col">PVE Tribe</th>
                         <th scope="col">Member Role</th>
                         <th scope="col">Member Permissions</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
 
                         <tr>
                             <td>{{$member->name}}</td>
+                            @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                             <td>{{$member->email}}</td>
                             <td>{{$member->gem_balance}}</td>
                             <td>{{$member->tribeName_pvp}}</td>
                             <td>{{$member->tribeName_pve}}</td>
                             <td>{{$member->roles->first()->name}}</td>
                             <td>{{$member->permissions->first()->name}}</td>
+                            @endif
                         </tr>
 
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    {{--Verify Reg Code--}}
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Verify Registration Code</strong>
+            </div>
+            <div class="card-body card-block">
+                <form action="/verifyCode/{{$member->id}}" method="get" enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Insert Code</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="regcode"  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col col-md-12">
+                        <div class="form-check">
+                            <div class="radio">
+                                <label for="radio1" class="form-check-label ">
+                                    <input type="radio" id="radio1" name="startertype" value="pvpstarter" class="form-check-input" required>PVP
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="radio2" class="form-check-label ">
+                                    <input type="radio" id="radio2" name="startertype" value="pvestarter" class="form-check-input" required>PVE
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="radio3" class="form-check-label ">
+                                    <input type="radio" id="radio3" name="startertype" value="bothstarter" class="form-check-input" required>Both
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -122,7 +184,7 @@
             </div>
         </div>
     </div>
-    @endif
+
 
     {{--bottom menu--}}
     <div class="col-lg-12">
@@ -305,5 +367,6 @@
                     </form>
                 </div>
             </div>
+    @endif
 
 @endsection

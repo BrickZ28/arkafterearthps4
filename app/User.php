@@ -125,7 +125,7 @@ class User extends Authenticatable implements MustVerifyEmail
             \Mail::to($owner->email)->send(new newUser($this->name));
         }
 
-        \Mail::to($this->email)->send(new SendWelcome($this->name));
+        \Mail::to($this->email)->send(new SendWelcome($this->name, $this->regcode));
 
         return $this->forceFill([
             'email_verified_at' => $this->freshTimestamp(),

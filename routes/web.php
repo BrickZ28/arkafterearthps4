@@ -76,6 +76,7 @@ Route::get('/cancelDinoRequest/{id}', 'DinoController@userCancellRequest');
 Route::get('/dinoImage', 'TestController@dinoImage');
 Route::get('/addImagetest', 'TestController@addImagetest');
 Route::get('/addImage', 'TestController@addImage');
+Route::get('/verifyCode/{id}', 'UserController@verifyRegCode');
 
 
 Route::post('/sendpin', 'UserController@sendpin');

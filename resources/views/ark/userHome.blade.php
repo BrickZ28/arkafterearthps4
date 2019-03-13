@@ -6,6 +6,24 @@
             <div class="page-header float-left">
                 <div class="page-title">
                     <h1>Welcome, {{Auth::user()->name}} to AfterEarth user Area. Mange your tribe, view the store, and find other server info </h1>
+                    @if (session('success'))
+                        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                            <span class="badge badge-pill badge-success">Success</span>
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    @if (session('successb'))
+                        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                            <span class="badge badge-pill badge-success">Success</span>
+                            {{ session('successb') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

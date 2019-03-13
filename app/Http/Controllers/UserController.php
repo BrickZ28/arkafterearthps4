@@ -387,4 +387,101 @@ class UserController extends Controller
 
     }
 
+    public function verifyRegCode(Request $request){
+
+        request()->validate([
+            'startertype' => 'required'
+        ]);
+
+        $user = User::find($request->id);
+
+        if ($user->regCodeVerified === true){
+            return redirect('/editMember/' . $user->id)->with('failed', 'Code already authorized for this user');
+        }
+
+        if ($request->regcode !== $user->regcode){
+            return redirect('/editMember/' . $user->id)->with('failed', 'Invalid authorization code' . $request->regCode . ' for this user');
+        }
+
+        if($request->startertype === 'pvpstarter'){
+            $pvpGate = Gate::where('player', null)->
+                            where('style', 'PVP')->
+                            first();
+
+            if (empty($pvpGate)){
+                return redirect('/editMember/' . $user->id)->with('failed', 'No available Gates');
+            }
+            $pvpGate->admin = \Auth::user()->id;
+            $pvpGate->player = $user->id;
+
+            $pvpGate->save();
+
+            \Mail::to($user->email)->send( new SendPin($pvpGate->pin, $pvpGate->gate, 'PVP'));
+
+            $user->regCodeVerified = true;
+            $user->save();
+
+            return redirect('/userhome')->with('success', 'User authenticated and gate and pin sent. PVP Gate:  ' . $pvpGate->gate . ' Pin:  ' . $pvpGate->pin);
+        }
+
+        if($request->startertype === 'pvestarter'){
+            $pveGate = Gate::where('player', null)->
+            where('style', 'PVE')->
+            first();
+
+            if (empty($pveGate)){
+                return redirect('/editMember/' . $user->id)->with('failed', 'No available Gates');
+            }
+            $pveGate->admin = \Auth::user()->id;
+            $pveGate->player = $user->id;
+
+            $pveGate->save();
+
+            \Mail::to($user->email)->send( new SendPin($pveGate->pin, $pveGate->gate, 'PVE'));
+
+            $user->regCodeVerified = true;
+            $user->save();
+
+            return redirect('/userhome')->with('success', 'User authenticated and gate and pin sent.  PVE Gate:  ' . $pveGate->gate . ' Pin:  ' . $pveGate->pin);
+        }
+
+        if($request->startertype === 'bothstarter'){
+            $pveGate = Gate::where('player', null)->
+            where('style', 'PVE')->
+            first();
+
+            if (empty($pveGate)){
+                return redirect('/editMember/' . $user->id)->with('failed', 'No available Gates');
+            }
+            $pveGate->admin = \Auth::user()->id;
+            $pveGate->player = $user->id;
+
+            $pveGate->save();
+
+            \Mail::to($user->email)->send( new SendPin($pveGate->pin, $pveGate->gate, 'PVE'));
+
+            $user->regCodeVerified = true;
+            $user->save();
+        }
+        $pvpGate = Gate::where('player', null)->
+        where('style', 'PVP')->
+        first();
+
+        if (empty($pvpGate)){
+            return redirect('/editMember/' . $user->id)->with('failed', 'No available Gates');
+        }
+        $pvpGate->admin = \Auth::user()->id;
+        $pvpGate->player = $user->id;
+
+        $pvpGate->save();
+
+        \Mail::to($user->email)->send( new SendPin($pvpGate->pin, $pvpGate->gate, 'PVP'));
+
+        $user->regCodeVerified = true;
+        $user->save();
+
+        return redirect('/userhome')->with('success', 'User authenticated and gate and pin sent.  PVP Gate:  ' . $pvpGate->gate . ' Pin:  ' . $pvpGate->pin)->with('successb', 'User authenticated and gate and pin sent.  PVE Gate:  ' . $pveGate->gate . ' Pin:  ' . $pveGate->pin);;
+
+    }
+
 }

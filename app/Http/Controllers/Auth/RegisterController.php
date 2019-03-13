@@ -75,13 +75,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $code = mt_rand(1111,999999);
+
         $user = User::create([
             'name' => $data['name'],
             'tribeName_pvp' => $data['tribenamepvp'],
             'tribeName_pve' => $data['tribenamepve'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'gem_balance' => '500'
+            'gem_balance' => '500',
+            'regcode' => $code,
         ]);
 
        $user->roles()->attach('4');

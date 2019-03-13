@@ -37,6 +37,7 @@
                     <thead>
                     <tr>
                         <th scope="col">PSN Name</th>
+                        @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                         <th scope="col">Email</th>
                         <th scope="col">Web Currency</th>
                         <th scope="col">PVP Tribe</th>
@@ -47,6 +48,7 @@
                         {{--<th scope="col">Highest Level Kit</th>--}}
                         <th scope="col">Highest PVP Level Kit</th>
                         <th scope="col">Highest PVE Level Kit</th>
+                        @endif
                         <th scope="col">Update User</th>
                     </tr>
                     </thead>
@@ -55,6 +57,7 @@
                     @foreach($member->roles as $role)
                         <tr>
                             <td>{{$member->name}}</td>
+                            @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                             <td>{{$member->email}}</td>
                             <td>{{$member->gem_balance}}</td>
                             <td>{{$member->tribeName_pvp}}</td>
@@ -73,8 +76,9 @@
                            {{-- <td>{{$member->level_kit}}</td>--}}
                             <td>{{$member->pvp_level_kit}}</td>
                             <td>{{$member->pve_level_kit}}</td>
+                            @endif
                             <td>
-                                @if(Auth::id() !== $member->id or $member->hasRole('Owner'))
+                                @if(Auth::id() !== $member->id or $member->hasRole('Owner') or $member->hasRole('Mod'))
                                 <a href="/editMember/{{$member->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm">Update Member</button>
                                 </a>

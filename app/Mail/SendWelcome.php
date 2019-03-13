@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class SendWelcome extends Mailable
 {
     public $name;
+    public $code;
     use Queueable, SerializesModels;
 
     /**
@@ -17,9 +18,10 @@ class SendWelcome extends Mailable
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct($name, $code)
     {
         $this->name = $name;
+        $this->code = $code;
     }
 
     /**

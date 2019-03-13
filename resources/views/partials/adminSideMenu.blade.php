@@ -24,7 +24,7 @@
                         </ul>
                     </li>
                 @endif
-                @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
+                @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin') || auth()->user()->hasRole('Mod'))
                 <h3 class="menu-title">Admin Menu</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-user"></i>User Management</a>
@@ -32,6 +32,8 @@
                         <li><i class="fas fa-user"></i><a href="/manageUser">Manage User</a></li>
                     </ul>
                 </li>
+                @endif
+                @if(auth()->user()->hasRole('Owner') || auth()->user()->hasRole('Admin'))
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fab fa-phoenix-framework"></i>Roles Management</a>
                     <ul class="sub-menu children dropdown-menu">
