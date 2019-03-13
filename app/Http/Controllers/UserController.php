@@ -395,7 +395,7 @@ class UserController extends Controller
 
         $user = User::find($request->id);
 
-        if ($user->regCodeVerified === true){
+        if ($user->regCodeVerified === 1){
             return redirect('/editMember/' . $user->id)->with('failed', 'Code already authorized for this user');
         }
 
