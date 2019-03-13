@@ -419,6 +419,7 @@ class UserController extends Controller
             \Mail::to($user->email)->send( new SendPin($pvpGate->pin, $pvpGate->gate, 'PVP'));
 
             $user->regCodeVerified = true;
+            $user->has_pvp_starter = 1;
             $user->save();
 
             return redirect('/userhome')->with('success', 'User authenticated and gate and pin sent. PVP Gate:  ' . $pvpGate->gate . ' Pin:  ' . $pvpGate->pin);
@@ -440,6 +441,7 @@ class UserController extends Controller
             \Mail::to($user->email)->send( new SendPin($pveGate->pin, $pveGate->gate, 'PVE'));
 
             $user->regCodeVerified = true;
+            $user->has_pve_starter = 1;
             $user->save();
 
             return redirect('/userhome')->with('success', 'User authenticated and gate and pin sent.  PVE Gate:  ' . $pveGate->gate . ' Pin:  ' . $pveGate->pin);
@@ -461,6 +463,8 @@ class UserController extends Controller
             \Mail::to($user->email)->send( new SendPin($pveGate->pin, $pveGate->gate, 'PVE'));
 
             $user->regCodeVerified = true;
+            $user->has_pvp_starter = 1;
+            $user->has_pve_starter = 1;
             $user->save();
         }
         $pvpGate = Gate::where('player', null)->
