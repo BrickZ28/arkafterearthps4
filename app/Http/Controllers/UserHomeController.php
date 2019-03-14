@@ -19,6 +19,14 @@ class UserHomeController extends Controller
 
         $user = Auth::user(); //get the current user
 
+        //daily gem of 50
+        if ($user->daily_currency === 0){
+            $user->gem_balance += 50;
+            $user->daily_currency = 1;
+            $user->save();
+            dd($user);
+        }
+
         $last_pvp = User::where('tribeName_pvp', '=', $user->tribeName_pvp)->orderBy('updated_at', 'desc')->first();//last person updated in users pvp tribe
         $last_pve = User::where('tribeName_pve', '=', $user->tribeName_pve)->orderBy('updated_at', 'desc')->first();//last person updated in users pve tribe
 
