@@ -91,11 +91,11 @@
                                     <input type="radio" id="radio2" name="startertype" value="pvestarter" class="form-check-input" required>PVE
                                 </label>
                             </div>
-                            <div class="radio">
+                            {{--<div class="radio">
                                 <label for="radio3" class="form-check-label ">
                                     <input type="radio" id="radio3" name="startertype" value="bothstarter" class="form-check-input" required>Both
                                 </label>
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                     <div class="card-footer">
