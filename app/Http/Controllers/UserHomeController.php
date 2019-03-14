@@ -24,7 +24,7 @@ class UserHomeController extends Controller
             $user->gem_balance += 50;
             $user->daily_currency = 1;
             $user->save();
-            dd($user);
+
         }
 
         $last_pvp = User::where('tribeName_pvp', '=', $user->tribeName_pvp)->orderBy('updated_at', 'desc')->first();//last person updated in users pvp tribe
