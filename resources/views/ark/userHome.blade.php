@@ -15,6 +15,17 @@
                             </button>
                         </div>
                     @endif
+
+                    @if (Auth::user()->regCodeVerified  === 0)
+                        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                            <span class="badge badge-pill badge-success">Success</span>
+                            Be sure to check your email for your validation code
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
                     @if (session('successb'))
                         <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                             <span class="badge badge-pill badge-success">Success</span>
@@ -27,7 +38,6 @@
                 </div>
             </div>
         </div>
-
         <div class="content mt-5">
             <div class="animated fadeIn">
                 <div class="row">

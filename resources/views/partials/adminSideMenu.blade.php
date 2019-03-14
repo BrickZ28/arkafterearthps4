@@ -14,6 +14,7 @@
                 <li class="active">
                     <a href="/userhome"> <i class="menu-icon fas fa-home"></i>Ark Home </a>
                 </li>
+                @if (Auth::user()->regCodeVerified  !== 0)
                 @if(auth()->user()->hasRole('Owner'))
                     <h3 class="menu-title">Test Menu</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -153,6 +154,7 @@
                         @endif
                     </ul>
                 </li>
+                @endif
                 @endif
 
 
