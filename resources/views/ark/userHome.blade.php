@@ -19,7 +19,7 @@
                     @if (Auth::user()->regCodeVerified  === 0)
                         <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                             <span class="badge badge-pill badge-success">Success</span>
-                            Be sure to check your email for your validation code
+                            Be sure to check your email for your validation code and to unlock user menu
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
