@@ -50,7 +50,7 @@ class PayMods extends Command
         foreach($mods as $mod){
             $mod->gem_balance;
 
-            $mod->gem_balance += 100;
+            $mod->gem_balance += 125;
 
             $mod->save();
         }
