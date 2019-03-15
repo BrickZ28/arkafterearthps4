@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Bank_transaction;
 
 
 class UserHomeController extends Controller
@@ -24,6 +25,15 @@ class UserHomeController extends Controller
             $user->gem_balance += 50;
             $user->daily_currency = 1;
             $user->save();
+
+            Bank_transaction::create([
+                'transaction_amount' => 50,
+                'payer_id' => 0,
+                'receiver_id' => $user->id,
+                'reason' => 'Daily Bonus',
+                'dino_id' => null,
+                'admin_payer' => null,
+            ]);
 
         }
 
