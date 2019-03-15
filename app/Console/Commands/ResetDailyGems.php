@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Mail\CurrencyResetLog;
+use Mail;
 
 class ResetDailyGems extends Command
 {
@@ -37,7 +39,27 @@ class ResetDailyGems extends Command
      */
     public function handle()
     {
-        \DB::table('users')->
+        $countOld = \DB::table('users')->
+            where('daily_currency', '=',1)->
+            count();
+
+        $cron = \DB::table('users')->
             update(['daily_currency' => 0]);
+
+        $countNew = \DB::table('users')->
+        where('daily_currency', '=',1)->
+        count();
+
+        if ($cron){
+            $status = 'Success';
+
+            Mail::to('brickz28@comcast.net')->send(new CurrencyResetLog($countOld,$status,$countNew));
+        }
+        else{
+            $status = 'Failed';
+
+            Mail::to('brickz28@comcast.net')->send(new CurrencyResetLog($countOld,$status,$countNew));
+        }
+
     }
 }
