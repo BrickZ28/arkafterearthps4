@@ -5,6 +5,7 @@ use App\User;
 use Illuminate\Console\Command;
 use Mail;
 use App\Mail\PayModLog;
+use App\Bank_transaction;
 
 class PayMods extends Command
 {
@@ -53,10 +54,21 @@ class PayMods extends Command
             $mod->gem_balance += 125;
 
             $mod->save();
+
+            Bank_transaction::create([
+                'transaction_amount' => 125,
+                'payer_id' => 0,
+                'receiver_id' => $mod->id,
+                'reason' => 'Weekly Salary',
+                'dino_id' => null,
+                'admin_payer' => null,
+            ]);
         }
 
         if ($mods){
             $status = 'Success';
+
+
         }
         else{
             $status = 'Fail';
