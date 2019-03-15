@@ -406,6 +406,9 @@ class UserController extends Controller
         if($request->startertype === 'pvpstarter'){
             $pvpGate = Gate::where('player', null)->
                             where('style', 'PVP')->
+                            where('gate', '!=', '1000')->
+                            where('gate', '!=', '2000')->
+                            where('gate', '!=', '3000')->
                             first();
 
             if (empty($pvpGate)){
@@ -428,6 +431,7 @@ class UserController extends Controller
         if($request->startertype === 'pvestarter'){
             $pveGate = Gate::where('player', null)->
             where('style', 'PVE')->
+            where('gate', '!=', '7')->
             first();
 
             if (empty($pveGate)){
