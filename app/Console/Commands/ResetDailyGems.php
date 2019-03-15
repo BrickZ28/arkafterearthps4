@@ -52,14 +52,11 @@ class ResetDailyGems extends Command
 
         if ($cron){
             $status = 'Success';
-
-            Mail::to('brickz28@comcast.net')->send(new CurrencyResetLog($countOld,$status,$countNew));
         }
         else{
             $status = 'Failed';
-
-            Mail::to('brickz28@comcast.net')->send(new CurrencyResetLog($countOld,$status,$countNew));
         }
+        Mail::to('brickz28@comcast.net')->send(new CurrencyResetLog($countOld,$status,$countNew));
 
     }
 }

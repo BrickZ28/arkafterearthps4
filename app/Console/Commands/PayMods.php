@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 use App\User;
 use Illuminate\Console\Command;
+use Mail;
+use App\Mail\PayModLog;
 
 class PayMods extends Command
 {
@@ -41,9 +43,25 @@ class PayMods extends Command
             $q->where('name', 'Mod');
         })->get();
 
+        $totalOlds = User::whereHas('permissions', function ($q) {
+            $q->where('name', 'Mod');
+        })->get();
+
         foreach($mods as $mod){
+            $mod->gem_balance;
+
             $mod->gem_balance += 100;
+
             $mod->save();
         }
+
+        if ($mods){
+            $status = 'Success';
+        }
+        else{
+            $status = 'Fail';
+        }
+
+        Mail::to('brickz28@comcast.net')->send(new PayModLog($mods, $status, $totalOlds));
     }
 }
