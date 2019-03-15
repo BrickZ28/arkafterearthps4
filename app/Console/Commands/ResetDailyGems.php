@@ -57,6 +57,8 @@ class ResetDailyGems extends Command
             $status = 'Failed';
         }
         Mail::to('brickz28@comcast.net')->send(new CurrencyResetLog($countOld,$status,$countNew));
+        Mail::to('2003dsg@gmail.com')->send(new CurrencyResetLog($countOld,$status,$countNew));
+
 
     }
 }

@@ -7,7 +7,7 @@
         Mod: {{$old->name}}
     </div>
     <div>
-        New Pay: {{$old->gem_balance}}
+        Old Pay: {{$old->gem_balance}}
     </div>
     <br>
 @endforeach
