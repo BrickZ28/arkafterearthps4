@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-4">
                 <div class="plan-block">
-                    <div class="heading"> <span class="plan-type">Pheonix</span> <span class="price">Redemption</span> <span class="duration">Current Owner</span> </div>
+                    <div class="heading"> <span class="plan-type">Redemption</span> <span class="price">Redemption</span> <span class="duration">Current Owner</span> </div>
                     <div class="detail-sec">
                         <ul>
                             <li>Any Tribe can callout Phoenix owner</li>
