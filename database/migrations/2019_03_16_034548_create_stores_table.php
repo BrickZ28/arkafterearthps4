@@ -13,8 +13,8 @@ class CreateStoresTable extends Migration
      */
     public function up()
     {
-        Schema::table('stores', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+        Schema::create('stores', function (Blueprint $table) {
+            $table->increments('id');
             $table->char('name');
             $table->char('items');
         });
