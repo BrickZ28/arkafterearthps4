@@ -28,7 +28,7 @@
         </div>
         @endif
         <div class="card-body card-block">
-            <form action="/gates" method="post" class="form-horizontal">
+            <form action="/stores" method="post" class="form-horizontal">
                 @csrf
                 <div class="row form-group">
                     <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Store Name</label></div>
@@ -39,7 +39,12 @@
                     <div class="col col-sm-6"><input type="text" id="input-normal" name="storeItem" placeholder="What are you selling" class="form-control" value="{{old('storeItem')}}" required>
                     </div>
                 </div>
-                    <input type="hidden" name="storeOwner" value="{{Auth::user()->id}}">
+                <div class="row form-group">
+                    <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Store Location</label></div>
+                    <div class="col col-sm-6"><input type="text" id="input-normal" name="storeLocation" placeholder="Map Location" class="form-control" value="{{old('storeLocation')}}" required>
+                    </div>
+                </div>
+                    <input type="hidden" name="storeOwner" value="{{Auth::id()}}">
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-dot-circle-o"></i> Submit
