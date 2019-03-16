@@ -28,7 +28,7 @@ class CreateStoresTable extends Migration
     public function down()
     {
         Schema::table('stores', function (Blueprint $table) {
-            //
+            Schema::dropIfExists('dino_request');
         });
     }
 }
