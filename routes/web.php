@@ -99,6 +99,7 @@ Route::resource('exchangeRates', 'ExchangeRateController');
 Route::resource('bank', 'BankController');
 Route::resource('transactions', 'BankTransactionController');
 Route::resource('gates', 'GateController');
+Route::resource('stores', 'StoreController');
 
 
 Auth::routes(['verify' => true]);

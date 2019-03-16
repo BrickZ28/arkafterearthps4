@@ -18,10 +18,9 @@
                     @if(auth()->user()->hasRole('Owner'))
                         <h3 class="menu-title">Test Menu</h3><!-- /.menu-title -->
                         <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-user"></i>Testing Shit</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-user"></i>Testing Items</a>
                             <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fas fa-user"></i><a href="/dinoImage">Dino Images</a></li>
-                                <li><i class="fas fa-user"></i><a href="/addImagetest">Add Images</a></li>
+                                <li><i class="fas fa-user"></i><a href="/stores/create">Create Store</a></li>
                             </ul>
                         </li>
                     @endif
