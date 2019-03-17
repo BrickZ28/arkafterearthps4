@@ -36,19 +36,28 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'storeName' => 'required',
-            'storeItem' => 'required',
-            'storeLocation' => 'required'
-        ]);
+        $countStores = \DB::table('stores')
+            ->where('owner_id', '=', \Auth::id())
+            ->count();
 
-        Store::create([
-            'name' => $request->storeName,
-            'items' => $request->storeItem,
-            'owner_id' => $request->storeOwner,
-            'play_style' => 'pve',
-            'location' => $request->storeLocation,
-        ]);
+        if ($countStores > 0){
+            return back()->with('failed', 'You are only authorized one(1) store');
+        }
+        else{
+            request()->validate([
+                'storeName' => 'required',
+                'storeItem' => 'required',
+                'storeLocation' => 'required'
+            ]);
+
+            Store::create([
+                'name' => $request->storeName,
+                'items' => $request->storeItem,
+                'owner_id' => $request->storeOwner,
+                'play_style' => 'pve',
+                'location' => $request->storeLocation,
+            ]);
+        }
     }
 
     /**
