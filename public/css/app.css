@@ -9503,13 +9503,18 @@ body {
 }
 
 .wrapper {
-overflow-scrolling: auto;
-  margin-bottom: 0;
-  height: 100vh;
-  position: relative;
-  background: url("../img/home/boat.jpg") no-repeat;
+  background: url("../img/reg.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  -ms-content-zooming: none;
+  position: absolute;
   width: 100%;
+  height: 100%;
+  font-family: 'Scout', arial, sans-serif;
 }
 
 .reghed {

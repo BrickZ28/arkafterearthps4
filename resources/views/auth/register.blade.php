@@ -29,25 +29,21 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="tribenamepvp" class="col-md-4 col-form-label text-md-right">{{ __('PVP Tribe Name') }}</label>
+                            <label for="tribenamepvp" class="col-md-3 col-form-label text-md-right">{{ __('PVP Tribe Name') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <input id="tribenamepvp" type="text" class="form-control{{ $errors->has('tribenamepvp') ? ' is-invalid' : '' }}" placeholder="Place None if none" name="tribenamepvp" value="{{ old('tribenamepvp') }}" autofocus required>
                             </div>
-                        </div>
+                            <label for="tribenamepve" class="col-md-3 col-form-label text-md-right">{{ __('PVE Tribe Name') }}</label>
 
-                        <div class="form-group row">
-                            <label for="tribenamepve" class="col-md-4 col-form-label text-md-right">{{ __('PVE Tribe Name') }}</label>
-
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <input id="tribenamepve" type="text" class="form-control{{ $errors->has('tribenamepve') ? ' is-invalid' : '' }}" name="tribenamepve" value="{{ old('tribenamepve') }}" autofocus required placeholder="Place None if none">
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -56,11 +52,9 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Retype E-Mail Address') }}</label>
+                            <label for="email-confirm" class="col-md-3 col-form-label text-md-right">{{ __('Retype E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <input id="email-confirm" type="email" class="form-control{{ $errors->has('email-confirm') ? ' is-invalid' : '' }}" name="email-confirm" value="{{ old('email-confirm') }}" required>
 
                                 @if ($errors->has('email-confirm'))
@@ -70,11 +64,10 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -83,16 +76,12 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                            <label for="password-confirm" class="col-md-3 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-dark">
