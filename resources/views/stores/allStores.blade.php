@@ -52,14 +52,16 @@
                             <td>{{$store->items}}</td>
                             <td>{{$store->location}}</td>
                             <td>{{$store->pve_level_kit}}
-                                <a href="/editMember/{{$store->id}}">
+                                <a href="">
                                     <button type="button" class="btn btn-secondary btn-sm">View Store</button>
                                 </a>
                             </td>
                             <td>
-                                <a href="/editMember/{{$store->id}}">
-                                    <button type="button" class="btn btn-secondary btn-sm">Update Store</button>
+                                @if($store->id === Auth::id())
+                                    <a href="/stores/{{$store->id}}">
+                                        <button type="button" class="btn btn-secondary btn-sm">Update Store</button>
                                     </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

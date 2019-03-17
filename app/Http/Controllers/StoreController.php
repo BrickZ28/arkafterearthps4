@@ -59,7 +59,9 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        //
+        $store = Store::find($id);
+
+        return  view('stores.show', compact('store'));
     }
 
     /**
