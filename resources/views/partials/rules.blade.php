@@ -35,7 +35,10 @@
             </div>
             <div class="col-md-4">
                 <div class="plan-block">
-                    <div class="heading"> <span class="plan-type">Pheonix</span> <span class="price">Redemption</span> <span class="duration">Current Owner</span> </div>
+                    <div class="heading"> <span class="plan-type">Pheonix</span> <span class="price">
+                            <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="75" width="75">
+                            Redemption
+                        <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="75" width="75"></span> <span class="duration">Current Owner</span> </div>
                     <div class="detail-sec">
                         <ul>
                             <li>Any Tribe can callout Phoenix owner</li>
