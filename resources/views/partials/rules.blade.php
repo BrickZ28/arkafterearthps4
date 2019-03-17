@@ -6,8 +6,8 @@
             <div class="col-md-4">
                 <div class="plan-block">
                     <div class="heading"> <span class="plan-type">Pheonix</span> <span class="price">
-                            <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="75" width="75">
-                            Redemption</span> <span class="duration">Current Owner</span> </div>
+                            <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="50" width="50">
+                            Redemption<img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="50" width="50"></span> <span class="duration">Current Owner</span> </div>
                     <div class="detail-sec">
                         <ul>
                             <li>If Phoenix killed(travel or raid), show proof(pic)</li>
