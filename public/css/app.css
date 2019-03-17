@@ -9503,7 +9503,7 @@ body {
 }
 
 .wrapper {
-
+overflow-scrolling: auto;
   margin-bottom: 0;
   height: 100vh;
   position: relative;
