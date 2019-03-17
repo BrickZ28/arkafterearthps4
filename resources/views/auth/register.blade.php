@@ -31,14 +31,14 @@
                         <div class="form-group row">
                             <label for="tribenamepvp" class="col-xs-3 col-form-label text-md-right">{{ __('PVP Tribe Name') }}</label>
 
-                            <div class="col-xs-3">
+
                                 <input id="tribenamepvp" type="text" class="form-control{{ $errors->has('tribenamepvp') ? ' is-invalid' : '' }}" placeholder="Place None if none" name="tribenamepvp" value="{{ old('tribenamepvp') }}" autofocus required>
-                            </div> <div class="form-group row"></div>
+
                             <label for="tribenamepve" class="col-xs-3 col-form-label text-md-right">{{ __('PVE Tribe Name') }}</label>
 
-                            <div class="col-sx-3">
+
                                 <input id="tribenamepve" type="text" class="form-control{{ $errors->has('tribenamepve') ? ' is-invalid' : '' }}" name="tribenamepve" value="{{ old('tribenamepve') }}" autofocus required placeholder="Place None if none">
-                            </div>
+
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-xs-3 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
