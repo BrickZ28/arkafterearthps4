@@ -9499,7 +9499,7 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   margin: 0px;
   padding: 0px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .wrapper {
