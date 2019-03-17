@@ -14,7 +14,8 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        $stores = Store::with('storeOwner')->orderBy('id')->paginate(10);
+        return view('stores.allStores', compact('stores'));
     }
 
     /**

@@ -21,6 +21,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-user"></i>Testing Items</a>
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="fas fa-user"></i><a href="/stores/create">Create Store</a></li>
+                                <li><i class="fas fa-user"></i><a href="/stores">All Stores</a></li>
+                                <li><i class="fas fa-user"></i><a href="/myStores">My Stores</a></li>
                             </ul>
                         </li>
                     @endif

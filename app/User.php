@@ -152,4 +152,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne('App\Gate', 'admin', 'id');
     }
 
+    public function storeBoss(){
+        return $this->hasMany('App\Store');
+    }
+
 }
