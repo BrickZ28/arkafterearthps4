@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-4 text-md-center col-sm-12 text-xs-center text">
 
-                <video width="300" autoplay controls>
+                <video width="300" autoplay controls autobuffer  playsinline>
                     <source src="{{asset('../img/movies/intro.mp4')}}" type="video/mp4">
                 </video>
             </div>
