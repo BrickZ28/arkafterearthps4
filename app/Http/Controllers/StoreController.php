@@ -68,7 +68,10 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $store = Store::find($id);
+        $store = Store::with('storeItems')
+        ->where('id', '=', $id)
+        ->orderBy('id')
+        ->paginate(10);
 
         return  view('stores.show', compact('store'));
     }

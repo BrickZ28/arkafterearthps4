@@ -77,6 +77,7 @@ Route::get('/dinoImage', 'TestController@dinoImage');
 Route::get('/addImagetest', 'TestController@addImagetest');
 Route::get('/addImage', 'TestController@addImage');
 Route::get('/verifyCode/{id}', 'UserController@verifyRegCode');
+Route::get('/mystore', 'StoreController@mystore');
 
 
 Route::post('/sendpin', 'UserController@sendpin');
@@ -87,15 +88,6 @@ Route::patch('/ban/{id}','UserController@banUser');
 Route::patch('/editMember/{id}','UserController@update');
 Route::patch('/user/bank/transaction/{id}', 'UserController@userToBankFundsTransaction');
 Route::patch('/user/user/transaction', 'UserController@userToUserFundsTransaction');
-Route::patch('/dinoRequestEdit/{id}', 'DinoController@dinoRequestEdit');
-Route::patch('/myProfile/{id}', 'UserHomeController@updateSelf');
-
-Route::delete('/users/{id}', 'UserController@destroy');
-
-Route::resource('/roles', 'RoleController');
-Route::resource('/permissions', 'PermissionController');
-Route::resource('dinos', 'DinoController');
-Route::resource('exchangeRates', 'ExchangeRateController');
 Route::resource('bank', 'BankController');
 Route::resource('transactions', 'BankTransactionController');
 Route::resource('gates', 'GateController');

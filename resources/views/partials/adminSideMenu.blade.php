@@ -22,7 +22,7 @@
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="fas fa-user"></i><a href="/stores/create">Create Store</a></li>
                                 <li><i class="fas fa-user"></i><a href="/stores">All Stores</a></li>
-                                <li><i class="fas fa-user"></i><a href="/myStores">My Stores</a></li>
+                                <li><i class="fas fa-user"></i><a href="/myStore">My Store</a></li>
                             </ul>
                         </li>
                     @endif

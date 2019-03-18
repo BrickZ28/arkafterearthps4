@@ -11,4 +11,8 @@ class Store extends Model
     public function storeOwner () {
         return $this->belongsTo('App\User', 'owner_id', 'id');
     }
+
+    public function items(){
+        return $this->hasMany('App\Items', 'store_id', 'id');
+    }
 }

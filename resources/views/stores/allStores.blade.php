@@ -49,16 +49,16 @@
                         <tr>
                             <td>{{$store->name}}</td>
                             <td>{{$store->storeOwner->name}}</td>
-                            <td>{{$store->items}}</td>
+                            <td>{{$store->description}}</td>
                             <td>{{$store->location}}</td>
                             <td>{{$store->pve_level_kit}}
-                                <a href="">
+                                <a href="stores/{{$store->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm">View Store</button>
                                 </a>
                             </td>
                             <td>
                                 @if($store->id === Auth::id())
-                                    <a href="/stores/{{$store->id}}">
+                                    <a href="/stores/{{$store->id}}/edit">
                                         <button type="button" class="btn btn-secondary btn-sm">Update Store</button>
                                     </a>
                                 @endif
