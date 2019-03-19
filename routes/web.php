@@ -25,6 +25,8 @@ Route::get('/settings', function (){
     return view('ark.settings');
 });
 
+
+
 /*Route::get('/passwords/reset', function () {
     return view('auth.passwords.reset');
 });*/
@@ -78,6 +80,7 @@ Route::get('/addImagetest', 'TestController@addImagetest');
 Route::get('/addImage', 'TestController@addImage');
 Route::get('/verifyCode/{id}', 'UserController@verifyRegCode');
 Route::get('/mystore', 'StoreController@mystore');
+Route::get('/dinos/edit/{id}', 'DinoController@edit');
 
 
 Route::post('/sendpin', 'UserController@sendpin');
@@ -88,6 +91,8 @@ Route::patch('/ban/{id}','UserController@banUser');
 Route::patch('/editMember/{id}','UserController@update');
 Route::patch('/user/bank/transaction/{id}', 'UserController@userToBankFundsTransaction');
 Route::patch('/user/user/transaction', 'UserController@userToUserFundsTransaction');
+
+
 Route::resource('bank', 'BankController');
 Route::resource('transactions', 'BankTransactionController');
 Route::resource('gates', 'GateController');

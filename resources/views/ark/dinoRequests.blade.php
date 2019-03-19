@@ -70,7 +70,7 @@
                             </td>
                             @can('PVP Dino Seller')
                                 <td>
-                                    <a href="/dinos/{{$dinoRequest->id}}/edit">
+                                    <a href="/dinos/edit/{{$dinoRequest->id}}">
                                         <button type="button" name="completed" class="btn btn-secondary btn-sm">Complete Request</button>
                                     </a>
                                 </td>
