@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Mail\CurrencyResetLog;
 use Mail;
+use App\User;
 
 class ResetDailyGems extends Command
 {
@@ -40,24 +41,29 @@ class ResetDailyGems extends Command
     public function handle()
     {
         $countOld = \DB::table('users')->
-            where('daily_currency', '=',1)->
-            count();
-
-        $cron = \DB::table('users')->
-            update(['daily_currency' => 0]);
-
-        $countNew = \DB::table('users')->
-        where('daily_currency', '=',1)->
+        where('daily_currency', '=', 1)->
         count();
 
-        if ($cron){
+        $cron = \DB::table('users')->
+        update(['daily_currency' => 0]);
+
+        $countNew = \DB::table('users')->
+        where('daily_currency', '=', 1)->
+        count();
+
+        if ($cron) {
             $status = 'Success';
-        }
-        else{
+        } else {
             $status = 'Failed';
         }
-        Mail::to('brickz28@comcast.net')->send(new CurrencyResetLog($countOld,$status,$countNew));
-        Mail::to('arkafterearthcluster@gmail.com')->send(new CurrencyResetLog($countOld,$status,$countNew));
+        $owners = User::whereHas('roles', function ($q) {
+            $q->where('name', 'Owner');
+        })->get();
+
+        foreach ($owners as $owner) {
+            echo $owner->email;
+            Mail::to($owner->email)->send(new CurrencyResetLog($countOld, $status, $countNew));
+        }
 
 
     }

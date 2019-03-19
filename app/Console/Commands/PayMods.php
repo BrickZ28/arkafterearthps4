@@ -74,7 +74,12 @@ class PayMods extends Command
             $status = 'Fail';
         }
 
-        Mail::to('brickz28@comcast.net')->send(new PayModLog($mods, $status, $totalOlds));
-        Mail::to('arkafterearthcluster@gmail.com')->send(new PayModLog($mods, $status, $totalOlds));
+        $owners = User::whereHas('roles', function ($q) {
+            $q->where('name', 'Owner');
+        })->get();
+
+        foreach ($owners as $owner) {
+            Mail::to($owner->email)->send(new PayModLog($mods, $status, $totalOlds));
+        }
     }
 }
