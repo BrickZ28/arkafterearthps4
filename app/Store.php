@@ -13,6 +13,6 @@ class Store extends Model
     }
 
     public function items(){
-        return $this->hasMany('App\Items', 'store_id', 'id');
+        return $this->hasMany('App\Item', 'store_id', 'id');
     }
 }

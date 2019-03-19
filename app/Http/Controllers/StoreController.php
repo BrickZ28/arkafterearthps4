@@ -68,12 +68,12 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $store = Store::with('storeItems')
+        $stores = Store::with('items')
         ->where('id', '=', $id)
         ->orderBy('id')
         ->paginate(10);
 
-        return  view('stores.show', compact('store'));
+        return  view('stores.show', compact('stores'));
     }
 
     /**
@@ -84,7 +84,10 @@ class StoreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $store = Store::find($id);
+        $item='';
+
+        return view('stores.edit', compact('store', 'item'));
     }
 
     /**

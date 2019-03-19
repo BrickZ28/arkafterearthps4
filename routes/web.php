@@ -92,6 +92,7 @@ Route::resource('bank', 'BankController');
 Route::resource('transactions', 'BankTransactionController');
 Route::resource('gates', 'GateController');
 Route::resource('stores', 'StoreController');
+Route::resource('items', 'ItemController');
 
 
 Auth::routes(['verify' => true]);
