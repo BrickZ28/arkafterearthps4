@@ -75,6 +75,6 @@ class PayMods extends Command
         }
 
         Mail::to('brickz28@comcast.net')->send(new PayModLog($mods, $status, $totalOlds));
-        Mail::to('2003dsg@gmail.com')->send(new PayModLog($mods, $status, $totalOlds));
+        Mail::to('arkafterearthcluster@gmail.com')->send(new PayModLog($mods, $status, $totalOlds));
     }
 }
