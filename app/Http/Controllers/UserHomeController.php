@@ -61,7 +61,9 @@ class UserHomeController extends Controller
             ->whereDate('updated_at', '>', Carbon::now()->subDays(7))
             ->count();
 
-
+        $user->update([
+                'ip' => \Request::ip()
+            ]);
 
 
         return view('ark.userHome', compact('tribecount', 'newDinos', 'numRequest', 'last_pve', 'last_pvp', 'joined'));
