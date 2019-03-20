@@ -49,6 +49,7 @@ Route::get('/pvpDinos', 'DinoController@pvpDinos');
 Route::get('/pveDinos/admin', 'DinoController@pveDinosAdmin');
 Route::get('/pvpDinos/admin', 'DinoController@pvpDinosAdmin');
 Route::get('/dinos/admin', 'DinoController@dinosAdmin');
+Route::get('/dinos', 'DinoController@index');
 Route::get('/dinoRequests/completed', 'DinoController@dinoRequestsCompleted');
 Route::get('/currencyEditor', 'ExchangeRateController@currencyEditor');
 Route::get('/dinos/requestDino/{id}', 'DinoController@requestDino');
