@@ -28,7 +28,8 @@ class GateController extends Controller
             'gate'  => 'required|max:9',
             'pin' => 'nullable|unique:gates,pin|max:9999|min:0000',
             'style' => 'required',
-            'admin' => 'required'
+            'admin' => 'required',
+            'content' => 'nullable'
         ]);
 
         $findRepeat = \DB::table('gates')
@@ -64,6 +65,7 @@ class GateController extends Controller
         $gate->pin = request('pin');
         $gate->admin = Auth::id();
         $gate->player = null;
+        $gate->contents = null;
 
         $gate->save();
 

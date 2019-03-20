@@ -418,6 +418,7 @@ class UserController extends Controller
             }
             $pvpGate->admin = \Auth::user()->id;
             $pvpGate->player = $user->id;
+            $pvpGate->contents = 'Starter Kit';
 
             $pvpGate->save();
 
@@ -441,6 +442,7 @@ class UserController extends Controller
             }
             $pveGate->admin = \Auth::user()->id;
             $pveGate->player = $user->id;
+            $pveGate->contents = 'Starter Kit';
 
             $pveGate->save();
 
@@ -463,6 +465,7 @@ class UserController extends Controller
             }
             $pveGate->admin = \Auth::user()->id;
             $pveGate->player = $user->id;
+            $pveGate->contents = 'Starter Kit';
 
             $pveGate->save();
 
@@ -482,6 +485,7 @@ class UserController extends Controller
         }
         $pvpGate->admin = \Auth::user()->id;
         $pvpGate->player = $user->id;
+        $pvpGate->contents = 'Starter Kit';
 
         $pvpGate->save();
 

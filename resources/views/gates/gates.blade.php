@@ -27,6 +27,7 @@
                     <tr>
                         <th scope="col">Gate Number</th>
                         <th scope="col">Gate style</th>
+                        <th scope="col">Gate Contents</th>
                         <th scope="col">Gate Pin</th>
                         <th scope="col">Assigned To</th>
                         <th scope="col">Updated By</th>
@@ -41,6 +42,11 @@
                         <tr>
                             <td>{{$gate->gate}}</td>
                             <td>{{$gate->style}}</td>
+                            @if($gate->contents === null)
+                                <td>Dino Request</td>
+                            @else
+                                <td>{{$gate->contents}}</td>
+                            @endif
                             <td>{{sprintf('%04d', $gate->pin)}}</td>
                             <td>{{$gate->usergate['name']}}</td>
                             <td>{{$gate->givenBy['name']}}</td>
@@ -80,6 +86,7 @@
                     <tr>
                         <th scope="col">Gate Number</th>
                         <th scope="col">Gate style</th>
+                        <th scope="col">Gate Contents</th>
                         <th scope="col">Gate Pin</th>
                         <th scope="col">Assigned To</th>
                         <th scope="col">Updated By</th>
@@ -94,6 +101,12 @@
                         <tr>
                             <td>{{$gate->gate}}</td>
                             <td>{{$gate->style}}</td>
+                            <td>{{$gate->style}}</td>
+                            @if($gate->contents === null)
+                                <td>Dino Request</td>
+                            @else
+                                <td>{{$gate->contents}}</td>
+                            @endif
                             <td>{{sprintf('%04d', $gate->pin)}}</td>
                             <td>{{$gate->usergate['name']}}</td>
                             <td>{{$gate->givenBy['name']}}</td>
