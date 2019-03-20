@@ -81,6 +81,7 @@ Route::get('/addImage', 'TestController@addImage');
 Route::get('/verifyCode/{id}', 'UserController@verifyRegCode');
 Route::get('/mystore', 'StoreController@mystore');
 Route::get('/dinos/edit/{id}', 'DinoController@edit');
+Route::get('/stores/{id}/shop', 'StoreController@shop');
 
 
 Route::post('/sendpin', 'UserController@sendpin');

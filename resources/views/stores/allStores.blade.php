@@ -52,7 +52,7 @@
                             <td>{{$store->description}}</td>
                             <td>{{$store->location}}</td>
                             <td>{{$store->pve_level_kit}}
-                                <a href="stores/{{$store->id}}">
+                                <a href="stores/{{$store->id}}/shop">
                                     <button type="button" class="btn btn-secondary btn-sm">View Store</button>
                                 </a>
                             </td>

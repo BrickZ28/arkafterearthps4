@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Item;
 
 class ItemController extends Controller
 {
@@ -34,7 +35,22 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'price' => 'required|integer',
+            'qty' => 'required|integer',
+        ]);
+
+        Item::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'level' => $request->level,
+            'qty' => $request->qty,
+            'store_id' => $request->store,
+        ]);
+
+        return redirect('/stores/' . $request->store . '/edit')->with('success', $request->name . ' added');
     }
 
     /**

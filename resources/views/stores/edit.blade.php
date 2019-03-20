@@ -1,7 +1,15 @@
 @extends ('layouts.admin')
 
 @section('content')
-
+    @if (session('success'))
+        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+            <span class="badge badge-pill badge-success">Success</span>
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
@@ -79,6 +87,8 @@
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="level" value="{{old('level')}}" class="form-control" >
                         </div>
                     </div>
+
+                    <input type="hidden" value="{{$store->id}}" name="store">
                     <div class="card-footer">
                         <button type="submit" class="btn btn-success btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit
