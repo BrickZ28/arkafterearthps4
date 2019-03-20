@@ -62,7 +62,7 @@ class UserHomeController extends Controller
             ->count();
 
         $user->update([
-                'ip' => \Request::ip()
+                'ip' => \Request::getClientIp()
             ]);
 
 
