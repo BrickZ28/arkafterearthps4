@@ -355,17 +355,7 @@
                             <i class="fa fa-dot-circle-o"></i> DELETE
                         </button>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <form action="/ban/{{$member->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
-                        @method('PATCH')
-                        @csrf
-                        <input name="ban" type="hidden" value="{{$member->id}}">
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to BAN this user?')">
-                            <i class="fa fa-dot-circle-o"></i> BAN PLAYER
-                        </button>
-                    </form>
-                </div>
+                </div
             </div>
     @endif
 

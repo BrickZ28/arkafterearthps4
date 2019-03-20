@@ -385,6 +385,8 @@ class UserController extends Controller
 
        $user->save();
 
+       return redirect('/manageUser')->with('success', $user->name . ' has been banned!');
+
     }
 
     public function verifyRegCode(Request $request){
