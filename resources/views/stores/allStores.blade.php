@@ -39,6 +39,7 @@
                             <th scope="col">Store name</th>
                             <th scope="col">Store Owner</th>
                             <th scope="col">Store Items</th>
+                            <th scope="col">Map</th>
                             <th scope="col">Store Location</th>
                             <th scope="col">View Store</th>
                             <th scope="col">Edit Store</th>
@@ -50,6 +51,7 @@
                             <td>{{$store->name}}</td>
                             <td>{{$store->storeOwner->name}}</td>
                             <td>{{$store->description}}</td>
+                            <td>{{$store->map}}</td>
                             <td>{{$store->location}}</td>
                             <td>{{$store->pve_level_kit}}
                                 <a href="stores/{{$store->id}}/shop">
