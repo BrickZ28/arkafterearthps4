@@ -52,32 +52,31 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($shops as $shop)
-                        @foreach($shop->items as $item)
+                    @foreach($shops as $item)
                         <tr>
                             <td>{{$item->name}}
-                                @if(strtotime($shop->item['created_at']) > strtotime('-7 day'))
+                                @if(strtotime($item->created_at) > strtotime('-7 day'))
                                     <span class="badge badge-success pull-right">New</span>
                                 @endif
                             </td>
-                            <td>{{$shop->item['price']}}</td>
-                            <td>{{$shop->item['qty']}}</td>
-                            <td>{{$shop->item['level']}}</td>
-                            <td>{{$shop->item['description']}}</td>
+                            <td>{{$item->price}}</td>
+                            <td>{{$item->qty}}</td>
+                            <td>{{$item->level}}</td>
+                            <td>{{$item->description}}</td>
                             <td>
-                                <a href="/item/requestItem/{{$shop->item['id']}}">
+                                <a href="/item/requestItem/{{$item->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm" >Request Item</button>
                                 </a>
                             </td>
                             @can('Store Owner')
                                 <td>
-                                    <a href="/item/{{$shop->item['id']}}">
-                                        <button type="button" class="btn btn-secondary btn-sm">Update Dino</button>
+                                    <a href="/item/{{$item->id}}">
+                                        <button type="button" class="btn btn-secondary btn-sm">Update Item</button>
                                     </a>
                                 </td>
                             @endcan
                         </tr>
-                            @endforeach
+
                     @endforeach
                     </tbody>
                 </table>

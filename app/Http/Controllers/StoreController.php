@@ -118,9 +118,11 @@ class StoreController extends Controller
     }
 
     //* Show the Store and its items */
-    public function shop(){
-        $shops = Store::with('items')->orderBy('id')->paginate(10);
-
+    public function shop(Request $request){
+        $shops = \DB::table('items')
+            ->where('store_id', '=', $request->id)
+            ->orderBy('id')
+            ->paginate(10);
 
         return view('stores.shop', compact('shops'));
     }
