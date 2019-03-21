@@ -103,6 +103,9 @@ Route::resource('stores', 'StoreController');
 Route::resource('items', 'ItemController');
 Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
+Route::resource('dinos', 'DinoController');
+Route::resource('currency', 'CurrencyController');
+Route::resource('exchangeRates', 'ExchangeRateController');
 
 
 Auth::routes(['verify' => true]);
