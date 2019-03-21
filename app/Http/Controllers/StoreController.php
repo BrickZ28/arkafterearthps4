@@ -112,4 +112,12 @@ class StoreController extends Controller
     {
         //
     }
+
+    //* Show the Store and its items */
+    public function shop(){
+        $shops = Store::with('items')->orderBy('id')->paginate(10);
+
+
+        return view('stores.shop', compact('shops'));
+    }
 }

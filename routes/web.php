@@ -85,6 +85,7 @@ Route::get('/dinos/edit/{id}', 'DinoController@edit');
 Route::get('/stores/{id}/shop', 'StoreController@shop');
 
 
+
 Route::post('/sendpin', 'UserController@sendpin');
 Route::post('/converted', 'CurrencyController@show')->middleware('currency');
 Route::post('/addImage', 'TestController@addImage');
@@ -100,6 +101,8 @@ Route::resource('transactions', 'BankTransactionController');
 Route::resource('gates', 'GateController');
 Route::resource('stores', 'StoreController');
 Route::resource('items', 'ItemController');
+Route::resource('roles', 'RoleController');
+Route::resource('permissions', 'PermissionController');
 
 
 Auth::routes(['verify' => true]);
