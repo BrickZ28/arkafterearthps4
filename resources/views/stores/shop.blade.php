@@ -53,6 +53,7 @@
                     </thead>
                     <tbody>
                     @foreach($shops as $shop)
+
                         <tr>
                             <td>{{$shop->item['name']}}
                                 @if(strtotime($shop->item['created_at']) > strtotime('-7 day'))

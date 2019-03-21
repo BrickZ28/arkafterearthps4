@@ -49,8 +49,13 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Store Location</label></div>
-                    <div class="col col-sm-6"><input type="text" id="input-normal" name="storeLocation" placeholder="Map Location" class="form-control" value="{{old('storeLocation')}}" required>
+                    <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">Map</label></div>
+                    <div class="col col-sm-6"><input type="text" id="input-normal" name="map" placeholder="Map" class="form-control" value="{{old('storeItem')}}" required>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-sm-5"><label for="input-normal" class=" form-control-label">GPS Location</label></div>
+                    <div class="col col-sm-6"><input type="text" id="input-normal" name="storeLocation" placeholder="GPS Location" class="form-control" value="{{old('storeLocation')}}" required>
                     </div>
                 </div>
                     <input type="hidden" name="storeOwner" value="{{Auth::id()}}">

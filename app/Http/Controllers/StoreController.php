@@ -47,16 +47,20 @@ class StoreController extends Controller
             request()->validate([
                 'storeName' => 'required',
                 'storeItem' => 'required',
-                'storeLocation' => 'required'
+                'storeLocation' => 'required',
+                'map' => 'required'
             ]);
 
             Store::create([
                 'name' => $request->storeName,
-                'items' => $request->storeItem,
+                'description' => $request->storeItem,
                 'owner_id' => $request->storeOwner,
                 'play_style' => 'pve',
                 'location' => $request->storeLocation,
+                'map' => $request->map,
             ]);
+
+            return back()->with('success', 'Store created');
         }
     }
 
