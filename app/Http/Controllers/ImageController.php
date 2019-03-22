@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Image;
+use App\Dino;
 
 
 class ImageController extends Controller
@@ -26,6 +28,12 @@ class ImageController extends Controller
                 $oeFile,
                 'spaces'
             );
+
+            Image::create([
+                'category' => request('category'),
+                'name' => request('name'),
+                'link' => 'https://ark-afterearth.sfo2.digitaloceanspaces.com/' . $request->category . '/' . $oeFile
+            ]);
             return redirect('/images/create')->with('success', 'File ' . $oeFile . ' added');
         }
     }
