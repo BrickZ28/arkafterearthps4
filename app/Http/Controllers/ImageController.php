@@ -25,7 +25,7 @@ class ImageController extends Controller
                 $oeFile,
                 'spaces'
             );
-            dd($path);
+            return redirect('/images/create')->with('success', 'File ' . $oeFile . ' added');
         }
     }
 }

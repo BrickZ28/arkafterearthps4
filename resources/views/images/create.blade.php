@@ -13,13 +13,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="sufee-alert alert with-close alert-info alert-dismissible fade show">
-                        <span class="badge badge-pill badge-in">NOTICE</span>
-                        YOU MUST ADD A FOLDER TO DIGITAL OCEAN WHEN ADDING A NEW ITEM
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+
                 @endif
                 @if (session('failed'))
                     <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
