@@ -11,4 +11,8 @@ class Item extends Model
     public function storeItem(){
         return $this->belongsTo('App\Store', 'id', 'store_id');
     }
+
+    public function itemImage(){
+        return $this->hasOne('App\Image');
+    }
 }

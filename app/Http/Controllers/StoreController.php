@@ -123,6 +123,7 @@ class StoreController extends Controller
     public function shop(Request $request){
         $shops = \DB::table('items')
             ->leftJoin('stores', 'items.store_id', '=', 'stores.id')
+            ->leftJoin('images', 'items.item_img', '=', 'images.id')
             ->where('items.store_id', '=', $request->id)
             ->orderBy('items.id')
             ->paginate(10);

@@ -41,18 +41,13 @@
                     <thead>
                     <tr>
                         <th scope="col">Item Name</th>
+                        <th scope="col">Item Image</th>
                         <th scope="col">Price</th>
                         <th scope="col">In Stock</th>
                         <th scope="col">Level</th>
                         <th scope="col">Description</th>
-                        @foreach($shops as $shop)
-                        @if($shop->first->owner_id !== Auth::id())
-                            <th scope="col">Request Item</th>
-                        @endif
-                        @endforeach
-                        @can('Store Owner')
-                            <th scope="col">Update Item</th>
-                        @endcan
+                        <th scope="col">Request Item</th>
+                        <th scope="col">Update Item</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -63,24 +58,25 @@
                                     <span class="badge badge-success pull-right">New</span>
                                 @endif
                             </td>
+                            <td><span><img src="{{$item->link}}"></span></td>
                             <td>{{$item->price}}</td>
                             <td>{{$item->qty}}</td>
                             <td>{{$item->level}}</td>
                             <td>{{$item->description}}</td>
-                            @if($item->owner_id !== Auth::id())
+
                             <td>
                                 <a href="/item/requestItem/{{$item->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm" >Request Item</button>
                                 </a>
                             </td>
-                            @endif
-                            @can('Store Owner')
+
+
                                 <td>
                                     <a href="/item/{{$item->id}}">
                                         <button type="button" class="btn btn-secondary btn-sm">Update Item</button>
                                     </a>
                                 </td>
-                            @endcan
+
                         </tr>
 
                     @endforeach
