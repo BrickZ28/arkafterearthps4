@@ -39,7 +39,7 @@ class ItemController extends Controller
             'name' => 'required',
             'price' => 'required|integer',
             'qty' => 'required|integer',
-            'description' => 'required'
+
         ]);
 
         Item::create([
