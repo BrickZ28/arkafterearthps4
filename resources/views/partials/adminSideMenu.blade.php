@@ -23,6 +23,8 @@
                                 <li><i class="fas fa-user"></i><a href="/stores/create">Create Store</a></li>
                                 <li><i class="fas fa-user"></i><a href="/stores">All Stores</a></li>
                                 <li><i class="fas fa-user"></i><a href="/myStore">My Store</a></li>
+                                <li><i class="fas fa-user"></i><a href="/images/create">Upload image</a></li>
+                                <li><i class="fas fa-user"></i><a href="/category/create">Create category</a></li>
                             </ul>
                         </li>
                     @endif
