@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Store;
 use Illuminate\Http\Request;
+use App\Category;
 
 class StoreController extends Controller
 {
@@ -90,8 +91,9 @@ class StoreController extends Controller
     {
         $store = Store::find($id);
         $item='';
+        $categories = Category::all();
 
-        return view('stores.edit', compact('store', 'item'));
+        return view('stores.edit', compact('store', 'item', 'categories'));
     }
 
     /**
@@ -120,8 +122,9 @@ class StoreController extends Controller
     //* Show the Store and its items */
     public function shop(Request $request){
         $shops = \DB::table('items')
-            ->where('store_id', '=', $request->id)
-            ->orderBy('id')
+            ->leftJoin('stores', 'items.store_id', '=', 'stores.id')
+            ->where('items.store_id', '=', $request->id)
+            ->orderBy('items.id')
             ->paginate(10);
 
         return view('stores.shop', compact('shops'));

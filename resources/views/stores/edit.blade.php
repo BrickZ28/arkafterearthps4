@@ -64,9 +64,14 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Item Description</label>
-                        </div>
-                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="description" value="{{old('description')}}" class="form-control">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Item Category</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="category" id="selectLg" class="form-control-lg form-control" required>
+                                <option value="">Select One</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->folder_attribute}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row form-group">

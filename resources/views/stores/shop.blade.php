@@ -45,7 +45,11 @@
                         <th scope="col">In Stock</th>
                         <th scope="col">Level</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Request Item</th>
+                        @foreach($shops as $shop)
+                        @if($shop->first->owner_id !== Auth::id())
+                            <th scope="col">Request Item</th>
+                        @endif
+                        @endforeach
                         @can('Store Owner')
                             <th scope="col">Update Item</th>
                         @endcan
@@ -63,11 +67,13 @@
                             <td>{{$item->qty}}</td>
                             <td>{{$item->level}}</td>
                             <td>{{$item->description}}</td>
+                            @if($item->owner_id !== Auth::id())
                             <td>
                                 <a href="/item/requestItem/{{$item->id}}">
                                     <button type="button" class="btn btn-secondary btn-sm" >Request Item</button>
                                 </a>
                             </td>
+                            @endif
                             @can('Store Owner')
                                 <td>
                                     <a href="/item/{{$item->id}}">

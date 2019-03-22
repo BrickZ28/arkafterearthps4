@@ -59,7 +59,7 @@
                                 </a>
                             </td>
                             <td>
-                                @if($store->id === Auth::id())
+                                @if($store->owner_id === Auth::id())
                                     <a href="/stores/{{$store->id}}/edit">
                                         <button type="button" class="btn btn-secondary btn-sm">Update Store</button>
                                     </a>
