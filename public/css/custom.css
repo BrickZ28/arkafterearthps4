@@ -159,10 +159,12 @@ section {
 	z-index: 10;
 	background-color: rgba(255, 255, 255, 0.30);
 	text-shadow: none;
-	top: 10%;
+	top: 15%;
 	padding: 30px 50px;
 	bottom: auto;
 	box-shadow: 20px 20px 43px rgba(0, 0, 0, 0.5);
+	left: 5%;
+	max-width: 18%;
 
 	color: #222;
 }
