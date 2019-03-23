@@ -75,6 +75,17 @@
                         </div>
                     </div>
                     <div class="row form-group">
+                        <div class="col col-md-3"><label for="selectLg" class=" form-control-label">Item Images</label></div>
+                        <div class="col-12 col-md-9">
+                            <select name="category" id="selectLg" class="form-control-lg form-control" required>
+                                <option value="">Select One</option>
+                                @foreach($images as $img)
+                                    <option value="{{$img->id}}">{{$img->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Item Price</label>
                         </div>
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="price" value="{{old('price')}}" class="form-control" required>
@@ -90,6 +101,12 @@
                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Item Level</label>
                         </div>
                         <div class="col-12 col-md-9"><input type="input" id="text-input" name="level" value="{{old('level')}}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Description</label>
+                        </div>
+                        <div class="col-12 col-md-9"><input type="input" id="text-input" name="description" value="{{old('level')}}" class="form-control" >
                         </div>
                     </div>
 

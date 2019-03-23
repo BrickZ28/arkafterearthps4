@@ -45,7 +45,7 @@
                         <th scope="col">Price</th>
                         <th scope="col">In Stock</th>
                         <th scope="col">Level</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">Information</th>
                         <th scope="col">Request Item</th>
                         <th scope="col">Update Item</th>
                     </tr>

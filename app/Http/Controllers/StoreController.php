@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Store;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Image;
 
 class StoreController extends Controller
 {
@@ -92,8 +93,9 @@ class StoreController extends Controller
         $store = Store::find($id);
         $item='';
         $categories = Category::all();
+        $images = Image::all();
 
-        return view('stores.edit', compact('store', 'item', 'categories'));
+        return view('stores.edit', compact('store', 'item', 'categories', 'images'));
     }
 
     /**
