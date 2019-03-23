@@ -157,12 +157,13 @@ section {
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
 	z-index: 10;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.20);
 	text-shadow: none;
 	top: 45%;
 	padding: 30px 50px;
 	bottom: auto;
 	box-shadow: 20px 20px 43px rgba(0, 0, 0, 0.5);
+
 	color: #222;
 }
 .carousel-caption h1 {

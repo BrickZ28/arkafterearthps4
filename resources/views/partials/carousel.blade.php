@@ -10,8 +10,8 @@
         <div class="carousel-item active">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Raffle In progress</h1>
-                    <p>Be sure to register for the War Boat pictured. There is both a PVP and PVE raffle in progress. Check discord for further details</p>
+                    <h1>Admin Event and Giveaways</h1>
+                    <p>Keep current on our Discord for events and giveaways of in game items</p>
                 </div>
             </div>
         </div>
