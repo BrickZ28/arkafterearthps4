@@ -159,12 +159,12 @@ section {
 	z-index: 10;
 	background-color: rgba(255, 255, 255, 0.30);
 	text-shadow: none;
-	top: 15%; /* moves box up and down */
+	top: 10%; /* moves box up and down */
 	padding: 30px 50px;
 	bottom: auto;
 	box-shadow: 20px 20px 43px rgba(0, 0, 0, 0.5);
-	left: 5%; /* sets left margin */
-	max-width: 18%; /* limits how far right margin can go */
+	left: 1%; /* sets left margin */
+	 /* limits how far right margin can go */
 
 	color: #222;
 }
