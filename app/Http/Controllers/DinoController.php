@@ -326,7 +326,7 @@ class DinoController extends Controller
         \Mail::to(\Auth::user()->email)->later($when, new DinoRequested($user, $total, $dinoName, $qty));
 
         Bank_transaction::create([
-            'transaction_amount' => $fullAmt,
+            'transaction_amount' => $total,
             'payer_id' => $player->id,
             'receiver_id' => 'bank',
             'reason' => 'Purchase Dino',
