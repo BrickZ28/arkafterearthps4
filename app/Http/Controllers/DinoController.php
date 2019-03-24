@@ -257,10 +257,10 @@ class DinoController extends Controller
         //get the qty and go to function to get price
         $total = $this->dinoGemTotal(request()->id, request()->qty);
 
-        $fullAmt = $total *  \request()->qty;
+        //$fullAmt = $total *  \request()->qty;
         $player = User::find(Auth::id());
 
-        if ($player->gem_balance < $fullAmt){
+        if ($player->gem_balance < $total){
             return redirect('/dinos')->with('nofunds', request()->name . ' Sorry you dont have enough funds for this transactions.');
         }
 
