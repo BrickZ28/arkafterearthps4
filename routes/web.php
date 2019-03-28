@@ -94,6 +94,7 @@ Route::patch('/ban/{id}','UserController@banUser');
 Route::patch('/editMember/{id}','UserController@update');
 Route::patch('/user/bank/transaction/{id}', 'UserController@userToBankFundsTransaction');
 Route::patch('/user/user/transaction', 'UserController@userToUserFundsTransaction');
+Route::patch('/dinoRequestEdit/{id}', 'DinoController@dinoRequestEdit');
 
 
 Route::resource('bank', 'BankController');
