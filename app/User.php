@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Role;
 use App\Permission;
+use Mail;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -122,10 +123,10 @@ class User extends Authenticatable implements MustVerifyEmail
             ->get();
 
         foreach ($owners as $owner) {
-            \Mail::to($owner->email)->send(new newUser($this->name));
+            Mail::to($owner->email)->send(new newUser($this->name));
         }
 
-        \Mail::to($this->email)->send(new SendWelcome($this->name, $this->regcode));
+        Mail::to($this->email)->send(new SendWelcome($this->name, $this->regcode));
 
         return $this->forceFill([
             'email_verified_at' => $this->freshTimestamp(),

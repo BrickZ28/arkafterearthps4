@@ -197,10 +197,22 @@
                 <form action="/editMember/{{$member->id}}"  method="post" enctype="multipart/form-data" class="form-horizontal">
                     @method('PATCH')
                     @csrf
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label class=" form-control-label">Member Name</label></div>
-                        <div class="col-12 col-md-9">
-                            <p class="form-control-static">{{$member->name}}</p>
+                    <div class="form-group row">
+                        <label class="col-sm-3 control-label text-sm-right pt-2">I will use it for <span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <div class="checkbox-custom chekbox-primary">
+                                <input id="for-project" value="project" type="checkbox" name="for[]" required />
+                                <label for="for-project">My Project</label>
+                            </div>
+                            <div class="checkbox-custom chekbox-primary">
+                                <input id="for-website" value="website" type="checkbox" name="for[]" />
+                                <label for="for-website">My Website</label>
+                            </div>
+                            <div class="checkbox-custom chekbox-primary">
+                                <input id="for-all" value="all" type="checkbox" name="for[]" />
+                                <label for="for-all">All things I do</label>
+                            </div>
+                            <label class="error" for="for[]"></label>
                         </div>
                     </div>
                     <div class="row form-group">
