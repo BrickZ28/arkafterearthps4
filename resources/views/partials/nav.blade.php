@@ -1,5 +1,7 @@
 <nav class="navbar top-bar navbar-static-top sps sps--abv">
     <div class="container relative-box "> <a class="navbar-brand" href="#">Afterearth</a><img src="{{asset('/img/AE-75.png')}}" alt="" height="50" width="50">
+        <li class="nav-item"> <a href="https://paypal.me/AfterEarthClusters?locale.x=en_US"><i class="fas fa-donate fa-2x"></i>
+            </a></li>
         <button class="navbar-toggler hidden-lg-up collapsed" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"> ☰ </button>
         <div class="navbar-toggleable-md collapse" id="exCollapsingNavbar2" >
 
@@ -18,9 +20,8 @@
                 @endif
                 <li class="nav-item"> <a href="https://www.facebook.com/ArkAfterearth/"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
                     </a></li>
-                Donate Today
-                <li class="nav-item"> <a href="https://paypal.me/AfterEarthClusters?locale.x=en_US"><i class="fas fa-donate fa-2x"></i>
-                    </a></li>
+
+
             </ul>
         </div>
     </div>
