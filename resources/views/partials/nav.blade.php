@@ -18,7 +18,7 @@
                 @endif
                 <li class="nav-item"> <a href="https://www.facebook.com/ArkAfterearth/"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
                     </a></li>
-                <li class="nav-item"> <a href="https://paypal.me/AfterEarthClusters?locale.x=en_US"><i class="fas fa-donate"></i>
+                <li class="nav-item"> <a href="https://paypal.me/AfterEarthClusters?locale.x=en_US"><i class="fas fa-donate fa-3x"></i>
                     </a></li>
             </ul>
         </div>
