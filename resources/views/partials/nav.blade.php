@@ -1,6 +1,6 @@
 <nav class="navbar top-bar navbar-static-top sps sps--abv">
     <div class="container relative-box "> <a class="navbar-brand" href="#">Afterearth</a><img src="{{asset('/img/AE-75.png')}}" alt="" height="50" width="50">
-        <a href="https://paypal.me/AfterEarthClusters?locale.x=en_US">Donate Today<i class="fas fa-donate fa-2x"></i>
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YB5FE8H9JLZWN&source=url">Donate Today<i class="fas fa-donate fa-2x"></i>
             </a>&nbsp;
         <button class="navbar-toggler hidden-lg-up collapsed" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"> ☰ </button>
         <div class="navbar-toggleable-md collapse" id="exCollapsingNavbar2" >
