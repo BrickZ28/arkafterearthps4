@@ -69,7 +69,7 @@ class GateController extends Controller
 
         $gate->save();
 
-        return redirect('/gates')->with('success', 'Gate ' . $gate->gate . ' successufully updated and no longer assigned to a player');
+        return redirect('/gates')->with('success', 'Gate ' . $gate->gate . ' successfully updated and no longer assigned to a player');
     }
 
     public function destroy($id){
