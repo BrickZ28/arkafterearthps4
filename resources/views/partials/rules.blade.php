@@ -10,9 +10,9 @@
                             Redemption<img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="50" width="50"></span> <span class="duration">Current Owner</span> </div>
                     <div class="detail-sec">
                         <ul>
-                            <li>If Phoenix killed(travel or raid), show proof(pic)</li>
+                            <li>If Phoenix gets killed in travelling or in a raid, show proof of assassination (pic).</li>
                             <li>If pic proof is provided of assassination, we will give a new Phoenix to the tribe that killed it. And the old owner or anyone else will need to get it back in the same way.</li>
-                            <li>If you obtain the Phoenix VIA Cryopod PM pic proof either Djm2003 or Brick and we will update the info </li>
+
                         </ul>
                     </div>
 
@@ -41,7 +41,7 @@
                         <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="50" width="50"></span> <span class="duration">Current Owner</span> </div>
                     <div class="detail-sec">
                         <ul>
-                            <li>If Phoenix gets killed in travelling or in a raid, show proof of assassination (pic).</li>
+                            <li>If you obtain the Phoenix VIA Cryopod PM pic proof either Djm2003 or Brick and we will update the info </li>
                             <li>Phoenix must be held in main owners base marked visible to everyone with a Red Flag</li>
                             <li>If we find out it was stash in a hidden spot you will lose ownership and will never be awarded to you again.</li>
 
