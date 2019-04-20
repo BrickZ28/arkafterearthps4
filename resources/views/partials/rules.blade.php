@@ -38,7 +38,7 @@
                     <div class="heading"> <span class="plan-type">Pheonix</span> <span class="price">
                             <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="50" width="50">
                             Space Cowbells
-                        <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="50" width="50"></span> <span class="duration">Current Owner</span> </div>
+                        <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="40" width="40"></span> <span class="duration">Current Owner</span> </div>
                     <div class="detail-sec">
                         <ul>
                             <li>If you obtain the Phoenix VIA Cryopod PM pic proof either Djm2003 or Brick and we will update the info </li>
