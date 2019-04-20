@@ -36,7 +36,7 @@
             <div class="col-md-4">
                 <div class="plan-block">
                     <div class="heading"> <span class="plan-type">Pheonix</span> <span class="price">
-                            <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="50" width="50">
+                            <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="40" width="40">
                             Space Cowbells
                         <img src="{{asset('img/dinos/pheonix.gif')}}" alt="" height="40" width="40"></span> <span class="duration">Current Owner</span> </div>
                     <div class="detail-sec">
