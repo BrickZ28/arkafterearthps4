@@ -30,7 +30,7 @@
                     <tr>
                         <th scope="col">My Balance</th>
                         <th scope="col">Current Interest Rate</th>
-                        <th scope="col">Projected Interest Earned <span class="badge badge-info">(Saturdays approx. 6:10 P.M. CST)</span></th>
+                        <th scope="col">Projected Interest Earned <span class="badge badge-info">(Fridays approx. 01:000 A.M. CDT)</span></th>
                     </tr>
                     </thead>
                     <tbody>
