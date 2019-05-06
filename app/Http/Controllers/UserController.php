@@ -398,11 +398,11 @@ class UserController extends Controller
         $user = User::find($request->id);
 
         if ($user->regCodeVerified === 1){
-            return redirect('/editMember/' . $user->id)->with('failed', 'Code already authorized for this user');
+            return view('/editMember/' . $user->id)->with('failed', 'Code already authorized for this user');
         }
 
         if ($request->regcode !== $user->regcode){
-            return redirect('/editMember/' . $user->id)->with('failed', 'Invalid authorization code' . $request->regCode . ' for this user');
+            return view('/editMember/' . $user->id)->with('failed', 'Invalid authorization code' . $request->regCode . ' for this user');
         }
 
         if($request->startertype === 'pvpstarter'){
@@ -414,7 +414,7 @@ class UserController extends Controller
                             first();
 
             if (empty($pvpGate)){
-                return redirect('/editMember/' . $user->id)->with('failed', 'No available Gates');
+                return view('/editMember/' . $user->id)->with('failed', 'No available Gates');
             }
             $pvpGate->admin = \Auth::user()->id;
             $pvpGate->player = $user->id;
@@ -461,7 +461,7 @@ class UserController extends Controller
             first();
 
             if (empty($pveGate)){
-                return redirect('/editMember/' . $user->id)->with('failed', 'No available Gates');
+                return view('/editMember/' . $user->id)->with('failed', 'No available Gates');
             }
             $pveGate->admin = \Auth::user()->id;
             $pveGate->player = $user->id;
@@ -481,7 +481,7 @@ class UserController extends Controller
         first();
 
         if (empty($pvpGate)){
-            return redirect('/editMember/' . $user->id)->with('failed', 'No available Gates');
+            return view('/editMember/' . $user->id)->with('failed', 'No available Gates');
         }
         $pvpGate->admin = \Auth::user()->id;
         $pvpGate->player = $user->id;
@@ -494,7 +494,7 @@ class UserController extends Controller
         $user->regCodeVerified = true;
         $user->save();
 
-        return redirect('/userhome')->with('success', 'User authenticated and gate and pin sent.  PVP Gate:  ' . $pvpGate->gate . ' Pin:  ' . $pvpGate->pin)->with('successb', 'User authenticated and gate and pin sent.  PVE Gate:  ' . $pveGate->gate . ' Pin:  ' . $pveGate->pin);;
+        return redirect('/userhome')->with('success', 'User authenticated and gate and pin sent.  PVP Gate:  ' . $pvpGate->gate . ' Pin:  ' . $pvpGate->pin)->with('successb', 'User authenticated and gate and pin sent.  PVE Gate:  ' . $pveGate->gate . ' Pin:  ' . $pveGate->pin);
 
     }
 
