@@ -14,7 +14,7 @@
 
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('http://afterearthcluster.com');
 });
 
 Route::get('/ad', function () {
