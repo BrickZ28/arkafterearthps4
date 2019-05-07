@@ -12,10 +12,13 @@
 */
 
 
-
 Route::get('/', function () {
     return redirect('http://afterearthcluster.com');
 });
+
+/*Route::get('/', function () {
+    return view('home');
+});*/
 
 Route::get('/ad', function () {
     return view('layouts.admin');
