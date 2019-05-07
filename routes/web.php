@@ -14,7 +14,7 @@
 
 
 Route::get('/', function () {
-    return redirect('http:\\www.arkafterearthcluster.com');
+    return view('home');
 });
 
 Route::get('/ad', function () {
